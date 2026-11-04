@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>خدمات جامعية للطلاب | تسجيل مفاضلات ودفع أقساط في سوريا</title>
+<link href="https://googleapis.com" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',Tahoma,sans-serif}
+:root{--navy:#0F2340;--gold:#C9A227;--gold2:#E8C84A;--light:#F6F7F9;--green:#1FA855}
+body{background:var(--light);color:#222;line-height:1.8}
+a{text-decoration:none}
+.topbar{background:var(--navy);color:#fff;padding:10px 20px;text-align:center;font-size:13px}
+.topbar b{color:var(--gold2)}
+header{background:#fff;position:sticky;top:0;z-index:10;box-shadow:0 2px 15px rgba(0,0,0,.06);padding:14px 20px;display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:auto;border-radius:0 0 16px 16px}
+.logo{font-weight:900;font-size:20px;color:var(--navy);line-height:1.3}
+.logo span{color:var(--gold);display:block;font-size:13px;letter-spacing:1px}
+.nav{display:flex;gap:18px;font-size:14px;font-weight:700}
+.nav a{color:var(--navy)}
+.btn{border:none;cursor:pointer;padding:12px 20px;border-radius:12px;font-weight:900;font-size:15px;display:inline-block;text-align:center}
+.btn-gold{background:linear-gradient(135deg,#C9A227,#E8C84A);color:#111}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-wa{background:var(--green);color:#fff;width:100%}
+.hero{max-width:1100px;margin:22px auto;background:var(--navy);color:#fff;border-radius:24px;overflow:hidden;display:grid;grid-template-columns:1.2fr .8fr}
+.hero-text{padding:36px 28px}
+.hero-text .tag{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:6px 12px;border-radius:20px;font-size:12px;display:inline-block;margin-bottom:16px}
+.hero-text h1{font-size:34px;line-height:1.4;margin-bottom:12px}
+.hero-text h1 span{color:var(--gold2)}
+.hero-text p{opacity:.92;font-size:15px;margin-bottom:20px}
+.hero-stats{display:flex;gap:12px;margin-top:20px}
+.stat{background:#fff;color:#111;border-radius:14px;padding:12px 14px;flex:1;text-align:center}
+.stat b{font-size:20px;color:var(--navy);display:block}
+.stat small{color:#666}
+.hero-img{background:linear-gradient(180deg,#1B3A66,#0F2340);display:flex;align-items:center;justify-content:center;padding:28px;text-align:center}
+.hero-card{background:#fff;color:#111;border-radius:18px;padding:20px;width:100%;box-shadow:0 15px 40px rgba(0,0,0,.25)}
+.hero-card h3{color:var(--navy);margin-bottom:10px}
+.hero-card input,.hero-card select{width:100%;padding:12px;border:1px solid #ddd;border-radius:10px;margin-bottom:10px;font-family:inherit}
+.container{max-width:1100px;margin:auto;padding:20px}
+.section-title{text-align:center;margin:28px 0 6px}
+.section-title h2{font-size:28px;color:var(--navy)}
+.section-title p{color:#666}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+.card{background:#fff;border-radius:18px;padding:22px;border:1px solid #eee}
+.card .icon{width:54px;height:54px;background:#FFF7D6;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:12px}
+.card h3{color:var(--navy);margin-bottom:8px}
+.card p{font-size:14px;color:#555;min-height:66px}
+.price{margin:12px 0;font-weight:900;color:var(--green)}
+.price s{color:#999;font-weight:400;font-size:13px;margin-right:6px}
+.steps{background:#fff;border-radius:20px;padding:24px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+.step{text-align:center}
+.step .num{width:48px;height:48px;background:var(--navy);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:auto;margin-bottom:10px;font-weight:900}
+.pay{background:var(--navy);color:#fff;border-radius:20px;padding:26px;display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:22px}
+.pay-box{background:#fff;color:#111;border-radius:16px;padding:18px;text-align:center}
+.pay-box b{font-size:20px;color:var(--navy)}
+.copy-btn{background:#eee;border:none;padding:8px 14px;border-radius:8px;cursor:pointer;font-weight:700;margin-top:8px;transition: background 0.3s, color 0.3s;}
+.faq{background:#fff;border-radius:18px;padding:20px;margin-top:18px}
+.faq details{padding:12px 0;border-bottom:1px solid #eee}
+.faq summary{cursor:pointer;font-weight:800;color:var(--navy)}
+.wa-float{position:fixed;bottom:18px;left:18px;z-index:99;background:#25D366;color:#fff;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 10px 25px rgba(0,0,0,.25)}
+footer{text-align:center;padding:24px;color:#888;font-size:13px}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.pay{grid-template-columns:1fr}.nav{display:none}.hero-text h1{font-size:26px}.logo{font-size:17px}}
+</style>
+</head>
+<body>
+
+<div class="topbar">التسجيل على <b>مفاضلة الجامعة الافتراضية السورية</b> متاح الآن &nbsp;|&nbsp; نرد عليكم خلال دقائق عبر واتساب</div>
+
+<header>
+<div class="logo">خدمات جامعية للطلاب<span>UNIVERSITY SERVICES</span></div>
+<div class="nav"><a href="#services">خدماتنا</a><a href="#how">طريقة الطلب</a><a href="#pay">الدفع</a><a href="#faq">الأسئلة الشائعة</a></div>
+<a class="btn btn-gold" href="https://wa.me" target="_blank" rel="noopener noreferrer">اطلب عبر واتساب ↗</a>
+</header>
+
+<div class="hero">
+<div class="hero-text">
+<span class="tag">خدمات جامعية موثوقة • حمص - المخرم الفوقاني • سوريا</span>
+<h1>مستقبلك الجامعي يبدأ من <span>منزلك</span><br>ننجز كل معاملاتك.. دون عناء الانتظار</h1>
+<p>نقدّم لكم خدمات التسجيل في المفاضلات، ودفع الأقساط والرسوم، وحل الوظائف الجامعية، وترجمة الأوراق الرسمية. فريقنا يرافقكم خطوة بخطوة، ويزوّدكم بإثبات موثّق لكل خدمة.</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap">
+<a class="btn btn-gold" href="https://wa.me" target="_blank" rel="noopener noreferrer">سجّل على المفاضلة الآن →</a>
+<a class="btn" style="background:#fff;color:#0F2340" href="#services">استعرض الخدمات</a>
+</div>
+<div class="hero-stats">
+<div class="stat"><b>+850</b><small>طالب تمت خدمته</small></div>
+<div class="stat"><b>15 دقيقة</b><small>متوسط مدة التسجيل</small></div>
+<div class="stat"><b>4.9 / 5</b><small>تقييم الطلاب لنا</small></div>
+</div>
+</div>
+<div class="hero-img">
+<div class="hero-card">
+<h3>اطلب خدمتك خلال ثوانٍ</h3>
+<p style="font-size:13px;color:#666;margin-bottom:12px">اختر الخدمة المطلوبة، ثم اضغط على زر واتساب، وسنتواصل معك لإتمام الطلب.</p>
+<select id="srv"><option>الجامعة الافتراضية السورية - تسجيل ودفع</option><option>المفاضلة العامة أو الموازي</option><option>حل وظيفة أو حلقة بحث</option><option>ترجمة ورقة أو مصدقة</option><option>دفع رسم أو قسط جامعي</option></select>
+<input id="name" placeholder="الاسم الثلاثي" maxlength="50">
+<input id="phone" placeholder="رقم الهاتف - مثال: 0930..." maxlength="15">
+<button class="btn btn-wa" onclick="goWA()">اطلب عبر واتساب 💬</button>
+<p style="font-size:12px;color:#888;text-align:center;margin-top:10px">الاستفسار مجاني • نرد عليكم خلال دقائق</p>
+</div>
+</div>
+</div>
+
+<div class="container">
+<div class="section-title" id="services"><h2>خدماتنا للطلاب</h2><p>جميع الخدمات التي يحتاجها الطالب في سوريا، في مكان واحد</p></div>
+<div class="grid">
+<div class="card"><div class="icon">🎓</div><h3>الجامعة الافتراضية السورية</h3><p>التسجيل على المفاضلة، اختيار المواد الدراسية، دفع الأقساط، استرجاع الحساب، ومعالجة مشكلات الموقع.</p><div class="price">ابتداءً من 10,000 ل.س <s>15,000</s></div><a class="btn btn-navy" style="width:100%" href="https://wa.me" target="_blank" rel="noopener noreferrer">اطلب الخدمة</a></div>
+<div class="card"><div class="icon">📝</div><h3>المفاضلة العامة والموازي</h3><p>نسجّلكم على المفاضلة العامة، والموازي، والتعليم المفتوح، والجامعات الخاصة، ونتابع معكم صدور النتائج.</p><div class="price">ابتداءً من 15,000 ل.س</div><a class="btn btn-navy" style="width:100%" href="https://wa.me" target="_blank" rel="noopener noreferrer">اطلب الخدمة</a></div>
+<div class="card"><div class="icon">💻</div><h3>حل الوظائف والبحوث</h3><p>إعداد الوظائف الجامعية، وحلقات البحث، وتلخيص المحاضرات، وتصميم عروض PowerPoint، وإعداد السيرة الذاتية باحتراف.</p><div class="price">حسب نوع الوظيفة - استفسر الآن</div><a class="btn btn-navy" style="width:100%" href="https://wa.me" target="_blank" rel="noopener noreferrer">اطلب الخدمة</a></div>

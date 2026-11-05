@@ -50,6 +50,7 @@ select option{background:var(--navy);color:#fff}
         
         <label>اختر الخدمة المطلوبة:</label>
         <select id="serviceSelect" onchange="updateRequirements()">
+            <option value="" selected disabled> -- اختر الخدمة لعرض الأوراق المطلوبة -- </option>
             <option value="الجامعة الافتراضية السورية - تسجيل أو دفع">الجامعة الافتراضية السورية (تسجيل / دفع)</option>
             <option value="التسجيل على المفاضلة العامة أو الموازي">المفاضلة العامة أو الموازي</option>
             <option value="استفسار أو تسجيل بكلية الاقتصاد (بكالوريا قديمة)">استفسار أو تسجيل بكلية الاقتصاد (بكالوريا قديمة)</option>
@@ -58,7 +59,7 @@ select option{background:var(--navy);color:#fff}
             <option value="خدمة طلابية أخرى">خدمة طلابية أخرى</option>
         </select>
 
-        <div id="requirementsBox" class="requirements-box">
+        <div id="requirementsBox" class="requirements-box" style="display:none">
             <strong>📋 المعلومات والأوراق المطلوبة للخدمة:</strong>
             <div id="dynamicFields"></div>
             <div id="reqText"></div>
@@ -157,6 +158,12 @@ const requirementsData = {
 
 function updateRequirements() {
     const selectedService = document.getElementById('serviceSelect').value;
+    const box = document.getElementById('requirementsBox');
+    if(!selectedService){
+        box.style.display = 'none';
+        return;
+    }
+    box.style.display = 'block';
     const data = requirementsData[selectedService];
     const container = document.getElementById('dynamicFields');
     const reqText = document.getElementById('reqText');
@@ -184,7 +191,6 @@ function saveUserData() {
 }
 
 window.onload = function() {
-    updateRequirements();
     if(localStorage.getItem('student_name')) {
         document.getElementById('studentName').value = localStorage.getItem('student_name');
     }
@@ -197,7 +203,6 @@ function generateOrderText() {
     const service = document.getElementById('serviceSelect').value;
     const name = document.getElementById('studentName').value.trim();
     let phone = document.getElementById('studentPhone').value.trim();
-    
     let extra = "";
     const data = requirementsData[service];
     if(data){
@@ -211,7 +216,6 @@ function generateOrderText() {
             }
         });
     }
-
     return `مرحباً، أرغب بطلب هذه الخدمة:\n` +
            `📌 الخدمة: ${service}\n` +
            `👤 اسم الطالب: ${name}\n` +
@@ -219,10 +223,14 @@ function generateOrderText() {
 }
 
 function validateInputs() {
+    const service = document.getElementById('serviceSelect').value;
+    if(!service){
+        alert('الرجاء اختر الخدمة أولاً.');
+        return false;
+    }
     const name = document.getElementById('studentName').value.trim();
     let phone = document.getElementById('studentPhone').value.trim();
     phone = phone.replace(/\s+/g, '');
-
     if(!name || !phone) {
         alert('الرجاء كتابة الاسم ورقم الهاتف لنتمكن من التواصل معك.');
         return false;

@@ -3,285 +3,133 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>خدمات جامعية للطلاب</title>
+<title>خدمات الطلاب الجامعية</title>
+<meta name="description" content="خدمات الطلاب الجامعية - تسجيل، مفاضلات، دفع رسوم، حل وظائف. اطلب خدمتك بسهولة عبر واتساب.">
+<meta property="og:title" content="خدمات الطلاب الجامعية">
+<meta property="og:description" content="تسجيل • مفاضلات • دفع رسوم • خدمات سريعة">
+<meta property="og:image" content="icon-512.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0F2340">
+<link rel="apple-touch-icon" href="icon-192.png">
 <style>
-:root{--navy:#0F2340;--navy2:#162E52;--gold:#D4AF37}
+:root{--navy:#0F2340;--gold:#D4AF37;--green:#25D366;--card-bg:#162E52}
 *{box-sizing:border-box}
-body{font-family:'Segoe UI',Tahoma,sans-serif;margin:0;background:#0F2340;color:#fff;overflow-x:hidden}
-.topbar{background:#0F2340;color:#fff;text-align:center;padding:14px 12px;line-height:1.7;border-bottom:2px solid #D4AF37;width:100%}
-.topbar .line1{display:block;font-size:14px;font-weight:bold;white-space:normal;word-break:break-word}
-.topbar .line2{display:block;font-size:12px;opacity:.9}
-header{display:flex;flex-direction:column;gap:12px;align-items:center;padding:15px 10px;background:#0F2340;box-shadow:0 2px 5px rgba(0,0,0,.3);position:sticky;top:0;z-index:10;width:100%;text-align:center}
-.logo{font-weight:bold;color:#fff;font-size:19px;line-height:1.4}
-.logo span{display:block;font-size:11px;color:#D4AF37;letter-spacing:1px}
-.nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 14px;width:100%}
-.nav a{text-decoration:none;color:#fff;font-size:14px;font-weight:500;white-space:nowrap;padding:4px 2px}
-.btn{display:inline-block;padding:11px 22px;border-radius:5px;text-decoration:none;font-size:14px;font-weight:bold;border:none;cursor:pointer;white-space:nowrap}
-.btn-gold{background:#D4AF37;color:#0F2340}
-.btn-navy{background:#D4AF37;color:#0F2340;text-align:center}
-.btn-wa{background:#25D366;color:#fff;width:100%;font-size:16px;padding:12px;margin-top:10px}
-.hero{display:flex;flex-wrap:wrap;padding:30px 5%;background:#0F2340;align-items:center;gap:30px}
-.hero-text{flex:1;min-width:280px;text-align:center}
-.tag{background:rgba(255,255,255,.15);color:#D4AF37;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:bold;display:inline-block;line-height:1.6}
-.hero h1{font-size:28px;color:#fff;margin:15px 0;line-height:1.5}
-.hero p{color:#E0E0E0;font-size:14px;line-height:1.7}
-.hero-stats{display:flex;flex-wrap:wrap;justify-content:center;gap:15px;margin-top:25px}
-.stat{text-align:center;min-width:80px}
-.stat b{display:block;font-size:19px;color:#fff}
-.stat small{color:#B0BEC5;font-size:12px;display:block;margin-top:4px;line-height:1.5}
-.hero-img{flex:1;min-width:280px;display:flex;justify-content:center}
-.hero-card{background:linear-gradient(135deg,#FFF8E7 0%,#FFECB3 100%);padding:25px;border-radius:12px;box-shadow:0 8px 25px rgba(212,175,55,.25);width:100%;max-width:360px;color:#0F2340;border:2px solid #D4AF37}
-.hero-card h3{color:#0F2340}
-.hero-card select,.hero-card input{width:100%;padding:10px;margin:8px 0;border:1px solid #D4AF37;border-radius:8px;font-family:inherit;background:#fff}
-.container{padding:35px 5%;background:#0F2340}
-.section-title{text-align:center;margin-bottom:20px}
-.section-title h2{color:#fff}
-.section-title p{color:#B0BEC5;line-height:1.7}
-.search-box{max-width:500px;margin:0 auto 25px auto;position:relative}
-.search-box input{width:100%;padding:13px 45px 13px 15px;border:2px solid #D4AF37;border-radius:25px;background:#162E52;color:#fff;font-family:inherit;font-size:14px;outline:none}
-.search-box input::placeholder{color:#B0BEC5}
-.search-icon{position:absolute;left:15px;top:50%;transform:translateY(-50%);font-size:18px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-.card{background:#162E52;padding:20px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.3);border-top:3px solid #D4AF37;display:flex;flex-direction:column;justify-content:space-between}
-.card h3{color:#fff}
-.card p{font-size:13px;color:#D0D7E3;line-height:1.6}
-.price{font-weight:bold;color:#D4AF37;margin-bottom:15px}
-.track-box{background:#162E52;border:2px solid #D4AF37;border-radius:12px;padding:25px;max-width:520px;margin:0 auto;text-align:center}
-.track-box input,.track-box select{width:100%;padding:12px;margin:8px 0;border:1px solid #D4AF37;border-radius:8px;font-family:inherit;background:#0F2340;color:#fff;text-align:center;font-size:15px}
-.track-box input::placeholder{color:#B0BEC5}
-.order-result{background:#0F2340;border:1px solid #D4AF37;border-radius:10px;padding:15px;margin-top:15px;text-align:right;color:#fff;line-height:1.8}
-.order-result b{color:#D4AF37}
+body{font-family:'Segoe UI',Tahoma,sans-serif;margin:0;background:var(--navy);color:#fff;text-align:right}
+.header{background:var(--navy);padding:20px;text-align:center;border-bottom:2px solid var(--gold)}
+.header h1{margin:0;font-size:22px;color:#fff}
+.header span{font-size:12px;color:var(--gold);display:block;margin-top:5px}
+.container{padding:20px;max-width:480px;margin:auto}
+.card{background:var(--card-bg);border:2px solid var(--gold);border-radius:12px;padding:20px;margin-bottom:20px;box-shadow:0 4px 15px rgba(0,0,0,0.3)}
+.card h2{font-size:18px;margin-top:0;color:var(--gold);text-align:center}
+label{display:block;font-size:14px;margin-bottom:6px;color:#E0E0E0;font-weight:bold}
+select,input{width:100%;padding:14px;margin-bottom:15px;border:1px solid var(--gold);border-radius:8px;background:var(--navy);color:#fff;font-size:15px;font-family:inherit;outline:none}
+select option{background:var(--navy);color:#fff}
+.requirements-box{background:rgba(0,0,0,0.25);border:1px dashed var(--gold);border-radius:8px;padding:12px;margin-bottom:15px;font-size:13px;line-height:1.7;color:#FFECB3}
+.requirements-box strong{color:var(--gold);display:block;margin-bottom:4px}
+.btn-wa{background:var(--green);color:#fff;width:100%;font-size:17px;font-weight:bold;padding:15px;border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
+.steps{background:var(--card-bg);border-radius:10px;padding:15px;margin-top:20px;font-size:13px;line-height:1.8;border-right:4px solid var(--gold)}
+.steps h3{margin:0 0 8px 0;color:var(--gold);font-size:14px}
+.footer{text-align:center;font-size:12px;color:#A0AAB5;margin-top:30px;padding:10px}
 </style>
 </head>
 <body>
 
-<div class="topbar">
-<span class="line1">التسجيل على مفاضلة الجامعة الافتراضية السورية متاح الآن</span>
-<span class="line2">نرد عليكم خلال دقائق عبر واتساب</span>
+<div class="header">
+    <h1>خدمات الطلاب الجامعية</h1>
+    <span>تسجيل • مفاضلات • دفع رسوم • خدمات سريعة</span>
 </div>
 
-<header>
-<div class="logo">خدمات جامعية للطلاب<span>UNIVERSITY SERVICES</span></div>
-<div class="nav"><a href="#services">خدماتنا</a><a href="#track">تتبع طلبك</a><a href="#how">طريقة الطلب</a><a href="#pay">الدفع</a><a href="#faq">الأسئلة الشائعة</a></div>
-<a class="btn btn-gold" href="https://wa.me/963930688067" target="_blank">اطلب عبر واتساب ↗</a>
-</header>
+<div class="container">
+    
+    <div class="card">
+        <h2>اطلب خدمتك بكل سهولة</h2>
+        
+        <label>اختر الخدمة المطلوبة:</label>
+        <select id="serviceSelect" onchange="updateRequirements()">
+            <option value="الجامعة الافتراضية السورية - تسجيل أو دفع">الجامعة الافتراضية السورية (تسجيل / دفع)</option>
+            <option value="التسجيل على المفاضلة العامة أو الموازي">المفاضلة العامة أو الموازي</option>
+            <option value="استفسار أو تسجيل بكلية الاقتصاد (بكالوريا قديمة)">استفسار أو تسجيل بكلية الاقتصاد (بكالوريا قديمة)</option>
+            <option value="حل وظائف أو إعداد حلقات بحث">حل وظائف أو إعداد حلقات بحث</option>
+            <option value="دفع رسوم أو أقساط جامعية">دفع رسوم أو أقساط جامعية</option>
+            <option value="خدمة طلابية أخرى">خدمة طلابية أخرى</option>
+        </select>
 
-<div class="hero">
-<div class="hero-text">
-<span class="tag">خدمات جامعية موثوقة • سوريا حمص المخرم الفوقاني</span>
-<h1>مستقبلك الجامعي يبدأ من منزلك</h1>
-<p>نقدّم لكم خدمات التسجيل في المفاضلات، ودفع الأقساط والرسوم، وحل الوظائف الجامعية، وترجمة الأوراق الرسمية.</p>
-<div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
-<a class="btn btn-gold" href="https://wa.me/963930688067" target="_blank">سجّل على المفاضلة الآن →</a>
-<a class="btn" style="background:#fff;color:#0F2340;border:1px solid #fff" href="#track">تتبع طلبك 🔍</a>
-</div>
-<div class="hero-stats">
-<div class="stat"><b>+850</b><small>طالب تمت خدمته</small></div>
-<div class="stat"><b>15 دقيقة</b><small>متوسط مدة التسجيل</small></div>
-<div class="stat"><b>4.9 / 5</b><small>تقييم الطلاب لنا</small></div>
-</div>
-</div>
-<div class="hero-img">
-<div class="hero-card">
-<h3>اطلب خدمتك خلال ثوانٍ</h3>
-<select id="srv"><option>الجامعة الافتراضية السورية - تسجيل ودفع</option><option>المفاضلة العامة أو الموازي</option><option>حل وظيفة أو حلقة بحث</option><option>ترجمة ورقة أو مصدقة</option><option>دفع رسم أو قسط جامعي</option></select>
-<input id="name" type="text" placeholder="الاسم الثلاثي">
-<input id="phone" type="tel" placeholder="رقم الهاتف - مثال: 0930...">
-<button class="btn btn-wa" onclick="goWA()">اطلب عبر واتساب 💬</button>
-<div id="orderNumShow" style="font-size:13px;color:#0F2340;text-align:center;font-weight:bold;margin-top:10px;display:none;background:rgba(0,0,0,0.05);padding:8px;border-radius:6px"></div>
-<p style="font-size:12px;color:#666;text-align:center">الاستفسار مجاني • نرد عليكم خلال دقائق</p>
-</div>
-</div>
-</div>
+        <div id="requirementsBox" class="requirements-box">
+            <strong>📋 المعلومات والأوراق المطلوبة للخدمة:</strong>
+            <span id="reqText">جاري تحميل المتطلبات...</span>
+        </div>
 
-<div class="container" id="track">
-<div class="section-title"><h2>🔍 تتبع طلبك</h2><p>أدخل رقم طلبك أو رقم موبايلك لمشاهدة حالة الطلب الحالية</p></div>
-<div class="track-box">
-<input id="trackInput" type="text" placeholder="رقم الطلب مثال: SVU-4821 أو رقم الموبايل">
-<button class="btn btn-gold" style="width:100%" onclick="trackOrder()">عرض حالة الطلب</button>
-<div id="trackResult"></div>
-<div style="margin-top:20px;border-top:1px solid #333;padding-top:15px">
-<p style="font-size:13px;color:#B0BEC5;cursor:pointer" onclick="toggleAdmin()">⚙️ خيارات الإدارة (اضغط هنا)</p>
-<div id="adminSection" style="display:none">
-<input id="adminCode" type="text" placeholder="رقم الطلب لتحديثه" style="text-align:right">
-<select id="newStatus"><option value="0">تم الاستلام</option><option value="1">قيد المعالجة</option><option value="2">تم الإنجاز - جاهز</option></select>
-<input id="adminPass" type="password" placeholder="أدخل رمز التحقق الإداري">
-<button class="btn" style="background:#fff;color:#0F2340;width:100%" onclick="updateStatus()">تحديث حالة الطلب ✅</button>
-</div>
-</div>
-</div>
+        <label>اسمك الثلاثي:</label>
+        <input type="text" id="studentName" placeholder="أدخل اسمك هنا...">
+
+        <label>رقم الموبايل (واتساب):</label>
+        <input type="tel" id="studentPhone" placeholder="مثال: 0930123456" maxlength="10" inputmode="numeric">
+
+        <button class="btn-wa" onclick="sendToWhatsApp()">
+            💬 إرسال الطلب عبر واتساب
+        </button>
+    </div>
+
+    <div class="steps">
+        <h3>كيف تعمل الخدمة؟</h3>
+        1️⃣ اختر الخدمة لتعرف المعلومات المطلوبة فوراً.<br>
+        2️⃣ املأ اسمك ورقمك ثم اضغط زر الواتساب.<br>
+        3️⃣ أرسل الأوراق المطلوبة عبر المحادثة لنبدأ فوراً!
+    </div>
+
+    <div class="footer">
+        نرد عليكم خلال دقائق • خدمة سريعة ومضمونة
+    </div>
+
 </div>
 
-<div class="container" id="services">
-<div class="section-title"><h2>خدماتنا للطلاب</h2><p>جميع الخدمات التي يحتاجها الطالب في سوريا، في مكان واحد</p></div>
-<div class="search-box">
-<span class="search-icon">🔍</span>
-<input type="text" id="searchInput" placeholder="ابحث عن خدمتك... مثال: افتراضية، مفاضلة، وظيفة" onkeyup="searchService()">
-</div>
-<div class="grid" id="servicesGrid">
-<div class="card service-card"><div><h3>🎓 الجامعة الافتراضية السورية</h3><p>التسجيل على المفاضلة، اختيار المواد، دفع الأقساط، استرجاع الحساب.</p></div><div><div class="price">ابتداءً من 10,000 ل.س</div><a class="btn btn-navy" style="width:100%;display:block;box-sizing:border-box" href="https://wa.me/963930688067" target="_blank">اطلب الخدمة</a></div></div>
-<div class="card service-card"><div><h3>📝 المفاضلة العامة والموازي</h3><p>نسجّلكم على المفاضلة العامة والموازي والتعليم المفتوح.</p></div><div><div class="price">ابتداءً من 15,000 ل.س</div><a class="btn btn-navy" style="width:100%;display:block;box-sizing:border-box" href="https://wa.me/963930688067" target="_blank">اطلب الخدمة</a></div></div>
-<div class="card service-card"><div><h3>💻 حل الوظائف والبحوث</h3><p>إعداد الوظائف، حلقات البحث، تلخيص المحاضرات.</p></div><div><div class="price">حسب نوع الوظيفة</div><a class="btn btn-navy" style="width:100%;display:block;box-sizing:border-box" href="https://wa.me/963930688067" target="_blank">اطلب الخدمة</a></div></div>
-</div>
-<p id="noResult" style="display:none;text-align:center;color:#D4AF37;margin-top:20px">ما لقينا خدمة بهاد الاسم، راسلنا واتساب ونحنا منساعدك 💬</p>
-</div>
-
-<div class="container" id="how"><div class="section-title"><h2>طريقة طلب الخدمة</h2><p>1- أرسل الطلب عبر واتساب &nbsp; 2- تأكيد البيانات والدفع &nbsp; 3- ننجز خدمتك ونرسل لك الإثبات</p></div></div>
-<div class="container" id="pay"><div class="section-title"><h2>الدفع</h2><p>الدفع عبر شام كاش أو تحويل، بعد تأكيد المبلغ معك.</p></div></div>
-<div class="container" id="faq"><div class="section-title"><h2>الأسئلة الشائعة</h2><p>كم يستغرق التسجيل؟ عادة 15 دقيقة بعد تأكيد بياناتك.</p></div></div>
-
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, doc, setDoc, getDoc, updateDoc, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-const firebaseConfig = {
-    apiKey: "AIzaSyBhYogsa89xWDoisvi-BAEb0UABD13jI",
-    authDomain: "uni-service-9f33a.firebaseapp.com",
-    projectId: "uni-service-9f33a",
-    storageBucket: "uni-service-9f33a.firebasestorage.app",
-    messagingSenderId: "106754889339",
-    appId: "1:106754889339:web:e102f4cb7a22bee404e6de"
+<script>
+const requirementsData = {
+    "الجامعة الافتراضية السورية - تسجيل أو دفع": "• البريد الإلكتروني وكلمة المرور لحساب الطالب.<br>• صورة عن الهوية الشخصية.<br>• تحديد المقرر أو الفصل المراد تسجيله أو دفع رسومه.",
+    "التسجيل على المفاضلة العامة أو الموازي": "• صورة عن شهادة الثانوية العامة (المعدل والمجموع).<br>• صورة عن الهوية الشخصية.<br>• الرغبات المرجوة (الاختصاصات والجامعات وترتيبها).",
+    "استفسار أو تسجيل بكلية الاقتصاد (بكالوريا قديمة)": "• صورة عن شهادة الثانوية العامة (البكالوريا) وتحديد الفرع (علمي/أدبي).<br>• صورة عن الهوية الشخصية.<br>• اختيار النظام المفضّل (تعليم مفتوح، جامعة افتراضية، أو موازي).",
+    "حل وظائف أو إعداد حلقات بحث": "• ملف الوظيفة أو عنوان حلقة البحث وملف الشروط.<br>• أي مراجع أو محاضرات خاصة بالمواد المطلوبة (إن وجدت).",
+    "دفع رسوم أو أقساط جامعية": "• رقم التسجيل الجامعي أو رقم الطالب.<br>• تفاصيل القسط أو الرسوم المراد دفعها ومقدار المبلغ.",
+    "خدمة طلابية أخرى": "• يرجى كتابة تفاصيل الخدمة التي تحتاجها مباشرة في رسالة الواتساب."
 };
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+function updateRequirements() {
+    const selectedService = document.getElementById('serviceSelect').value;
+    document.getElementById('reqText').innerHTML = requirementsData[selectedService] || "يرجى التواصل عبر واتساب لتفاصيل أكثر.";
+}
 
-window.goWA = async function() {
-    const srv = document.getElementById('srv').value;
-    const name = document.getElementById('name').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    
+window.onload = updateRequirements;
+
+function sendToWhatsApp() {
+    const service = document.getElementById('serviceSelect').value;
+    const name = document.getElementById('studentName').value.trim();
+    let phone = document.getElementById('studentPhone').value.trim();
+
+    phone = phone.replace(/\s+/g, '');
+
     if(!name || !phone) {
-        alert('الرجاء إدخال الاسم ورقم الهاتف.');
+        alert('الرجاء كتابة الاسم ورقم الهاتف لنتمكن من التواصل معك.');
         return;
     }
-    
-    const orderNum = 'SVU-' + Math.floor(1000 + Math.random() * 9000);
-    
-    try {
-        await setDoc(doc(db, "orders", orderNum), {
-            orderId: orderNum,
-            name: name,
-            phone: phone,
-            service: srv,
-            status: "تم الاستلام",
-            statusCode: "0",
-            date: new Date().toLocaleDateString('ar-SY')
-        });
-        
-        const showDiv = document.getElementById('orderNumShow');
-        showDiv.style.display = 'block';
-        showDiv.innerHTML = `رقم طلبك الخاص هو: <b>${orderNum}</b>`;
-        
-        const message = `مرحباً، أرغب بطلب خدمة جامعية:%0A- الخدمة: ${srv}%0A- الاسم: ${name}%0A- رقم الهاتف: ${phone}%0A- رقم الطلب: ${orderNum}`;
-        window.open(`https://wa.me/963930688067?text=${message}`, '_blank');
-    } catch (e) {
-        console.error("Error adding document: ", e);
-        alert("حدث خطأ أثناء حفظ الطلب، يرجى المحاولة مرة أخرى.");
-    }
-}
 
-window.searchService = function() {
-    let input = document.getElementById('searchInput').value.toLowerCase();
-    let cards = document.getElementsByClassName('service-card');
-    let hasResult = false;
-    for (let i = 0; i < cards.length; i++) {
-        let text = cards[i].innerText.toLowerCase();
-        if (text.includes(input)) {
-            cards[i].style.display = "flex";
-            hasResult = true;
-        } else {
-            cards[i].style.display = "none";
-        }
-    }
-    document.getElementById('noResult').style.display = hasResult ? "none" : "block";
-}
-
-window.trackOrder = async function() {
-    let queryVal = document.getElementById('trackInput').value.trim();
-    let resultDiv = document.getElementById('trackResult');
-    
-    if(!queryVal) {
-        resultDiv.innerHTML = `<p style="color:#ff6b6b; margin-top:10px;">الرجاء إدخال رقم الطلب أو رقم الهاتف.</p>`;
+    if(!/^09\d{8}$/.test(phone)) {
+        alert('رقم الموبايل غير صحيح.\nلازم يكون 10 أرقام ويبلش بـ 09\nمثال: 0930123456');
         return;
     }
-    
-    resultDiv.innerHTML = `<p style="color:#D4AF37; margin-top:10px;">جاري البحث عن الطلب...</p>`;
-    
-    try {
-        let docRef = doc(db, "orders", queryVal);
-        let docSnap = await getDoc(docRef);
-        
-        let orderData = null;
-        if (docSnap.exists()) {
-            orderData = docSnap.data();
-        } else {
-            const q = query(collection(db, "orders"), where("phone", "==", queryVal));
-            const querySnapshot = await getDocs(q);
-            if (!querySnapshot.empty) {
-                orderData = querySnapshot.docs[0].data();
-            }
-        }
-        
-        if(orderData) {
-            let statusText = orderData.status;
-            if(orderData.statusCode === "0") statusText = "تم الاستلام";
-            if(orderData.statusCode === "1") statusText = "قيد المعالجة";
-            if(orderData.statusCode === "2") statusText = "تم الإنجاز - جاهز";
 
-            resultDiv.innerHTML = `
-                <div class="order-result">
-                    <p>رقم الطلب: <b>${orderData.orderId}</b></p>
-                    <p>اسم الطالب: <b>${orderData.name}</b></p>
-                    <p>الخدمة المطلوبة: <b>${orderData.service}</b></p>
-                    <p>حالة الطلب الحالية: <span style="color:#25D366; font-weight:bold;">${statusText}</span></p>
-                    <p style="font-size:12px; color:#B0BEC5;">تاريخ الطلب: ${orderData.date}</p>
-                </div>
-            `;
-        } else {
-            resultDiv.innerHTML = `<p style="color:#ff6b6b; margin-top:10px;">عذراً، لم نتمكن من العثور على طلب بهذا الرقم.</p>`;
-        }
-    } catch(e) {
-        console.error(e);
-        resultDiv.innerHTML = `<p style="color:#ff6b6b; margin-top:10px;">حدث خطأ في الاتصال بقاعدة البيانات.</p>`;
-    }
-}
-
-window.toggleAdmin = function() {
-    let adminSec = document.getElementById('adminSection');
-    adminSec.style.display = adminSec.style.display === 'none' ? 'block' : 'none';
-}
-
-window.updateStatus = async function() {
-    let orderId = document.getElementById('adminCode').value.trim();
-    let newStatusCode = document.getElementById('newStatus').value;
-    let password = document.getElementById('adminPass').value;
-    
-    if(password !== '1234') {
-        alert('رمز التحقق الإداري غير صحيح!');
+    if(name.length < 3) {
+        alert('الرجاء كتابة الاسم الثلاثي كاملاً.');
         return;
     }
-    
-    if(!orderId) {
-        alert('الرجاء إدخال رقم الطلب.');
-        return;
-    }
-    
-    let statusTexts = { "0": "تم الاستلام", "1": "قيد المعالجة", "2": "تم الإنجاز - جاهز" };
-    
-    try {
-        const orderRef = doc(db, "orders", orderId);
-        await updateDoc(orderRef, {
-            statusCode: newStatusCode,
-            status: statusTexts[newStatusCode]
-        });
-        alert('تم تحديث حالة الطلب بنجاح ✅');
-        document.getElementById('adminCode').value = '';
-        document.getElementById('adminPass').value = '';
-    } catch(e) {
-        console.error(e);
-        alert('فشل التحديث، تأكد من صحة رقم الطلب.');
-    }
+
+    const text = `مرحباً، أرغب بطلب هذه الخدمة:%0A` +
+                 `📌 الخدمة: ${service}%0A` +
+                 `👤 اسم الطالب: ${name}%0A` +
+                 `📱 رقم الهاتف: ${phone}%0A` +
+                 `جاهز لإرسال الأوراق المطلوبة.`;
+
+    const phoneNo = "963930688067";
+    window.open(`https://wa.me/${phoneNo}?text=${text}`, '_blank');
 }
 </script>
 

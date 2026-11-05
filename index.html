@@ -22,11 +22,16 @@ body{font-family:'Segoe UI',Tahoma,sans-serif;margin:0;background:var(--navy);co
 .card{background:var(--card-bg);border:2px solid var(--gold);border-radius:12px;padding:20px;margin-bottom:20px;box-shadow:0 4px 15px rgba(0,0,0,0.3)}
 .card h2{font-size:18px;margin-top:0;color:var(--gold);text-align:center}
 label{display:block;font-size:14px;margin-bottom:6px;color:#E0E0E0;font-weight:bold}
-select,input{width:100%;padding:14px;margin-bottom:15px;border:1px solid var(--gold);border-radius:8px;background:var(--navy);color:#fff;font-size:15px;font-family:inherit;outline:none}
+select,input,textarea{width:100%;padding:14px;margin-bottom:12px;border:1px solid var(--gold);border-radius:8px;background:var(--navy);color:#fff;font-size:15px;font-family:inherit;outline:none}
 select option{background:var(--navy);color:#fff}
 .requirements-box{background:rgba(0,0,0,0.25);border:1px dashed var(--gold);border-radius:8px;padding:12px;margin-bottom:15px;font-size:13px;line-height:1.7;color:#FFECB3}
-.requirements-box strong{color:var(--gold);display:block;margin-bottom:4px}
-.btn-wa{background:var(--green);color:#fff;width:100%;font-size:17px;font-weight:bold;padding:15px;border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
+.requirements-box strong{color:var(--gold);display:block;margin-bottom:8px}
+.field-box{background:rgba(255,255,255,0.06);border:1px solid rgba(212,175,55,0.5);border-radius:8px;padding:10px;margin-bottom:10px}
+.field-box label{font-size:13px;color:#fff;margin-bottom:8px}
+.field-box input{margin-bottom:0;padding:10px;font-size:13px}
+.file-note{font-size:12px;color:#FFECB3;margin-top:8px;line-height:1.6;background:rgba(212,175,55,0.1);padding:8px;border-radius:6px;border:1px solid var(--gold)}
+.btn-wa{background:var(--green);color:#fff;width:100%;font-size:17px;font-weight:bold;padding:15px;border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;margin-top:10px}
+.btn-copy{background:#334E68;color:#fff;width:100%;font-size:14px;font-weight:bold;padding:10px;border:1px solid var(--gold);border-radius:8px;cursor:pointer;margin-top:8px}
 .steps{background:var(--card-bg);border-radius:10px;padding:15px;margin-top:20px;font-size:13px;line-height:1.8;border-right:4px solid var(--gold)}
 .steps h3{margin:0 0 8px 0;color:var(--gold);font-size:14px}
 .footer{text-align:center;font-size:12px;color:#A0AAB5;margin-top:30px;padding:10px}
@@ -40,7 +45,6 @@ select option{background:var(--navy);color:#fff}
 </div>
 
 <div class="container">
-    
     <div class="card">
         <h2>اطلب خدمتك بكل سهولة</h2>
         
@@ -56,80 +60,203 @@ select option{background:var(--navy);color:#fff}
 
         <div id="requirementsBox" class="requirements-box">
             <strong>📋 المعلومات والأوراق المطلوبة للخدمة:</strong>
-            <span id="reqText">جاري تحميل المتطلبات...</span>
+            <div id="dynamicFields"></div>
+            <div id="reqText"></div>
         </div>
 
         <label>اسمك الثلاثي:</label>
-        <input type="text" id="studentName" placeholder="أدخل اسمك هنا...">
+        <input type="text" id="studentName" placeholder="أدخل اسمك هنا..." oninput="saveUserData()">
 
         <label>رقم الموبايل (واتساب):</label>
-        <input type="tel" id="studentPhone" placeholder="مثال: 0930123456" maxlength="10" inputmode="numeric">
+        <input type="tel" id="studentPhone" placeholder="مثال: 0930123456" maxlength="10" inputmode="numeric" oninput="saveUserData()">
 
         <button class="btn-wa" onclick="sendToWhatsApp()">
-            💬 إرسال الطلب عبر واتساب
+            💬 إرسال الطلب مباشرة عبر واتساب
         </button>
+        
+        <button class="btn-copy" onclick="copyOrderText()">
+            📋 نسخ تفاصيل الطلب (احتياطي)
+        </button>
+
+        <div class="file-note" id="afterNote" style="display:none">
+            ⚠️ <b>ملاحظة هامة:</b> بعد ما يفتح الواتساب، اضغط مطولاً في خانة الكتابة ثم اختر <b>"لصق"</b> أو اضغط على إشارة <b>(📎)</b> لإرفاق صور الهوية (الوجهين) والملفات المطلوبة وإرسالها كاملة.
+        </div>
     </div>
 
     <div class="steps">
         <h3>كيف تعمل الخدمة؟</h3>
-        1️⃣ اختر الخدمة لتعرف المعلومات المطلوبة فوراً.<br>
-        2️⃣ املأ اسمك ورقمك ثم اضغط زر الواتساب.<br>
-        3️⃣ أرسل الأوراق المطلوبة عبر المحادثة لنبدأ فوراً!
+        1️⃣ اختر الخدمة واملأ المعلومات المطلوبة.<br>
+        2️⃣ اضغط زر إرسال واتساب (سيتم حفظ اسمك ورقمك للمرة القادمة تلقائياً!).<br>
+        3️⃣ أرسل الرسالة وصور الهوية (وجهين) عبر المحادثة لنبدأ فوراً!
     </div>
 
     <div class="footer">
         نرد عليكم خلال دقائق • خدمة سريعة ومضمونة
     </div>
-
 </div>
 
 <script>
 const requirementsData = {
-    "الجامعة الافتراضية السورية - تسجيل أو دفع": "• البريد الإلكتروني وكلمة المرور لحساب الطالب.<br>• صورة عن الهوية الشخصية.<br>• تحديد المقرر أو الفصل المراد تسجيله أو دفع رسومه.",
-    "التسجيل على المفاضلة العامة أو الموازي": "• صورة عن شهادة الثانوية العامة (المعدل والمجموع).<br>• صورة عن الهوية الشخصية.<br>• الرغبات المرجوة (الاختصاصات والجامعات وترتيبها).",
-    "استفسار أو تسجيل بكلية الاقتصاد (بكالوريا قديمة)": "• صورة عن شهادة الثانوية العامة (البكالوريا) وتحديد الفرع (علمي/أدبي).<br>• صورة عن الهوية الشخصية.<br>• اختيار النظام المفضّل (تعليم مفتوح، جامعة افتراضية، أو موازي).",
-    "حل وظائف أو إعداد حلقات بحث": "• ملف الوظيفة أو عنوان حلقة البحث وملف الشروط.<br>• أي مراجع أو محاضرات خاصة بالمواد المطلوبة (إن وجدت).",
-    "دفع رسوم أو أقساط جامعية": "• رقم التسجيل الجامعي أو رقم الطالب.<br>• تفاصيل القسط أو الرسوم المراد دفعها ومقدار المبلغ.",
-    "خدمة طلابية أخرى": "• يرجى كتابة تفاصيل الخدمة التي تحتاجها مباشرة في رسالة الواتساب."
+    "الجامعة الافتراضية السورية - تسجيل أو دفع": {
+        text: "جهز هالأوراق وارفقها:",
+        fields: [
+            {label:"📧 البريد الإلكتروني لحساب الطالب", type:"email", placeholder:"مثال: name@gmail.com"},
+            {label:"🔑 كلمة المرور لحساب الطالب", type:"text", placeholder:"اكتب كلمة المرور"},
+            {label:"🪪 صورة الهوية الشخصية - الوجه الأمامي", type:"file"},
+            {label:"🪪 صورة الهوية الشخصية - الوجه الخلفي", type:"file"},
+            {label:"📚 المقرر أو الفصل المراد تسجيله / دفعه", type:"text", placeholder:"مثال: الفصل الأول - مقرر الاقتصاد"}
+        ]
+    },
+    "التسجيل على المفاضلة العامة أو الموازي": {
+        text: "جهز هالأوراق وارفقها:",
+        fields: [
+            {label:"🎓 صورة عن شهادة الثانوية العامة", type:"file"},
+            {label:"📊 المعدل / المجموع", type:"text", placeholder:"مثال: 210 / 240"},
+            {label:"🪪 صورة الهوية الشخصية - الوجه الأمامي", type:"file"},
+            {label:"🪪 صورة الهوية الشخصية - الوجه الخلفي", type:"file"},
+            {label:"📝 الرغبات المرجوة (الاختصاصات وترتيبها)", type:"text", placeholder:"مثال: 1- طب 2- صيدلة"}
+        ]
+    },
+    "استفسار أو تسجيل بكلية الاقتصاد (بكالوريا قديمة)": {
+        text: "جهز هالأوراق وارفقها:",
+        fields: [
+            {label:"🎓 صورة عن شهادة البكالوريا", type:"file"},
+            {label:"📚 الفرع (علمي / أدبي) وسنة التخرج والمعدل", type:"text", placeholder:"مثال: أدبي - 2019 - معدل 180"},
+            {label:"🪪 صورة الهوية الشخصية - الوجه الأمامي", type:"file"},
+            {label:"🪪 صورة الهوية الشخصية - الوجه الخلفي", type:"file"},
+            {label:"🏫 النظام المفضل (تعليم مفتوح / افتراضية / موازي)", type:"text", placeholder:"مثال: تعليم مفتوح"}
+        ]
+    },
+    "حل وظائف أو إعداد حلقات بحث": {
+        text: "جهز هالملفات:",
+        fields: [
+            {label:"📄 ملف الوظيفة أو عنوان حلقة البحث", type:"file"},
+            {label:"🪪 صورة الهوية الشخصية - الوجه الأمامي (إن وجدت)", type:"file"},
+            {label:"🪪 صورة الهوية الشخصية - الوجه الخلفي (إن وجدت)", type:"file"},
+            {label:"📖 اسم المادة والجامعة", type:"text", placeholder:"مثال: اقتصاد - جامعة دمشق"}
+        ]
+    },
+    "دفع رسوم أو أقساط جامعية": {
+        text: "عبّي هالمعلومات:",
+        fields: [
+            {label:"🆔 رقم التسجيل الجامعي / رقم الطالب", type:"text", placeholder:"اكتب رقمك الجامعي"},
+            {label:"💰 تفاصيل القسط والمبلغ", type:"text", placeholder:"مثال: قسط الفصل الأول - 500 ألف"},
+            {label:"🪪 صورة الهوية الشخصية - الوجه الأمامي", type:"file"},
+            {label:"🪪 صورة الهوية الشخصية - الوجه الخلفي", type:"file"}
+        ]
+    },
+    "خدمة طلابية أخرى": {
+        text: "اكتب تفاصيل الخدمة:",
+        fields: [
+            {label:"💬 شو الخدمة يلي بدك ياها؟", type:"text", placeholder:"اكتب هون..."},
+            {label:"🪪 صورة الهوية الشخصية - الوجه الأمامي", type:"file"},
+            {label:"🪪 صورة الهوية الشخصية - الوجه الخلفي", type:"file"}
+        ]
+    }
 };
 
 function updateRequirements() {
     const selectedService = document.getElementById('serviceSelect').value;
-    document.getElementById('reqText').innerHTML = requirementsData[selectedService] || "يرجى التواصل عبر واتساب لتفاصيل أكثر.";
+    const data = requirementsData[selectedService];
+    const container = document.getElementById('dynamicFields');
+    const reqText = document.getElementById('reqText');
+    container.innerHTML = "";
+    if(!data){ reqText.innerHTML = "يرجى التواصل عبر واتساب لتفاصيل أكثر."; return; }
+    reqText.innerHTML = data.text;
+    data.fields.forEach((f, i) => {
+        const div = document.createElement('div');
+        div.className = 'field-box';
+        let inputHtml = '';
+        if(f.type === 'file'){
+            inputHtml = `<input type="file" id="field_${i}" accept="image/*,.pdf">`;
+        } else {
+            inputHtml = `<input type="${f.type}" id="field_${i}" placeholder="${f.placeholder || ''}">`;
+        }
+        div.innerHTML = `<label>${f.label}:</label>${inputHtml}`;
+        container.appendChild(div);
+    });
+    document.getElementById('afterNote').style.display = 'none';
 }
 
-window.onload = updateRequirements;
+function saveUserData() {
+    localStorage.setItem('student_name', document.getElementById('studentName').value);
+    localStorage.setItem('student_phone', document.getElementById('studentPhone').value);
+}
 
-function sendToWhatsApp() {
+window.onload = function() {
+    updateRequirements();
+    if(localStorage.getItem('student_name')) {
+        document.getElementById('studentName').value = localStorage.getItem('student_name');
+    }
+    if(localStorage.getItem('student_phone')) {
+        document.getElementById('studentPhone').value = localStorage.getItem('student_phone');
+    }
+};
+
+function generateOrderText() {
     const service = document.getElementById('serviceSelect').value;
     const name = document.getElementById('studentName').value.trim();
     let phone = document.getElementById('studentPhone').value.trim();
+    
+    let extra = "";
+    const data = requirementsData[service];
+    if(data){
+        data.fields.forEach((f, i) => {
+            const el = document.getElementById('field_' + i);
+            if(!el) return;
+            if(f.type === 'file'){
+                if(el.files && el.files.length > 0) extra += `\n- ${f.label}: [تم اختيار الملف]`;
+            } else {
+                if(el.value.trim()) extra += `\n- ${f.label}: ${el.value.trim()}`;
+            }
+        });
+    }
 
+    return `مرحباً، أرغب بطلب هذه الخدمة:\n` +
+           `📌 الخدمة: ${service}\n` +
+           `👤 اسم الطالب: ${name}\n` +
+           `📱 رقم الهاتف: ${phone}` + extra + `\n\nجاهز لإرسال الأوراق وصور الهوية (وجهين).`;
+}
+
+function validateInputs() {
+    const name = document.getElementById('studentName').value.trim();
+    let phone = document.getElementById('studentPhone').value.trim();
     phone = phone.replace(/\s+/g, '');
 
     if(!name || !phone) {
         alert('الرجاء كتابة الاسم ورقم الهاتف لنتمكن من التواصل معك.');
-        return;
+        return false;
     }
-
     if(!/^09\d{8}$/.test(phone)) {
         alert('رقم الموبايل غير صحيح.\nلازم يكون 10 أرقام ويبلش بـ 09\nمثال: 0930123456');
-        return;
+        return false;
     }
-
     if(name.length < 3) {
         alert('الرجاء كتابة الاسم الثلاثي كاملاً.');
-        return;
+        return false;
     }
+    return true;
+}
 
-    const text = `مرحباً، أرغب بطلب هذه الخدمة:%0A` +
-                 `📌 الخدمة: ${service}%0A` +
-                 `👤 اسم الطالب: ${name}%0A` +
-                 `📱 رقم الهاتف: ${phone}%0A` +
-                 `جاهز لإرسال الأوراق المطلوبة.`;
-
+function sendToWhatsApp() {
+    if(!validateInputs()) return;
+    const text = encodeURIComponent(generateOrderText());
     const phoneNo = "963930688067";
+    document.getElementById('afterNote').style.display = 'block';
     window.open(`https://wa.me/${phoneNo}?text=${text}`, '_blank');
+}
+
+function copyOrderText() {
+    if(!validateInputs()) return;
+    const text = generateOrderText();
+    navigator.clipboard.writeText(text).then(() => {
+        alert('✅ تم نسخ تفاصيل الطلب بنجاح!\nالآن سيتم فتح الواتساب، قم بلصق النص مع صور الهوية (الوجهين).');
+        document.getElementById('afterNote').style.display = 'block';
+        const phoneNo = "963930688067";
+        window.open(`https://wa.me/${phoneNo}`, '_blank');
+    }).catch(err => {
+        alert('حدث خطأ أثناء النسخ، يرجى استخدام زر الواتساب مباشرة.');
+    });
 }
 </script>
 

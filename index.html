@@ -3,82 +3,77 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>خدمات جامعية للطلاب | تسجيل مفاضلات ودفع أقساط في سوريا</title>
-<link href="https://googleapis.com" rel="stylesheet">
+<title>خدمات جامعية للطلاب</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',Tahoma,sans-serif}
-:root{--navy:#0F2340;--gold:#C9A227;--gold2:#E8C84A;--light:#F6F7F9;--green:#1FA855}
-body{background:var(--light);color:#222;line-height:1.8}
-a{text-decoration:none}
-.topbar{background:var(--navy);color:#fff;padding:10px 20px;text-align:center;font-size:13px}
-.topbar b{color:var(--gold2)}
-header{background:#fff;position:sticky;top:0;z-index:10;box-shadow:0 2px 15px rgba(0,0,0,.06);padding:14px 20px;display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:auto;border-radius:0 0 16px 16px}
-.logo{font-weight:900;font-size:20px;color:var(--navy);line-height:1.3}
-.logo span{color:var(--gold);display:block;font-size:13px;letter-spacing:1px}
-.nav{display:flex;gap:18px;font-size:14px;font-weight:700}
-.nav a{color:var(--navy)}
-.btn{border:none;cursor:pointer;padding:12px 20px;border-radius:12px;font-weight:900;font-size:15px;display:inline-block;text-align:center}
-.btn-gold{background:linear-gradient(135deg,#C9A227,#E8C84A);color:#111}
-.btn-navy{background:var(--navy);color:#fff}
-.btn-wa{background:var(--green);color:#fff;width:100%}
-.hero{max-width:1100px;margin:22px auto;background:var(--navy);color:#fff;border-radius:24px;overflow:hidden;display:grid;grid-template-columns:1.2fr .8fr}
-.hero-text{padding:36px 28px}
-.hero-text .tag{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:6px 12px;border-radius:20px;font-size:12px;display:inline-block;margin-bottom:16px}
-.hero-text h1{font-size:34px;line-height:1.4;margin-bottom:12px}
-.hero-text h1 span{color:var(--gold2)}
-.hero-text p{opacity:.92;font-size:15px;margin-bottom:20px}
-.hero-stats{display:flex;gap:12px;margin-top:20px}
-.stat{background:#fff;color:#111;border-radius:14px;padding:12px 14px;flex:1;text-align:center}
-.stat b{font-size:20px;color:var(--navy);display:block}
-.stat small{color:#666}
-.hero-img{background:linear-gradient(180deg,#1B3A66,#0F2340);display:flex;align-items:center;justify-content:center;padding:28px;text-align:center}
-.hero-card{background:#fff;color:#111;border-radius:18px;padding:20px;width:100%;box-shadow:0 15px 40px rgba(0,0,0,.25)}
-.hero-card h3{color:var(--navy);margin-bottom:10px}
-.hero-card input,.hero-card select{width:100%;padding:12px;border:1px solid #ddd;border-radius:10px;margin-bottom:10px;font-family:inherit}
-.container{max-width:1100px;margin:auto;padding:20px}
-.section-title{text-align:center;margin:28px 0 6px}
-.section-title h2{font-size:28px;color:var(--navy)}
-.section-title p{color:#666}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
-.card{background:#fff;border-radius:18px;padding:22px;border:1px solid #eee}
-.card .icon{width:54px;height:54px;background:#FFF7D6;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:12px}
-.card h3{color:var(--navy);margin-bottom:8px}
-.card p{font-size:14px;color:#555;min-height:66px}
-.price{margin:12px 0;font-weight:900;color:var(--green)}
-.price s{color:#999;font-weight:400;font-size:13px;margin-right:6px}
-.steps{background:#fff;border-radius:20px;padding:24px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
-.step{text-align:center}
-.step .num{width:48px;height:48px;background:var(--navy);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:auto;margin-bottom:10px;font-weight:900}
-.pay{background:var(--navy);color:#fff;border-radius:20px;padding:26px;display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:22px}
-.pay-box{background:#fff;color:#111;border-radius:16px;padding:18px;text-align:center}
-.pay-box b{font-size:20px;color:var(--navy)}
-.copy-btn{background:#eee;border:none;padding:8px 14px;border-radius:8px;cursor:pointer;font-weight:700;margin-top:8px;transition: background 0.3s, color 0.3s;}
-.faq{background:#fff;border-radius:18px;padding:20px;margin-top:18px}
-.faq details{padding:12px 0;border-bottom:1px solid #eee}
-.faq summary{cursor:pointer;font-weight:800;color:var(--navy)}
-.wa-float{position:fixed;bottom:18px;left:18px;z-index:99;background:#25D366;color:#fff;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 10px 25px rgba(0,0,0,.25)}
-footer{text-align:center;padding:24px;color:#888;font-size:13px}
-@media(max-width:800px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.pay{grid-template-columns:1fr}.nav{display:none}.hero-text h1{font-size:26px}.logo{font-size:17px}}
+:root{--navy:#0F2340;--navy2:#162E52;--gold:#D4AF37}
+*{box-sizing:border-box}
+body{font-family:'Segoe UI',Tahoma,sans-serif;margin:0;background:#0F2340;color:#fff;overflow-x:hidden}
+.topbar{background:#0F2340;color:#fff;text-align:center;padding:14px 12px;line-height:1.7;border-bottom:2px solid #D4AF37;width:100%}
+.topbar .line1{display:block;font-size:14px;font-weight:bold;white-space:normal;word-break:break-word}
+.topbar .line2{display:block;font-size:12px;opacity:.9}
+header{display:flex;flex-direction:column;gap:12px;align-items:center;padding:15px 10px;background:#0F2340;box-shadow:0 2px 5px rgba(0,0,0,.3);position:sticky;top:0;z-index:10;width:100%;text-align:center}
+.logo{font-weight:bold;color:#fff;font-size:19px;line-height:1.4}
+.logo span{display:block;font-size:11px;color:#D4AF37;letter-spacing:1px}
+.nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 14px;width:100%}
+.nav a{text-decoration:none;color:#fff;font-size:14px;font-weight:500;white-space:nowrap;padding:4px 2px}
+.btn{display:inline-block;padding:11px 22px;border-radius:5px;text-decoration:none;font-size:14px;font-weight:bold;border:none;cursor:pointer;white-space:nowrap}
+.btn-gold{background:#D4AF37;color:#0F2340}
+.btn-navy{background:#D4AF37;color:#0F2340;text-align:center}
+.btn-wa{background:#25D366;color:#fff;width:100%;font-size:16px;padding:12px;margin-top:10px}
+.hero{display:flex;flex-wrap:wrap;padding:30px 5%;background:#0F2340;align-items:center;gap:30px}
+.hero-text{flex:1;min-width:280px;text-align:center}
+.tag{background:rgba(255,255,255,.15);color:#D4AF37;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:bold;display:inline-block;line-height:1.6}
+.hero h1{font-size:28px;color:#fff;margin:15px 0;line-height:1.5}
+.hero p{color:#E0E0E0;font-size:14px;line-height:1.7}
+.hero-stats{display:flex;flex-wrap:wrap;justify-content:center;gap:15px;margin-top:25px}
+.stat{text-align:center;min-width:80px}
+.stat b{display:block;font-size:19px;color:#fff}
+.stat small{color:#B0BEC5;font-size:12px;display:block;margin-top:4px;line-height:1.5}
+.hero-img{flex:1;min-width:280px;display:flex;justify-content:center}
+.hero-card{background:linear-gradient(135deg,#FFF8E7 0%,#FFECB3 100%);padding:25px;border-radius:12px;box-shadow:0 8px 25px rgba(212,175,55,.25);width:100%;max-width:360px;color:#0F2340;border:2px solid #D4AF37}
+.hero-card h3{color:#0F2340}
+.hero-card select,.hero-card input{width:100%;padding:10px;margin:8px 0;border:1px solid #D4AF37;border-radius:8px;font-family:inherit;background:#fff}
+.container{padding:35px 5%;background:#0F2340}
+.section-title{text-align:center;margin-bottom:20px}
+.section-title h2{color:#fff}
+.section-title p{color:#B0BEC5;line-height:1.7}
+.search-box{max-width:500px;margin:0 auto 25px auto;position:relative}
+.search-box input{width:100%;padding:13px 45px 13px 15px;border:2px solid #D4AF37;border-radius:25px;background:#162E52;color:#fff;font-family:inherit;font-size:14px;outline:none}
+.search-box input::placeholder{color:#B0BEC5}
+.search-icon{position:absolute;left:15px;top:50%;transform:translateY(-50%);font-size:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.card{background:#162E52;padding:20px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.3);border-top:3px solid #D4AF37;display:flex;flex-direction:column;justify-content:space-between}
+.card h3{color:#fff}
+.card p{font-size:13px;color:#D0D7E3;line-height:1.6}
+.price{font-weight:bold;color:#D4AF37;margin-bottom:15px}
+.track-box{background:#162E52;border:2px solid #D4AF37;border-radius:12px;padding:25px;max-width:520px;margin:0 auto;text-align:center}
+.track-box input,.track-box select{width:100%;padding:12px;margin:8px 0;border:1px solid #D4AF37;border-radius:8px;font-family:inherit;background:#0F2340;color:#fff;text-align:center;font-size:15px}
+.track-box input::placeholder{color:#B0BEC5}
+.order-result{background:#0F2340;border:1px solid #D4AF37;border-radius:10px;padding:15px;margin-top:15px;text-align:right;color:#fff;line-height:1.8}
+.order-result b{color:#D4AF37}
 </style>
 </head>
 <body>
 
-<div class="topbar">التسجيل على <b>مفاضلة الجامعة الافتراضية السورية</b> متاح الآن &nbsp;|&nbsp; نرد عليكم خلال دقائق عبر واتساب</div>
+<div class="topbar">
+<span class="line1">التسجيل على مفاضلة الجامعة الافتراضية السورية متاح الآن</span>
+<span class="line2">نرد عليكم خلال دقائق عبر واتساب</span>
+</div>
 
 <header>
 <div class="logo">خدمات جامعية للطلاب<span>UNIVERSITY SERVICES</span></div>
-<div class="nav"><a href="#services">خدماتنا</a><a href="#how">طريقة الطلب</a><a href="#pay">الدفع</a><a href="#faq">الأسئلة الشائعة</a></div>
-<a class="btn btn-gold" href="https://wa.me" target="_blank" rel="noopener noreferrer">اطلب عبر واتساب ↗</a>
+<div class="nav"><a href="#services">خدماتنا</a><a href="#track">تتبع طلبك</a><a href="#how">طريقة الطلب</a><a href="#pay">الدفع</a><a href="#faq">الأسئلة الشائعة</a></div>
+<a class="btn btn-gold" href="https://wa.me/963930688067" target="_blank">اطلب عبر واتساب ↗</a>
 </header>
 
 <div class="hero">
 <div class="hero-text">
-<span class="tag">خدمات جامعية موثوقة • حمص - المخرم الفوقاني • سوريا</span>
-<h1>مستقبلك الجامعي يبدأ من <span>منزلك</span><br>ننجز كل معاملاتك.. دون عناء الانتظار</h1>
-<p>نقدّم لكم خدمات التسجيل في المفاضلات، ودفع الأقساط والرسوم، وحل الوظائف الجامعية، وترجمة الأوراق الرسمية. فريقنا يرافقكم خطوة بخطوة، ويزوّدكم بإثبات موثّق لكل خدمة.</p>
-<div style="display:flex;gap:10px;flex-wrap:wrap">
-<a class="btn btn-gold" href="https://wa.me" target="_blank" rel="noopener noreferrer">سجّل على المفاضلة الآن →</a>
-<a class="btn" style="background:#fff;color:#0F2340" href="#services">استعرض الخدمات</a>
+<span class="tag">خدمات جامعية موثوقة • سوريا حمص المخرم الفوقاني</span>
+<h1>مستقبلك الجامعي يبدأ من منزلك</h1>
+<p>نقدّم لكم خدمات التسجيل في المفاضلات، ودفع الأقساط والرسوم، وحل الوظائف الجامعية، وترجمة الأوراق الرسمية.</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+<a class="btn btn-gold" href="https://wa.me/963930688067" target="_blank">سجّل على المفاضلة الآن →</a>
+<a class="btn" style="background:#fff;color:#0F2340;border:1px solid #fff" href="#track">تتبع طلبك 🔍</a>
 </div>
 <div class="hero-stats">
 <div class="stat"><b>+850</b><small>طالب تمت خدمته</small></div>
@@ -89,19 +84,206 @@ footer{text-align:center;padding:24px;color:#888;font-size:13px}
 <div class="hero-img">
 <div class="hero-card">
 <h3>اطلب خدمتك خلال ثوانٍ</h3>
-<p style="font-size:13px;color:#666;margin-bottom:12px">اختر الخدمة المطلوبة، ثم اضغط على زر واتساب، وسنتواصل معك لإتمام الطلب.</p>
 <select id="srv"><option>الجامعة الافتراضية السورية - تسجيل ودفع</option><option>المفاضلة العامة أو الموازي</option><option>حل وظيفة أو حلقة بحث</option><option>ترجمة ورقة أو مصدقة</option><option>دفع رسم أو قسط جامعي</option></select>
-<input id="name" placeholder="الاسم الثلاثي" maxlength="50">
-<input id="phone" placeholder="رقم الهاتف - مثال: 0930..." maxlength="15">
+<input id="name" type="text" placeholder="الاسم الثلاثي">
+<input id="phone" type="tel" placeholder="رقم الهاتف - مثال: 0930...">
 <button class="btn btn-wa" onclick="goWA()">اطلب عبر واتساب 💬</button>
-<p style="font-size:12px;color:#888;text-align:center;margin-top:10px">الاستفسار مجاني • نرد عليكم خلال دقائق</p>
+<div id="orderNumShow" style="font-size:13px;color:#0F2340;text-align:center;font-weight:bold;margin-top:10px;display:none;background:rgba(0,0,0,0.05);padding:8px;border-radius:6px"></div>
+<p style="font-size:12px;color:#666;text-align:center">الاستفسار مجاني • نرد عليكم خلال دقائق</p>
 </div>
 </div>
 </div>
 
-<div class="container">
-<div class="section-title" id="services"><h2>خدماتنا للطلاب</h2><p>جميع الخدمات التي يحتاجها الطالب في سوريا، في مكان واحد</p></div>
-<div class="grid">
-<div class="card"><div class="icon">🎓</div><h3>الجامعة الافتراضية السورية</h3><p>التسجيل على المفاضلة، اختيار المواد الدراسية، دفع الأقساط، استرجاع الحساب، ومعالجة مشكلات الموقع.</p><div class="price">ابتداءً من 10,000 ل.س <s>15,000</s></div><a class="btn btn-navy" style="width:100%" href="https://wa.me" target="_blank" rel="noopener noreferrer">اطلب الخدمة</a></div>
-<div class="card"><div class="icon">📝</div><h3>المفاضلة العامة والموازي</h3><p>نسجّلكم على المفاضلة العامة، والموازي، والتعليم المفتوح، والجامعات الخاصة، ونتابع معكم صدور النتائج.</p><div class="price">ابتداءً من 15,000 ل.س</div><a class="btn btn-navy" style="width:100%" href="https://wa.me" target="_blank" rel="noopener noreferrer">اطلب الخدمة</a></div>
-<div class="card"><div class="icon">💻</div><h3>حل الوظائف والبحوث</h3><p>إعداد الوظائف الجامعية، وحلقات البحث، وتلخيص المحاضرات، وتصميم عروض PowerPoint، وإعداد السيرة الذاتية باحتراف.</p><div class="price">حسب نوع الوظيفة - استفسر الآن</div><a class="btn btn-navy" style="width:100%" href="https://wa.me" target="_blank" rel="noopener noreferrer">اطلب الخدمة</a></div>
+<div class="container" id="track">
+<div class="section-title"><h2>🔍 تتبع طلبك</h2><p>أدخل رقم طلبك أو رقم موبايلك لمشاهدة حالة الطلب الحالية</p></div>
+<div class="track-box">
+<input id="trackInput" type="text" placeholder="رقم الطلب مثال: SVU-4821 أو رقم الموبايل">
+<button class="btn btn-gold" style="width:100%" onclick="trackOrder()">عرض حالة الطلب</button>
+<div id="trackResult"></div>
+<div style="margin-top:20px;border-top:1px solid #333;padding-top:15px">
+<p style="font-size:13px;color:#B0BEC5;cursor:pointer" onclick="toggleAdmin()">⚙️ خيارات الإدارة (اضغط هنا)</p>
+<div id="adminSection" style="display:none">
+<input id="adminCode" type="text" placeholder="رقم الطلب لتحديثه" style="text-align:right">
+<select id="newStatus"><option value="0">تم الاستلام</option><option value="1">قيد المعالجة</option><option value="2">تم الإنجاز - جاهز</option></select>
+<input id="adminPass" type="password" placeholder="أدخل رمز التحقق الإداري">
+<button class="btn" style="background:#fff;color:#0F2340;width:100%" onclick="updateStatus()">تحديث حالة الطلب ✅</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="container" id="services">
+<div class="section-title"><h2>خدماتنا للطلاب</h2><p>جميع الخدمات التي يحتاجها الطالب في سوريا، في مكان واحد</p></div>
+<div class="search-box">
+<span class="search-icon">🔍</span>
+<input type="text" id="searchInput" placeholder="ابحث عن خدمتك... مثال: افتراضية، مفاضلة، وظيفة" onkeyup="searchService()">
+</div>
+<div class="grid" id="servicesGrid">
+<div class="card service-card"><div><h3>🎓 الجامعة الافتراضية السورية</h3><p>التسجيل على المفاضلة، اختيار المواد، دفع الأقساط، استرجاع الحساب.</p></div><div><div class="price">ابتداءً من 10,000 ل.س</div><a class="btn btn-navy" style="width:100%;display:block;box-sizing:border-box" href="https://wa.me/963930688067" target="_blank">اطلب الخدمة</a></div></div>
+<div class="card service-card"><div><h3>📝 المفاضلة العامة والموازي</h3><p>نسجّلكم على المفاضلة العامة والموازي والتعليم المفتوح.</p></div><div><div class="price">ابتداءً من 15,000 ل.س</div><a class="btn btn-navy" style="width:100%;display:block;box-sizing:border-box" href="https://wa.me/963930688067" target="_blank">اطلب الخدمة</a></div></div>
+<div class="card service-card"><div><h3>💻 حل الوظائف والبحوث</h3><p>إعداد الوظائف، حلقات البحث، تلخيص المحاضرات.</p></div><div><div class="price">حسب نوع الوظيفة</div><a class="btn btn-navy" style="width:100%;display:block;box-sizing:border-box" href="https://wa.me/963930688067" target="_blank">اطلب الخدمة</a></div></div>
+</div>
+<p id="noResult" style="display:none;text-align:center;color:#D4AF37;margin-top:20px">ما لقينا خدمة بهاد الاسم، راسلنا واتساب ونحنا منساعدك 💬</p>
+</div>
+
+<div class="container" id="how"><div class="section-title"><h2>طريقة طلب الخدمة</h2><p>1- أرسل الطلب عبر واتساب &nbsp; 2- تأكيد البيانات والدفع &nbsp; 3- ننجز خدمتك ونرسل لك الإثبات</p></div></div>
+<div class="container" id="pay"><div class="section-title"><h2>الدفع</h2><p>الدفع عبر شام كاش أو تحويل، بعد تأكيد المبلغ معك.</p></div></div>
+<div class="container" id="faq"><div class="section-title"><h2>الأسئلة الشائعة</h2><p>كم يستغرق التسجيل؟ عادة 15 دقيقة بعد تأكيد بياناتك.</p></div></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, doc, setDoc, getDoc, updateDoc, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBhYogsa89xWDoisvi-BAEb0UABD13jI",
+    authDomain: "uni-service-9f33a.firebaseapp.com",
+    projectId: "uni-service-9f33a",
+    storageBucket: "uni-service-9f33a.firebasestorage.app",
+    messagingSenderId: "106754889339",
+    appId: "1:106754889339:web:e102f4cb7a22bee404e6de"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.goWA = async function() {
+    const srv = document.getElementById('srv').value;
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    
+    if(!name || !phone) {
+        alert('الرجاء إدخال الاسم ورقم الهاتف.');
+        return;
+    }
+    
+    const orderNum = 'SVU-' + Math.floor(1000 + Math.random() * 9000);
+    
+    try {
+        await setDoc(doc(db, "orders", orderNum), {
+            orderId: orderNum,
+            name: name,
+            phone: phone,
+            service: srv,
+            status: "تم الاستلام",
+            statusCode: "0",
+            date: new Date().toLocaleDateString('ar-SY')
+        });
+        
+        const showDiv = document.getElementById('orderNumShow');
+        showDiv.style.display = 'block';
+        showDiv.innerHTML = `رقم طلبك الخاص هو: <b>${orderNum}</b>`;
+        
+        const message = `مرحباً، أرغب بطلب خدمة جامعية:%0A- الخدمة: ${srv}%0A- الاسم: ${name}%0A- رقم الهاتف: ${phone}%0A- رقم الطلب: ${orderNum}`;
+        window.open(`https://wa.me/963930688067?text=${message}`, '_blank');
+    } catch (e) {
+        console.error("Error adding document: ", e);
+        alert("حدث خطأ أثناء حفظ الطلب، يرجى المحاولة مرة أخرى.");
+    }
+}
+
+window.searchService = function() {
+    let input = document.getElementById('searchInput').value.toLowerCase();
+    let cards = document.getElementsByClassName('service-card');
+    let hasResult = false;
+    for (let i = 0; i < cards.length; i++) {
+        let text = cards[i].innerText.toLowerCase();
+        if (text.includes(input)) {
+            cards[i].style.display = "flex";
+            hasResult = true;
+        } else {
+            cards[i].style.display = "none";
+        }
+    }
+    document.getElementById('noResult').style.display = hasResult ? "none" : "block";
+}
+
+window.trackOrder = async function() {
+    let queryVal = document.getElementById('trackInput').value.trim();
+    let resultDiv = document.getElementById('trackResult');
+    
+    if(!queryVal) {
+        resultDiv.innerHTML = `<p style="color:#ff6b6b; margin-top:10px;">الرجاء إدخال رقم الطلب أو رقم الهاتف.</p>`;
+        return;
+    }
+    
+    resultDiv.innerHTML = `<p style="color:#D4AF37; margin-top:10px;">جاري البحث عن الطلب...</p>`;
+    
+    try {
+        let docRef = doc(db, "orders", queryVal);
+        let docSnap = await getDoc(docRef);
+        
+        let orderData = null;
+        if (docSnap.exists()) {
+            orderData = docSnap.data();
+        } else {
+            const q = query(collection(db, "orders"), where("phone", "==", queryVal));
+            const querySnapshot = await getDocs(q);
+            if (!querySnapshot.empty) {
+                orderData = querySnapshot.docs[0].data();
+            }
+        }
+        
+        if(orderData) {
+            let statusText = orderData.status;
+            if(orderData.statusCode === "0") statusText = "تم الاستلام";
+            if(orderData.statusCode === "1") statusText = "قيد المعالجة";
+            if(orderData.statusCode === "2") statusText = "تم الإنجاز - جاهز";
+
+            resultDiv.innerHTML = `
+                <div class="order-result">
+                    <p>رقم الطلب: <b>${orderData.orderId}</b></p>
+                    <p>اسم الطالب: <b>${orderData.name}</b></p>
+                    <p>الخدمة المطلوبة: <b>${orderData.service}</b></p>
+                    <p>حالة الطلب الحالية: <span style="color:#25D366; font-weight:bold;">${statusText}</span></p>
+                    <p style="font-size:12px; color:#B0BEC5;">تاريخ الطلب: ${orderData.date}</p>
+                </div>
+            `;
+        } else {
+            resultDiv.innerHTML = `<p style="color:#ff6b6b; margin-top:10px;">عذراً، لم نتمكن من العثور على طلب بهذا الرقم.</p>`;
+        }
+    } catch(e) {
+        console.error(e);
+        resultDiv.innerHTML = `<p style="color:#ff6b6b; margin-top:10px;">حدث خطأ في الاتصال بقاعدة البيانات.</p>`;
+    }
+}
+
+window.toggleAdmin = function() {
+    let adminSec = document.getElementById('adminSection');
+    adminSec.style.display = adminSec.style.display === 'none' ? 'block' : 'none';
+}
+
+window.updateStatus = async function() {
+    let orderId = document.getElementById('adminCode').value.trim();
+    let newStatusCode = document.getElementById('newStatus').value;
+    let password = document.getElementById('adminPass').value;
+    
+    if(password !== '1234') {
+        alert('رمز التحقق الإداري غير صحيح!');
+        return;
+    }
+    
+    if(!orderId) {
+        alert('الرجاء إدخال رقم الطلب.');
+        return;
+    }
+    
+    let statusTexts = { "0": "تم الاستلام", "1": "قيد المعالجة", "2": "تم الإنجاز - جاهز" };
+    
+    try {
+        const orderRef = doc(db, "orders", orderId);
+        await updateDoc(orderRef, {
+            statusCode: newStatusCode,
+            status: statusTexts[newStatusCode]
+        });
+        alert('تم تحديث حالة الطلب بنجاح ✅');
+        document.getElementById('adminCode').value = '';
+        document.getElementById('adminPass').value = '';
+    } catch(e) {
+        console.error(e);
+        alert('فشل التحديث، تأكد من صحة رقم الطلب.');
+    }
+}
+</script>
+
+</body>
+</html>

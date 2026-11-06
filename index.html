@@ -1,279 +1,265 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>خدمات الطلاب الجامعية</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
-    body { background-color: #0b1a30; color: #ffffff; min-height: 100vh; display: flex; flex-direction: column; }
-
-    header { text-align: center; padding: 30px 20px; border-bottom: 2px solid #d4af37; background-color: #0b1a30; }
-    header h1 { font-size: 1.6rem; font-weight: 800; margin-bottom: 8px; }
-    header p { color: #d4af37; font-size: 0.9rem; font-weight: 600; }
-
-    .container { max-width: 600px; margin: 0 auto; padding: 20px; width: 100%; flex: 1; }
-
-    .form-box { background-color: #12243d; border: 2px solid #d4af37; border-radius: 15px; padding: 25px 20px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); }
-    .form-box h2 { text-align: center; color: #d4af37; font-size: 1.2rem; margin-bottom: 20px; font-weight: 700; }
-
-    .input-group { margin-bottom: 15px; text-align: right; }
-    .input-group label { display: block; margin-bottom: 8px; font-size: 0.95rem; font-weight: 600; }
-    .input-group input, .input-group select {
-        width: 100%; padding: 12px 15px; background-color: #0b1a30; border: 1px solid #2a4365;
-        border-radius: 8px; color: #fff; font-size: 0.95rem; outline: none; transition: border-color 0.3s;
-    }
-    .input-group input:focus, .input-group select:focus { border-color: #d4af37; }
-    .input-group input::placeholder { color: #64748b; }
-
-    .service-row { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
-    .service-row select { flex: 1; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خدمات طلاب جامعة حمص (البعث سابقاً) | إنجاز المعاملات الجامعية</title>
+    <meta name="description" content="منصة متخصصة لخدمة طلاب جامعة حمص (البعث سابقاً). إنجاز معاملات التسجيل، المفاضلات، نقل الطلاب، التأجيل، والخدمات العسكرية بكل سهولة.">
     
-    .btn-details {
-        background-color: #d4af37; color: #0b1a30; border: none; border-radius: 8px;
-        padding: 12px 18px; font-weight: 800; font-size: 0.9rem; cursor: pointer;
-        display: none; align-items: center; justify-content: center; gap: 6px;
-        white-space: nowrap; transition: background-color 0.3s, transform 0.1s;
-    }
-    .btn-details:hover { background-color: #e5c158; }
-    .btn-details.show { display: flex; }
+    <!-- أيقونة الموقع -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
 
-    .btn-whatsapp {
-        width: 100%; padding: 14px; background-color: #25D366; color: #fff; border: none;
-        border-radius: 8px; font-size: 1.05rem; font-weight: 800; cursor: pointer;
-        display: flex; justify-content: center; align-items: center; gap: 10px;
-        margin-top: 20px; font-family: 'Cairo', sans-serif; transition: background-color 0.3s;
-    }
-    .btn-whatsapp:hover { background-color: #20b858; }
-
-    .modal-overlay {
-        display: none; position: fixed; inset: 0; background-color: rgba(0, 0, 0, 0.85);
-        z-index: 1000; align-items: center; justify-content: center; padding: 15px; animation: fadeIn 0.3s ease;
-    }
-    .modal-overlay.show { display: flex; }
-
-    .modal-content {
-        background-color: #12243d; border: 2px solid #d4af37; border-radius: 15px;
-        padding: 25px 20px; max-width: 500px; width: 100%; max-height: 90vh; overflow-y: auto;
-    }
-    .modal-content h3 { color: #d4af37; margin-bottom: 20px; font-size: 1.1rem; text-align: center; border-bottom: 1px solid #2a4365; padding-bottom: 10px; }
-
-    .upload-group { background-color: #0b1a30; border: 1px dashed #4a5568; border-radius: 8px; padding: 15px; margin-bottom: 12px; text-align: center; transition: border-color 0.3s; }
-    .upload-group:hover { border-color: #d4af37; }
-    .upload-group label { display: block; font-size: 0.9rem; color: #cbd5e1; margin-bottom: 10px; font-weight: 600; }
-    .upload-group input[type="file"] { display: none; }
+    <!-- خط Cairo من جوجل -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- أيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    .upload-btn {
-        background-color: #1e3a8a; color: #fff; padding: 8px 15px; border-radius: 6px;
-        font-size: 0.85rem; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: background-color 0.3s;
-    }
-    .upload-btn:hover { background-color: #2a4eb0; }
-    
-    .info-input {
-        width: 100%; padding: 10px; background-color: #12243d; border: 1px solid #2a4365;
-        border-radius: 6px; color: #fff; outline: none; text-align: right; font-family: 'Cairo', sans-serif;
-    }
-    .info-input:focus { border-color: #d4af37; }
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+        
+        body { 
+            background-color: #0b1a30; 
+            color: #ffffff; 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            padding-bottom: 70px;
+        }
 
-    .file-name { font-size: 0.8rem; color: #22c55e; margin-top: 8px; display: block; font-weight: 600; }
+        header { 
+            text-align: center; 
+            padding: 30px 20px; 
+            border-bottom: 2px solid #d4af37; 
+            background-color: #0b1a30; 
+        }
+        header h1 { font-size: 1.6rem; font-weight: 800; margin-bottom: 8px; }
+        header p { color: #d4af37; font-size: 0.9rem; font-weight: 600; }
 
-    .modal-close {
-        width: 100%; padding: 12px; background-color: #334155; color: #fff; border: none;
-        border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 15px;
-        font-family: 'Cairo', sans-serif; transition: background-color 0.3s;
-    }
-    .modal-close:hover { background-color: #475569; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; width: 100%; flex: 1; }
 
-    .how-it-works { background-color: #12243d; border: 1px solid #2a4365; border-right: 4px solid #d4af37; border-radius: 8px; padding: 20px; }
-    .how-it-works h3 { color: #d4af37; margin-bottom: 15px; font-size: 1.1rem; }
-    .how-it-works li { margin-bottom: 10px; font-size: 0.9rem; line-height: 1.6; color: #cbd5e1; }
+        .form-box { 
+            background-color: #12243d; 
+            border: 2px solid #d4af37; 
+            border-radius: 15px; 
+            padding: 25px 20px; 
+            margin-bottom: 30px; 
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); 
+        }
+        .form-box h2 { text-align: center; color: #d4af37; font-size: 1.2rem; margin-bottom: 20px; font-weight: 700; }
 
-    footer { text-align: center; padding: 20px; font-size: 0.85rem; color: #94a3b8; }
+        .input-group { margin-bottom: 18px; text-align: right; }
+        .input-group label { display: block; margin-bottom: 8px; font-size: 0.95rem; font-weight: 600; }
+        
+        .input-group input, .input-group select {
+            width: 100%; padding: 12px 15px; background-color: #0b1a30; border: 1px solid #2a4365;
+            border-radius: 8px; color: #fff; font-size: 0.95rem; outline: none; transition: border-color 0.3s;
+        }
+        .input-group input:focus, .input-group select:focus { border-color: #d4af37; box-shadow: 0 0 8px rgba(212, 175, 55, 0.3); }
+        .input-group input::placeholder { color: #64748b; }
 
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-</style>
+        /* حقول إضافية تظهر ديناميكياً */
+        .dynamic-fields { display: none; animation: fadeIn 0.4s ease; }
+        .dynamic-fields.active { display: block; }
+
+        .btn-whatsapp {
+            width: 100%; padding: 15px; background-color: #25D366; color: #fff; border: none;
+            border-radius: 8px; font-size: 1.1rem; font-weight: 800; cursor: pointer;
+            display: flex; justify-content: center; align-items: center; gap: 10px;
+            margin-top: 10px; font-family: 'Cairo', sans-serif; transition: background-color 0.3s, transform 0.1s;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+        }
+        .btn-whatsapp:hover { background-color: #20b858; }
+        .btn-whatsapp:active { transform: scale(0.98); }
+
+        .how-it-works { 
+            background-color: #12243d; 
+            border: 1px solid #2a4365; 
+            border-right: 4px solid #d4af37; 
+            border-radius: 8px; 
+            padding: 20px; 
+            margin-bottom: 25px;
+        }
+        .how-it-works h3 { color: #d4af37; margin-bottom: 15px; font-size: 1.1rem; }
+        .how-it-works ul { list-style: none; }
+        .how-it-works li { margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6; color: #cbd5e1; display: flex; gap: 10px; align-items: flex-start; }
+        .how-it-works li span { font-weight: bold; color: #d4af37; font-size: 1.1rem;}
+
+        footer { text-align: center; padding: 20px; font-size: 0.85rem; color: #94a3b8; border-top: 1px solid #1e3a8a;}
+
+        /* زر واتساب العائم */
+        .floating-wa {
+            position: fixed; bottom: 20px; left: 20px; background-color: #25D366; color: white;
+            width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            font-size: 2rem; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.5); z-index: 1000;
+            transition: transform 0.3s, background-color 0.3s; text-decoration: none;
+        }
+        .floating-wa:hover { transform: scale(1.1); background-color: #20b858; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
 </head>
 <body>
 
     <header>
-        <h1>خدمات الطلاب الجامعية</h1>
-        <p>تسجيل • مفاضلات • دفع رسوم • خدمات سريعة</p>
+        <h1>خدمات طلاب جامعة حمص 🎓</h1>
+        <!-- التعديل هنا: جملة "جامعة البعث سابقاً" في سطر منفصل -->
+        <p>إنجاز كافة المعاملات الجامعية بسرعة وموثوقية<br><span style="font-size: 0.85rem; opacity: 0.9;">(جامعة البعث سابقاً)</span></p>
     </header>
 
     <div class="container">
         <div class="form-box">
-            <h2>اطلب خدمتك بكل سهولة</h2>
+            <h2>اطلب معاملتك بكل سهولة</h2>
             
             <div class="input-group">
                 <label>اختر الخدمة المطلوبة:</label>
-                <div class="service-row">
-                    <select id="serviceSelect" onchange="checkServiceSelection()">
-                        <option value="" disabled selected>-- اختر الخدمة --</option>
-                        <option value="التسجيل الجامعي">التسجيل الجامعي</option>
-                        <option value="المفاضلات">المفاضلات</option>
-                        <option value="دفع الرسوم">دفع الرسوم</option>
-                        <option value="تصديق الشهادات">تصديق الشهادات</option>
-                        <option value="معادلة الشهادات">معادلة الشهادات</option>
-                        <option value="نقل الطلاب">نقل الطلاب (من جامعة لأخرى)</option>
+                <select id="serviceSelect" onchange="updateDynamicFields()">
+                    <option value="" disabled selected>-- اختر الخدمة --</option>
+                    <optgroup label="خدمات القبول والتسجيل">
+                        <option value="التسجيل الجامعي">التسجيل الجامعي (مستجدين)</option>
+                        <option value="المفاضلات">المفاضلات (تعديل / اعتراض)</option>
+                        <option value="نقل الطلاب">نقل الطلاب (داخلي / خارجي)</option>
                         <option value="تأجيل الخدمة">تأجيل الخدمة / سنة دراسية</option>
-                        <option value="خدمة أخرى">خدمة أخرى</option>
-                    </select>
-                    <button class="btn-details" id="detailsBtn" onclick="openUploadModal()">
-                        <i class="fa-solid fa-upload"></i> إدخال
-                    </button>
-                </div>
+                        <option value="إعادة القيد">إعادة القيد (للمفصولين)</option>
+                    </optgroup>
+                    <optgroup label="الوثائق والتصديقات">
+                        <option value="تصديق الشهادات">تصديق الشهادات / كشف العلامات</option>
+                        <option value="معادلة الشهادات">معادلة الشهادات (من جامعات أخرى)</option>
+                        <option value="استخراج وثيقة تخرج">استخراج وثيقة تخرج / بيان حالة</option>
+                    </optgroup>
+                    <optgroup label="الخدمات المالية">
+                        <option value="دفع الرسوم">دفع الرسوم الجامعية / رسوم المفاضلة</option>
+                    </optgroup>
+                    <optgroup label="الخدمات العسكرية (للذكور)">
+                        <option value="تأجيل الخدمة الإلزامية">تأجيل الخدمة الإلزامية</option>
+                        <option value="تجديد تأجيل الخدمة">تجديد تأجيل الخدمة</option>
+                    </optgroup>
+                    <optgroup label="أخرى">
+                        <option value="خدمة أخرى">خدمة أخرى / استفسار</option>
+                    </optgroup>
+                </select>
             </div>
+
+            <!-- حقول تظهر ديناميكياً -->
+            <div id="dynamicFields" class="dynamic-fields"></div>
 
             <div class="input-group">
                 <label>اسمك الثلاثي:</label>
-                <input type="text" id="nameInput" placeholder="أدخل اسمك هنا...">
+                <input type="text" id="nameInput" placeholder="أدخل اسمك هنا..." required>
             </div>
 
             <div class="input-group">
                 <label>رقم الموبايل (واتساب):</label>
-                <input type="tel" id="phoneInput" placeholder="مثال: 0930123456">
+                <input type="tel" id="phoneInput" placeholder="مثال: 0930123456" maxlength="10" oninput="validatePhone(this)" required>
             </div>
 
             <button class="btn-whatsapp" onclick="sendToWhatsApp()">
-                <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> إرسال الطلب مباشرة عبر واتساب
+                <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i> إرسال الطلب مباشرة عبر واتساب
             </button>
         </div>
 
         <div class="how-it-works">
             <h3>كيف تعمل الخدمة؟</h3>
             <ul>
-                <li>1️⃣ اختر الخدمة واضغط زر "إدخال" لتجهيز الأوراق والمعلومات.</li>
-                <li>2️⃣ املأ اسمك ورقمك واضغط زر إرسال واتساب.</li>
-                <li>3️⃣ أرسل الصور في المحادثة لنبدأ فوراً!</li>
+                <li><span>1</span> اختر الخدمة، واملأ البيانات المطلوبة بدقة.</li>
+                <li><span>2</span> اضغط على زر "إرسال عبر واتساب".</li>
+                <li><span>3</span> سيتم فتح المحادثة، أرسل الرسالة ثم أرفق صورك هناك.</li>
             </ul>
         </div>
     </div>
 
-    <footer>نرد عليكم خلال دقائق • خدمة سريعة ومضمونة</footer>
+    <footer>نخدم طلاب جامعة حمص (البعث سابقاً) • نرد عليكم خلال دقائق</footer>
 
-    <div class="modal-overlay" id="uploadModal">
-        <div class="modal-content">
-            <h3><i class="fa-solid fa-file-image"></i> متطلبات الخدمة</h3>
-            <div id="uploadFieldsContainer"></div>
-            <button class="modal-close" onclick="closeUploadModal()">تم / إغلاق</button>
-        </div>
-    </div>
+    <!-- زر واتساب العائم -->
+    <a href="https://wa.me/963930688067" target="_blank" class="floating-wa" title="تواصل معنا">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
     <script>
-        const OWNER_PHONE = "963930688067";
-        const LS_USER = "uni_service_user";
-        let modalData = {};
+        // ضع رقم صاحب الخدمة هنا (بدون + أو 00)
+        const OWNER_PHONE = "963930688067"; 
+        const LS_USER = "uni_homs_service_user";
 
-        /* ===== المتطلبات المخصصة لكل خدمة ===== */
+        // إعدادات الحقول الإضافية لكل خدمة
         const SERVICE_REQUIREMENTS = {
             "التسجيل الجامعي": [
-                { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
-                { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
-                { type: "image", id: "certificate", label: "صورة الشهادة الثانوية" },
-                { type: "text", id: "uni_name", label: "اسم الجامعة والتخصص المطلوب", placeholder: "مثال: جامعة دمشق - هندسة معلوماتية" }
+                { id: "uni_name", label: "التخصص المطلوب", placeholder: "مثال: هندسة معلوماتية / طب بشري" },
+                { id: "cert_type", label: "الفرع الثانوي", placeholder: "علمي / أدبي" }
             ],
             "المفاضلات": [
-                { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
-                { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
-                { type: "image", id: "certificate", label: "صورة الشهادة الثانوية" },
-                { type: "text", id: "sub_num", label: "رقم الاشتراك بالمفاضلة (إن وجد)", placeholder: "أدخل رقم الاشتراك" },
-                { type: "text", id: "branch", label: "الفرع (علمي / أدبي / مهني)", placeholder: "مثال: علمي" }
-            ],
-            "دفع الرسوم": [
-                { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
-                { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
-                { type: "text", id: "uni_num", label: "الرقم الجامعي", placeholder: "أدخل رقمك الجامعي" },
-                { type: "text", id: "fees_type", label: "نوع الرسم المطلوب", placeholder: "مثال: رسوم فصل أول" }
-            ],
-            "تصديق الشهادات": [
-                { type: "image", id: "certificate", label: "صورة الشهادة الأصلية" },
-                { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
-                { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
-                { type: "text", id: "copies", label: "عدد النسخ المطلوبة", placeholder: "مثال: 2 نسخ" }
-            ],
-            "معادلة الشهادات": [
-                { type: "image", id: "certificate", label: "صورة الشهادة الأصلية" },
-                { type: "image", id: "transcript", label: "صورة كشف العلامات (Transcript)" },
-                { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
-                { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
-                { type: "text", id: "country", label: "بلد الدراسة", placeholder: "مثال: تركيا / أوكرانيا" }
+                { id: "sub_num", label: "رقم الاشتراك بالمفاضلة", placeholder: "أدخل رقم الاشتراك" },
+                { id: "issue", label: "طبيعة المشكلة", placeholder: "مثال: اعتراض على مفاضلة / تعديل رغبات" }
             ],
             "نقل الطلاب": [
-                { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
-                { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
-                { type: "text", id: "from_uni", label: "الجامعة الحالية", placeholder: "الجامعة التي تدرس بها حالياً" },
-                { type: "text", id: "to_uni", label: "الجامعة المطلوب النقل إليها", placeholder: "الجامعة التي تريد النقل إليها" },
-                { type: "text", id: "reason", label: "سبب النقل", placeholder: "مثال: نقل سكن / ظروف عائلية" }
+                { id: "from_uni", label: "الجامعة / الكلية الحالية", placeholder: "الجامعة التي تدرس بها" },
+                { id: "to_uni", label: "الكلية المطلوب النقل إليها", placeholder: "الكلية في جامعة حمص" },
+                { id: "reason", label: "سبب النقل", placeholder: "مثال: نقل سكن / أسباب صحية" }
             ],
             "تأجيل الخدمة": [
-                { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
-                { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
-                { type: "text", id: "uni_num", label: "الرقم الجامعي", placeholder: "أدخل رقمك الجامعي" },
-                { type: "text", id: "year", label: "السنة الدراسية المطلوب تأجيلها", placeholder: "مثال: السنة الثانية" },
-                { type: "text", id: "delay_reason", label: "سبب التأجيل", placeholder: "مثال: ظروف صحية" }
+                { id: "uni_num", label: "الرقم الجامعي", placeholder: "أدخل رقمك الجامعي" },
+                { id: "year", label: "السنة الدراسية المطلوب تأجيلها", placeholder: "مثال: السنة الثانية" },
+                { id: "reason", label: "سبب التأجيل", placeholder: "ظروف صحية / سفر..." }
+            ],
+            "إعادة القيد": [
+                { id: "uni_num", label: "الرقم الجامعي", placeholder: "أدخل رقمك الجامعي" },
+                { id: "drop_reason", label: "سبب الفصل السابق", placeholder: "إن وجد" }
+            ],
+            "تصديق الشهادات": [
+                { id: "doc_type", label: "نوع الوثيقة", placeholder: "شهادة تخرج / كشف علامات / إفادة" },
+                { id: "copies", label: "عدد النسخ المطلوبة", placeholder: "مثال: 2 نسخ" }
+            ],
+            "معادلة الشهادات": [
+                { id: "country", label: "بلد الدراسة", placeholder: "مثال: تركيا / لبنان / أوكرانيا" },
+                { id: "major", label: "التخصص", placeholder: "أدخل تخصصك" }
+            ],
+            "استخراج وثيقة تخرج": [
+                { id: "uni_num", label: "الرقم الجامعي", placeholder: "أدخل رقمك الجامعي" },
+                { id: "grad_year", label: "سنة التخرج", placeholder: "مثال: 2023" }
+            ],
+            "دفع الرسوم": [
+                { id: "uni_num", label: "الرقم الجامعي", placeholder: "أدخل رقمك الجامعي" },
+                { id: "fees_type", label: "نوع الرسم المطلوب", placeholder: "رسوم فصل / رسوم مفاضلة / غرامات" }
+            ],
+            "تأجيل الخدمة الإلزامية": [
+                { id: "uni_num", label: "الرقم الجامعي", placeholder: "أدخل رقمك الجامعي" },
+                { id: "birth_date", label: "تاريخ الميلاد", placeholder: "مثال: 2002-05-15" }
+            ],
+            "تجديد تأجيل الخدمة": [
+                { id: "uni_num", label: "الرقم الجامعي", placeholder: "أدخل رقمك الجامعي" },
+                { id: "mil_num", label: "الرقم العسكري (إن وجد)", placeholder: "أدخل رقمك العسكري" }
             ],
             "خدمة أخرى": [
-                { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
-                { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
-                { type: "text", id: "details", label: "وصف الخدمة المطلوبة", placeholder: "اكتب تفاصيل الخدمة هنا" }
+                { id: "details", label: "وصف الخدمة أو الاستفسار", placeholder: "اكتب تفاصيل طلبك هنا..." }
             ]
         };
 
-        function checkServiceSelection() {
+        // توليد الحقول عند اختيار الخدمة
+        function updateDynamicFields() {
             const service = document.getElementById("serviceSelect").value;
-            const detailsBtn = document.getElementById("detailsBtn");
-            if (service) { detailsBtn.classList.add("show"); } else { detailsBtn.classList.remove("show"); }
-        }
-
-        function openUploadModal() {
-            const service = document.getElementById("serviceSelect").value;
-            const container = document.getElementById("uploadFieldsContainer");
-            modalData = {};
-
+            const container = document.getElementById("dynamicFields");
+            
             if (service && SERVICE_REQUIREMENTS[service]) {
-                container.innerHTML = SERVICE_REQUIREMENTS[service].map(field => {
-                    if (field.type === "image") {
-                        return `
-                            <div class="upload-group">
-                                <label>${field.label}</label>
-                                <input type="file" id="file_${field.id}" accept="image/*" onchange="updateFileName(this)">
-                                <label for="file_${field.id}" class="upload-btn">
-                                    <i class="fa-solid fa-camera"></i> رفع الصورة
-                                </label>
-                                <span class="file-name" id="name_${field.id}"></span>
-                            </div>
-                        `;
-                    } else {
-                        return `
-                            <div class="upload-group" style="text-align:right;">
-                                <label>${field.label}</label>
-                                <input type="text" class="info-input" id="input_${field.id}" placeholder="${field.placeholder || ''}" onchange="saveModalData('${field.id}', this.value)">
-                            </div>
-                        `;
-                    }
-                }).join("");
-                
-                document.getElementById("uploadModal").classList.add("show");
+                container.innerHTML = SERVICE_REQUIREMENTS[service].map(field => `
+                    <div class="input-group">
+                        <label>${field.label}:</label>
+                        <input type="text" id="dyn_${field.id}" placeholder="${field.placeholder}">
+                    </div>
+                `).join("");
+                container.classList.add("active");
+            } else {
+                container.innerHTML = "";
+                container.classList.remove("active");
             }
         }
 
-        function closeUploadModal() {
-            document.getElementById("uploadModal").classList.remove("show");
-        }
-
-        function saveModalData(id, value) {
-            if (value.trim() !== "") { modalData[id] = value.trim(); } else { delete modalData[id]; }
-        }
-
-        function updateFileName(input) {
-            const nameSpan = document.getElementById("name_" + input.id.replace("file_", ""));
-            if (input.files && input.files[0]) {
-                nameSpan.textContent = "✅ تم اختيار الصورة (لا تنسَ إرفاقها في الواتساب)";
+        // التحقق من رقم الهاتف
+        function validatePhone(input) {
+            input.value = input.value.replace(/[^0-9]/g, '');
+            if (input.value.length > 0 && input.value[0] !== '0') {
+                input.value = '0' + input.value;
             }
         }
 
+        // استرجاع بيانات المستخدم المحفوظة
         document.addEventListener("DOMContentLoaded", () => {
             const savedUser = localStorage.getItem(LS_USER);
             if (savedUser) {
@@ -283,34 +269,50 @@
             }
         });
 
+        // إرسال البيانات للواتساب
         function sendToWhatsApp() {
             const service = document.getElementById("serviceSelect").value;
             const name = document.getElementById("nameInput").value.trim();
             const phone = document.getElementById("phoneInput").value.trim();
 
-            if (!service || !name || !phone) {
-                alert("الرجاء اختيار الخدمة، وإدخال الاسم ورقم الموبايل.");
+            if (!service) {
+                alert("الرجاء اختيار الخدمة أولاً.");
+                return;
+            }
+            if (!name || name.length < 3) {
+                alert("الرجاء إدخال اسمك الثلاثي بشكل صحيح.");
+                return;
+            }
+            if (!phone || phone.length < 10) {
+                alert("الرجاء إدخال رقم موبايل صحيح (10 أرقام).");
                 return;
             }
 
             localStorage.setItem(LS_USER, JSON.stringify({ name: name, phone: phone }));
 
-            let message = `مرحباً، أريد طلب خدمة جامعية:\n\n` +
+            // التلميح هنا في رسالة الواتساب
+            let message = `مرحباً، أريد طلب خدمة جامعية (جامعة حمص - البعث سابقاً):\n\n` +
                           `👤 الاسم: ${name}\n` +
                           `📱 رقم الموبايل: ${phone}\n` +
                           `📋 الخدمة المطلوبة: ${service}\n\n`;
 
-            if (Object.keys(modalData).length > 0) {
-                message += `📝 تفاصيل إضافية:\n`;
-                for (const [key, value] of Object.entries(modalData)) {
-                    const reqField = SERVICE_REQUIREMENTS[service].find(f => f.id === key);
-                    const label = reqField ? reqField.label : key;
-                    message += `- ${label}: ${value}\n`;
+            const fields = SERVICE_REQUIREMENTS[service];
+            let hasDetails = false;
+            let detailsText = "";
+
+            fields.forEach(field => {
+                const val = document.getElementById(`dyn_${field.id}`).value.trim();
+                if (val) {
+                    detailsText += `- ${field.label}: ${val}\n`;
+                    hasDetails = true;
                 }
-                message += `\n`;
+            });
+
+            if (hasDetails) {
+                message += `📝 تفاصيل إضافية:\n${detailsText}\n`;
             }
 
-            message += `أرجو إخباري بالسعر.\nسأقوم بإرسال الصور المطلوبة في المحادثة.`;
+            message += `أرجو إخباري بالتكلفة وخطوات إرسال الأوراق.`;
 
             const whatsappUrl = `https://wa.me/${OWNER_PHONE}?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, "_blank");

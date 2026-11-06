@@ -3,8 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>وسيطك الموثوق لتسريع الخدمات الجامعية | جامعة حمص</title>
-<meta name="description" content="منصة وسيطة موثوقة لتسريع إجراءاتك الجامعية. نستقبل أوراقك وبياناتك ونقدمها للجامعة بأسرع وقت. متابعة خاصة لطلاب جامعة حمص.">
+<title>خدمات جامعية | وسيطك الموثوق</title>
+
+<!-- أيقونة التبويب (Favicon) -->
+<link rel="icon" type="image/jpeg" href="https://i.ibb.co/hFgCw9rg/IMG.jpg">
+
+<!-- وسوم تظهر الصورة عند النشر على فيسبوك وواتساب -->
+<meta property="og:title" content="خدمات الطلاب الجامعية | متابعة خاصة لجامعة حمص">
+<meta property="og:description" content="منصة وسيطة موثوقة لتسريع إجراءاتك الجامعية. أرسل أوراقك وسنتولى نحن الباقي.">
+<meta property="og:image" content="https://i.ibb.co/hFgCw9rg/IMG.jpg">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="1024">
+<meta property="og:url" content="https://uni-service-mu.vercel.app/">
+<meta property="og:type" content="website">
+
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
@@ -12,7 +24,9 @@
     body { background-color: #0b1a30; color: #ffffff; min-height: 100vh; display: flex; flex-direction: column; }
 
     /* الهيدر */
-    header { text-align: center; padding: 30px 20px; border-bottom: 2px solid #d4af37; background-color: #0b1a30; }
+    header { text-align: center; padding: 30px 20px; border-bottom: 2px solid #d4af37; background-color: #0b1a30; display: flex; flex-direction: column; align-items: center; }
+    .header-logo { width: 90px; height: 90px; border-radius: 18px; object-fit: cover; margin-bottom: 15px; border: 2px solid #d4af37; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+    
     header h1 { font-size: 1.6rem; font-weight: 800; margin-bottom: 8px; }
     header p { color: #d4af37; font-size: 0.9rem; font-weight: 600; }
 
@@ -68,7 +82,7 @@
     }
     .btn-whatsapp:hover { background-color: #20b858; }
 
-    /* أقسام الثقة (كيف نعمل، من نحن، التقييمات) */
+    /* أقسام الثقة */
     .info-section { background-color: #12243d; border: 1px solid #2a4365; border-right: 4px solid #d4af37; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
     .info-section h3 { color: #d4af37; margin-bottom: 15px; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
     .info-section ul { list-style: none; }
@@ -110,13 +124,14 @@
 <body>
 
     <header>
+        <!-- الأيقونة داخل الموقع (الرابط الجديد) -->
+        <img src="https://i.ibb.co/hFgCw9rg/IMG.jpg" alt="شعار خدمات جامعية" class="header-logo">
         <h1>خدمات الطلاب الجامعية</h1>
         <p>وسيطك الموثوق لتسريع الإجراءات الجامعية</p>
     </header>
 
     <div class="container">
         
-        <!-- شارة توضيحية لهدف المنصة -->
         <div class="trust-badge">
             <i class="fa-solid fa-shield-halved"></i>
             متابعة خاصة وسريعة لطلبات طلاب جامعة حمص
@@ -160,7 +175,6 @@
             </button>
         </div>
 
-        <!-- كيف تعمل الخدمة -->
         <div class="info-section">
             <h3><i class="fa-solid fa-gears"></i> كيف نسرّع إجراءاتك؟</h3>
             <ul>
@@ -170,7 +184,6 @@
             </ul>
         </div>
 
-        <!-- الضمان والخصوصية -->
         <div class="info-section">
             <h3><i class="fa-solid fa-lock"></i> خصوصيتك وضمان الخدمة</h3>
             <ul>
@@ -179,7 +192,6 @@
             </ul>
         </div>
 
-        <!-- آراء الطلاب -->
         <div class="info-section">
             <h3><i class="fa-solid fa-star"></i> ماذا قال الطلاب عنا؟</h3>
             <div class="reviews-grid">
@@ -198,7 +210,6 @@
 
     </div>
 
-    <!-- تم حذف الرقم وزر الاتصال المباشر من الفوتر بناءً على طلبك -->
     <footer>
         <p>نرد عليكم خلال دقائق • وسيطكم الموثوق لتسريع الإجراءات الجامعية</p>
     </footer>
@@ -213,11 +224,10 @@
     </div>
 
     <script>
-        const OWNER_PHONE = "963930688067"; // رقمك موجود بالكود داخلياً ليعمل زر الواتساب فقط
+        const OWNER_PHONE = "963930688067";
         const LS_USER = "uni_service_user";
         let modalData = {};
 
-        /* ===== المتطلبات المخصصة لكل خدمة ===== */
         const SERVICE_REQUIREMENTS = {
             "التسجيل الجامعي": [
                 { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },

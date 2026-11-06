@@ -31,7 +31,7 @@
     .input-group label { display: block; margin-bottom: 8px; font-size: 0.95rem; font-weight: 600; }
     .input-group input, .input-group select { width: 100%; padding: 12px 15px; background-color: #0b1a30; border: 1px solid #2a4365; border-radius: 8px; color: #fff; font-size: 0.95rem; outline: none; transition: border-color 0.3s; }
     .input-group input:focus, .input-group select:focus { border-color: #d4af37; }
-    .input-group input::placeholder { color: #64748b; }
+    /* تم إزالة تنسيق النص الداخلي (placeholder) لأننا حذفناه من الـ HTML */
     .service-row { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
     .service-row select { flex: 1; }
     .btn-details { background-color: #d4af37; color: #0b1a30; border: none; border-radius: 8px; padding: 12px 18px; font-weight: 800; font-size: 0.9rem; cursor: pointer; display: none; align-items: center; justify-content: center; gap: 6px; white-space: nowrap; transition: background-color 0.3s, transform 0.1s; }
@@ -102,11 +102,13 @@
             </div>
             <div class="input-group">
                 <label>اسمك الثلاثي:</label>
-                <input type="text" id="nameInput" placeholder="أدخل اسمك هنا...">
+                <!-- تم حذف الـ placeholder -->
+                <input type="text" id="nameInput">
             </div>
             <div class="input-group">
                 <label>رقم الموبايل (واتساب):</label>
-                <input type="tel" id="phoneInput" placeholder="مثال: 0930123456">
+                <!-- تم حذف الـ placeholder -->
+                <input type="tel" id="phoneInput">
             </div>
             <button class="btn-whatsapp" onclick="sendToWhatsApp()">
                 <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> إرسال الطلب مباشرة عبر واتساب
@@ -158,57 +160,58 @@
         const LS_USER = "uni_service_user";
         let modalData = {};
 
+        // تم حذف النصوص التوضيحية (placeholder) من داخل الكائن هنا أيضاً
         const SERVICE_REQUIREMENTS = {
             "التسجيل الجامعي": [
                 { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
                 { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
                 { type: "image", id: "certificate", label: "صورة الشهادة الثانوية" },
-                { type: "text", id: "uni_name", label: "اسم الجامعة والتخصص المطلوب", placeholder: "مثال: جامعة حمص - هندسة معلوماتية" }
+                { type: "text", id: "uni_name", label: "اسم الجامعة والتخصص المطلوب" }
             ],
             "المفاضلات": [
                 { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
                 { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
                 { type: "image", id: "certificate", label: "صورة الشهادة الثانوية" },
-                { type: "text", id: "sub_num", label: "رقم الاشتراك بالمفاضلة (إن وجد)", placeholder: "أدخل رقم الاشتراك" },
-                { type: "text", id: "branch", label: "الفرع (علمي / أدبي / مهني)", placeholder: "مثال: علمي" }
+                { type: "text", id: "sub_num", label: "رقم الاشتراك بالمفاضلة (إن وجد)" },
+                { type: "text", id: "branch", label: "الفرع (علمي / أدبي / مهني)" }
             ],
             "دفع الرسوم": [
                 { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
                 { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
-                { type: "text", id: "uni_num", label: "الرقم الجامعي", placeholder: "أدخل رقمك الجامعي" },
-                { type: "text", id: "fees_type", label: "نوع الرسم المطلوب", placeholder: "مثال: رسوم فصل أول" }
+                { type: "text", id: "uni_num", label: "الرقم الجامعي" },
+                { type: "text", id: "fees_type", label: "نوع الرسم المطلوب" }
             ],
             "تصديق الشهادات": [
                 { type: "image", id: "certificate", label: "صورة الشهادة الأصلية" },
                 { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
                 { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
-                { type: "text", id: "copies", label: "عدد النسخ المطلوبة", placeholder: "مثال: 2 نسخ" }
+                { type: "text", id: "copies", label: "عدد النسخ المطلوبة" }
             ],
             "معادلة الشهادات": [
                 { type: "image", id: "certificate", label: "صورة الشهادة الأصلية" },
                 { type: "image", id: "transcript", label: "صورة كشف العلامات (Transcript)" },
                 { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
                 { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
-                { type: "text", id: "country", label: "بلد الدراسة", placeholder: "مثال: تركيا / أوكرانيا" }
+                { type: "text", id: "country", label: "بلد الدراسة" }
             ],
             "نقل الطلاب": [
                 { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
                 { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
-                { type: "text", id: "from_uni", label: "الجامعة الحالية", placeholder: "الجامعة التي تدرس بها حالياً" },
-                { type: "text", id: "to_uni", label: "الجامعة المطلوب النقل إليها", placeholder: "الجامعة التي تريد النقل إليها" },
-                { type: "text", id: "reason", label: "سبب النقل", placeholder: "مثال: نقل سكن / ظروف عائلية" }
+                { type: "text", id: "from_uni", label: "الجامعة الحالية" },
+                { type: "text", id: "to_uni", label: "الجامعة المطلوب النقل إليها" },
+                { type: "text", id: "reason", label: "سبب النقل" }
             ],
             "تأجيل الخدمة": [
                 { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
                 { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
-                { type: "text", id: "uni_num", label: "الرقم الجامعي", placeholder: "أدخل رقمك الجامعي" },
-                { type: "text", id: "year", label: "السنة الدراسية المطلوب تأجيلها", placeholder: "مثال: السنة الثانية" },
-                { type: "text", id: "delay_reason", label: "سبب التأجيل", placeholder: "مثال: ظروف صحية" }
+                { type: "text", id: "uni_num", label: "الرقم الجامعي" },
+                { type: "text", id: "year", label: "السنة الدراسية المطلوب تأجيلها" },
+                { type: "text", id: "delay_reason", label: "سبب التأجيل" }
             ],
             "خدمة أخرى": [
                 { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
                 { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
-                { type: "text", id: "details", label: "وصف الخدمة المطلوبة", placeholder: "اكتب تفاصيل الخدمة هنا" }
+                { type: "text", id: "details", label: "وصف الخدمة المطلوبة" }
             ]
         };
 
@@ -237,10 +240,11 @@
                             </div>
                         `;
                     } else {
+                        // تم حذف الـ placeholder من هنا
                         return `
                             <div class="upload-group" style="text-align:right;">
                                 <label>${field.label}</label>
-                                <input type="text" class="info-input" id="input_${field.id}" placeholder="${field.placeholder || ''}" onchange="saveModalData('${field.id}', this.value)">
+                                <input type="text" class="info-input" id="input_${field.id}" onchange="saveModalData('${field.id}', this.value)">
                             </div>
                         `;
                     }

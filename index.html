@@ -4,269 +4,317 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>خدمات الطلاب الجامعية</title>
-<meta name="description" content="خدمات الطلاب الجامعية - تسجيل، مفاضلات، دفع رسوم، حل وظائف. اطلب خدمتك بسهولة عبر واتساب.">
-<meta property="og:title" content="خدمات الطلاب الجامعية">
-<meta property="og:description" content="تسجيل • مفاضلات • دفع رسوم • خدمات سريعة">
-<meta property="og:image" content="icon-512.png">
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#0F2340">
-<link rel="apple-touch-icon" href="icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-:root{--navy:#0F2340;--gold:#D4AF37;--green:#25D366;--card-bg:#162E52}
-*{box-sizing:border-box}
-body{font-family:'Segoe UI',Tahoma,sans-serif;margin:0;background:var(--navy);color:#fff;text-align:right}
-.header{background:var(--navy);padding:20px;text-align:center;border-bottom:2px solid var(--gold)}
-.header h1{margin:0;font-size:22px;color:#fff}
-.header span{font-size:12px;color:var(--gold);display:block;margin-top:5px}
-.container{padding:20px;max-width:480px;margin:auto}
-.card{background:var(--card-bg);border:2px solid var(--gold);border-radius:12px;padding:20px;margin-bottom:20px;box-shadow:0 4px 15px rgba(0,0,0,0.3)}
-.card h2{font-size:18px;margin-top:0;color:var(--gold);text-align:center}
-label{display:block;font-size:14px;margin-bottom:6px;color:#E0E0E0;font-weight:bold}
-select,input,textarea{width:100%;padding:14px;margin-bottom:12px;border:1px solid var(--gold);border-radius:8px;background:var(--navy);color:#fff;font-size:15px;font-family:inherit;outline:none}
-select option{background:var(--navy);color:#fff}
-.requirements-box{background:rgba(0,0,0,0.25);border:1px dashed var(--gold);border-radius:8px;padding:12px;margin-bottom:15px;font-size:13px;line-height:1.7;color:#FFECB3}
-.requirements-box strong{color:var(--gold);display:block;margin-bottom:8px}
-.field-box{background:rgba(255,255,255,0.06);border:1px solid rgba(212,175,55,0.5);border-radius:8px;padding:10px;margin-bottom:10px}
-.field-box label{font-size:13px;color:#fff;margin-bottom:8px}
-.field-box input{margin-bottom:0;padding:10px;font-size:13px}
-.file-note{font-size:12px;color:#FFECB3;margin-top:8px;line-height:1.6;background:rgba(212,175,55,0.1);padding:8px;border-radius:6px;border:1px solid var(--gold)}
-.btn-wa{background:var(--green);color:#fff;width:100%;font-size:17px;font-weight:bold;padding:15px;border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;margin-top:10px}
-.btn-copy{background:#334E68;color:#fff;width:100%;font-size:14px;font-weight:bold;padding:10px;border:1px solid var(--gold);border-radius:8px;cursor:pointer;margin-top:8px}
-.steps{background:var(--card-bg);border-radius:10px;padding:15px;margin-top:20px;font-size:13px;line-height:1.8;border-right:4px solid var(--gold)}
-.steps h3{margin:0 0 8px 0;color:var(--gold);font-size:14px}
-.footer{text-align:center;font-size:12px;color:#A0AAB5;margin-top:30px;padding:10px}
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+    body { background-color: #0b1a30; color: #ffffff; min-height: 100vh; display: flex; flex-direction: column; }
+
+    header { text-align: center; padding: 30px 20px; border-bottom: 2px solid #d4af37; background-color: #0b1a30; }
+    header h1 { font-size: 1.6rem; font-weight: 800; margin-bottom: 8px; }
+    header p { color: #d4af37; font-size: 0.9rem; font-weight: 600; }
+
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; width: 100%; flex: 1; }
+
+    .form-box { background-color: #12243d; border: 2px solid #d4af37; border-radius: 15px; padding: 25px 20px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); }
+    .form-box h2 { text-align: center; color: #d4af37; font-size: 1.2rem; margin-bottom: 20px; font-weight: 700; }
+
+    .input-group { margin-bottom: 15px; text-align: right; }
+    .input-group label { display: block; margin-bottom: 8px; font-size: 0.95rem; font-weight: 600; }
+    .input-group input, .input-group select {
+        width: 100%; padding: 12px 15px; background-color: #0b1a30; border: 1px solid #2a4365;
+        border-radius: 8px; color: #fff; font-size: 0.95rem; outline: none; transition: border-color 0.3s;
+    }
+    .input-group input:focus, .input-group select:focus { border-color: #d4af37; }
+    .input-group input::placeholder { color: #64748b; }
+
+    .service-row { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+    .service-row select { flex: 1; }
+    
+    .btn-details {
+        background-color: #d4af37; color: #0b1a30; border: none; border-radius: 8px;
+        padding: 12px 18px; font-weight: 800; font-size: 0.9rem; cursor: pointer;
+        display: none; align-items: center; justify-content: center; gap: 6px;
+        white-space: nowrap; transition: background-color 0.3s, transform 0.1s;
+    }
+    .btn-details:hover { background-color: #e5c158; }
+    .btn-details.show { display: flex; }
+
+    .btn-whatsapp {
+        width: 100%; padding: 14px; background-color: #25D366; color: #fff; border: none;
+        border-radius: 8px; font-size: 1.05rem; font-weight: 800; cursor: pointer;
+        display: flex; justify-content: center; align-items: center; gap: 10px;
+        margin-top: 20px; font-family: 'Cairo', sans-serif; transition: background-color 0.3s;
+    }
+    .btn-whatsapp:hover { background-color: #20b858; }
+
+    .modal-overlay {
+        display: none; position: fixed; inset: 0; background-color: rgba(0, 0, 0, 0.85);
+        z-index: 1000; align-items: center; justify-content: center; padding: 15px; animation: fadeIn 0.3s ease;
+    }
+    .modal-overlay.show { display: flex; }
+
+    .modal-content {
+        background-color: #12243d; border: 2px solid #d4af37; border-radius: 15px;
+        padding: 25px 20px; max-width: 500px; width: 100%; max-height: 90vh; overflow-y: auto;
+    }
+    .modal-content h3 { color: #d4af37; margin-bottom: 20px; font-size: 1.1rem; text-align: center; border-bottom: 1px solid #2a4365; padding-bottom: 10px; }
+
+    .upload-group { background-color: #0b1a30; border: 1px dashed #4a5568; border-radius: 8px; padding: 15px; margin-bottom: 12px; text-align: center; transition: border-color 0.3s; }
+    .upload-group:hover { border-color: #d4af37; }
+    .upload-group label { display: block; font-size: 0.9rem; color: #cbd5e1; margin-bottom: 10px; font-weight: 600; }
+    .upload-group input[type="file"] { display: none; }
+    
+    .upload-btn {
+        background-color: #1e3a8a; color: #fff; padding: 8px 15px; border-radius: 6px;
+        font-size: 0.85rem; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: background-color 0.3s;
+    }
+    .upload-btn:hover { background-color: #2a4eb0; }
+    
+    .info-input {
+        width: 100%; padding: 10px; background-color: #12243d; border: 1px solid #2a4365;
+        border-radius: 6px; color: #fff; outline: none; text-align: right; font-family: 'Cairo', sans-serif;
+    }
+    .info-input:focus { border-color: #d4af37; }
+
+    .file-name { font-size: 0.8rem; color: #22c55e; margin-top: 8px; display: block; font-weight: 600; }
+
+    .modal-close {
+        width: 100%; padding: 12px; background-color: #334155; color: #fff; border: none;
+        border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 15px;
+        font-family: 'Cairo', sans-serif; transition: background-color 0.3s;
+    }
+    .modal-close:hover { background-color: #475569; }
+
+    .how-it-works { background-color: #12243d; border: 1px solid #2a4365; border-right: 4px solid #d4af37; border-radius: 8px; padding: 20px; }
+    .how-it-works h3 { color: #d4af37; margin-bottom: 15px; font-size: 1.1rem; }
+    .how-it-works li { margin-bottom: 10px; font-size: 0.9rem; line-height: 1.6; color: #cbd5e1; }
+
+    footer { text-align: center; padding: 20px; font-size: 0.85rem; color: #94a3b8; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 </head>
 <body>
 
-<div class="header">
-    <h1>خدمات الطلاب الجامعية</h1>
-    <span>تسجيل • مفاضلات • دفع رسوم • خدمات سريعة</span>
-</div>
+    <header>
+        <h1>خدمات الطلاب الجامعية</h1>
+        <p>تسجيل • مفاضلات • دفع رسوم • خدمات سريعة</p>
+    </header>
 
-<div class="container">
-    <div class="card">
-        <h2>اطلب خدمتك بكل سهولة</h2>
-        
-        <label>اختر الخدمة المطلوبة:</label>
-        <select id="serviceSelect" onchange="updateRequirements()">
-            <option value="" selected disabled> -- اختر الخدمة لعرض الأوراق المطلوبة -- </option>
-            <option value="الجامعة الافتراضية السورية - تسجيل أو دفع">الجامعة الافتراضية السورية (تسجيل / دفع)</option>
-            <option value="التسجيل على المفاضلة العامة أو الموازي">المفاضلة العامة أو الموازي</option>
-            <option value="استفسار أو تسجيل بكلية الاقتصاد (بكالوريا قديمة)">استفسار أو تسجيل بكلية الاقتصاد (بكالوريا قديمة)</option>
-            <option value="حل وظائف أو إعداد حلقات بحث">حل وظائف أو إعداد حلقات بحث</option>
-            <option value="دفع رسوم أو أقساط جامعية">دفع رسوم أو أقساط جامعية</option>
-            <option value="خدمة طلابية أخرى">خدمة طلابية أخرى</option>
-        </select>
+    <div class="container">
+        <div class="form-box">
+            <h2>اطلب خدمتك بكل سهولة</h2>
+            
+            <div class="input-group">
+                <label>اختر الخدمة المطلوبة:</label>
+                <div class="service-row">
+                    <select id="serviceSelect" onchange="checkServiceSelection()">
+                        <option value="" disabled selected>-- اختر الخدمة --</option>
+                        <option value="التسجيل الجامعي">التسجيل الجامعي</option>
+                        <option value="المفاضلات">المفاضلات</option>
+                        <option value="دفع الرسوم">دفع الرسوم</option>
+                        <option value="تصديق الشهادات">تصديق الشهادات</option>
+                        <option value="معادلة الشهادات">معادلة الشهادات</option>
+                        <option value="نقل الطلاب">نقل الطلاب (من جامعة لأخرى)</option>
+                        <option value="تأجيل الخدمة">تأجيل الخدمة / سنة دراسية</option>
+                        <option value="خدمة أخرى">خدمة أخرى</option>
+                    </select>
+                    <button class="btn-details" id="detailsBtn" onclick="openUploadModal()">
+                        <i class="fa-solid fa-upload"></i> إدخال
+                    </button>
+                </div>
+            </div>
 
-        <div id="requirementsBox" class="requirements-box" style="display:none">
-            <strong>📋 المعلومات والأوراق المطلوبة للخدمة:</strong>
-            <div id="dynamicFields"></div>
-            <div id="reqText"></div>
+            <div class="input-group">
+                <label>اسمك الثلاثي:</label>
+                <input type="text" id="nameInput" placeholder="أدخل اسمك هنا...">
+            </div>
+
+            <div class="input-group">
+                <label>رقم الموبايل (واتساب):</label>
+                <input type="tel" id="phoneInput" placeholder="مثال: 0930123456">
+            </div>
+
+            <button class="btn-whatsapp" onclick="sendToWhatsApp()">
+                <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> إرسال الطلب مباشرة عبر واتساب
+            </button>
         </div>
 
-        <label>اسمك الثلاثي:</label>
-        <input type="text" id="studentName" placeholder="أدخل اسمك هنا..." oninput="saveUserData()">
-
-        <label>رقم الموبايل (واتساب):</label>
-        <input type="tel" id="studentPhone" placeholder="مثال: 0930123456" maxlength="10" inputmode="numeric" oninput="saveUserData()">
-
-        <button class="btn-wa" onclick="sendToWhatsApp()">
-            💬 إرسال الطلب مباشرة عبر واتساب
-        </button>
-        
-        <button class="btn-copy" onclick="copyOrderText()">
-            📋 نسخ تفاصيل الطلب (احتياطي)
-        </button>
-
-        <div class="file-note" id="afterNote" style="display:none">
-            ⚠️ <b>ملاحظة هامة:</b> بعد ما يفتح الواتساب، اضغط مطولاً في خانة الكتابة ثم اختر <b>"لصق"</b> أو اضغط على إشارة <b>(📎)</b> لإرفاق صور الهوية (الوجهين) والملفات المطلوبة وإرسالها كاملة.
+        <div class="how-it-works">
+            <h3>كيف تعمل الخدمة؟</h3>
+            <ul>
+                <li>1️⃣ اختر الخدمة واضغط زر "إدخال" لتجهيز الأوراق والمعلومات.</li>
+                <li>2️⃣ املأ اسمك ورقمك واضغط زر إرسال واتساب.</li>
+                <li>3️⃣ أرسل الصور في المحادثة لنبدأ فوراً!</li>
+            </ul>
         </div>
     </div>
 
-    <div class="steps">
-        <h3>كيف تعمل الخدمة؟</h3>
-        1️⃣ اختر الخدمة واملأ المعلومات المطلوبة.<br>
-        2️⃣ اضغط زر إرسال واتساب (سيتم حفظ اسمك ورقمك للمرة القادمة تلقائياً!).<br>
-        3️⃣ أرسل الرسالة وصور الهوية (وجهين) عبر المحادثة لنبدأ فوراً!
+    <footer>نرد عليكم خلال دقائق • خدمة سريعة ومضمونة</footer>
+
+    <div class="modal-overlay" id="uploadModal">
+        <div class="modal-content">
+            <h3><i class="fa-solid fa-file-image"></i> متطلبات الخدمة</h3>
+            <div id="uploadFieldsContainer"></div>
+            <button class="modal-close" onclick="closeUploadModal()">تم / إغلاق</button>
+        </div>
     </div>
 
-    <div class="footer">
-        نرد عليكم خلال دقائق • خدمة سريعة ومضمونة
-    </div>
-</div>
+    <script>
+        const OWNER_PHONE = "963930688067";
+        const LS_USER = "uni_service_user";
+        let modalData = {};
 
-<script>
-const requirementsData = {
-    "الجامعة الافتراضية السورية - تسجيل أو دفع": {
-        text: "جهز هالأوراق وارفقها:",
-        fields: [
-            {label:"📧 البريد الإلكتروني لحساب الطالب", type:"email", placeholder:"مثال: name@gmail.com"},
-            {label:"🔑 كلمة المرور لحساب الطالب", type:"text", placeholder:"اكتب كلمة المرور"},
-            {label:"🪪 صورة الهوية الشخصية - الوجه الأمامي", type:"file"},
-            {label:"🪪 صورة الهوية الشخصية - الوجه الخلفي", type:"file"},
-            {label:"📚 المقرر أو الفصل المراد تسجيله / دفعه", type:"text", placeholder:"مثال: الفصل الأول - مقرر الاقتصاد"}
-        ]
-    },
-    "التسجيل على المفاضلة العامة أو الموازي": {
-        text: "جهز هالأوراق وارفقها:",
-        fields: [
-            {label:"🎓 صورة عن شهادة الثانوية العامة", type:"file"},
-            {label:"📊 المعدل / المجموع", type:"text", placeholder:"مثال: 210 / 240"},
-            {label:"🪪 صورة الهوية الشخصية - الوجه الأمامي", type:"file"},
-            {label:"🪪 صورة الهوية الشخصية - الوجه الخلفي", type:"file"},
-            {label:"📝 الرغبات المرجوة (الاختصاصات وترتيبها)", type:"text", placeholder:"مثال: 1- طب 2- صيدلة"}
-        ]
-    },
-    "استفسار أو تسجيل بكلية الاقتصاد (بكالوريا قديمة)": {
-        text: "جهز هالأوراق وارفقها:",
-        fields: [
-            {label:"🎓 صورة عن شهادة البكالوريا", type:"file"},
-            {label:"📚 الفرع (علمي / أدبي) وسنة التخرج والمعدل", type:"text", placeholder:"مثال: أدبي - 2019 - معدل 180"},
-            {label:"🪪 صورة الهوية الشخصية - الوجه الأمامي", type:"file"},
-            {label:"🪪 صورة الهوية الشخصية - الوجه الخلفي", type:"file"},
-            {label:"🏫 النظام المفضل (تعليم مفتوح / افتراضية / موازي)", type:"text", placeholder:"مثال: تعليم مفتوح"}
-        ]
-    },
-    "حل وظائف أو إعداد حلقات بحث": {
-        text: "جهز هالملفات:",
-        fields: [
-            {label:"📄 ملف الوظيفة أو عنوان حلقة البحث", type:"file"},
-            {label:"🪪 صورة الهوية الشخصية - الوجه الأمامي (إن وجدت)", type:"file"},
-            {label:"🪪 صورة الهوية الشخصية - الوجه الخلفي (إن وجدت)", type:"file"},
-            {label:"📖 اسم المادة والجامعة", type:"text", placeholder:"مثال: اقتصاد - جامعة دمشق"}
-        ]
-    },
-    "دفع رسوم أو أقساط جامعية": {
-        text: "عبّي هالمعلومات:",
-        fields: [
-            {label:"🆔 رقم التسجيل الجامعي / رقم الطالب", type:"text", placeholder:"اكتب رقمك الجامعي"},
-            {label:"💰 تفاصيل القسط والمبلغ", type:"text", placeholder:"مثال: قسط الفصل الأول - 500 ألف"},
-            {label:"🪪 صورة الهوية الشخصية - الوجه الأمامي", type:"file"},
-            {label:"🪪 صورة الهوية الشخصية - الوجه الخلفي", type:"file"}
-        ]
-    },
-    "خدمة طلابية أخرى": {
-        text: "اكتب تفاصيل الخدمة:",
-        fields: [
-            {label:"💬 شو الخدمة يلي بدك ياها؟", type:"text", placeholder:"اكتب هون..."},
-            {label:"🪪 صورة الهوية الشخصية - الوجه الأمامي", type:"file"},
-            {label:"🪪 صورة الهوية الشخصية - الوجه الخلفي", type:"file"}
-        ]
-    }
-};
+        /* ===== المتطلبات المخصصة لكل خدمة ===== */
+        const SERVICE_REQUIREMENTS = {
+            "التسجيل الجامعي": [
+                { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
+                { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
+                { type: "image", id: "certificate", label: "صورة الشهادة الثانوية" },
+                { type: "text", id: "uni_name", label: "اسم الجامعة والتخصص المطلوب", placeholder: "مثال: جامعة دمشق - هندسة معلوماتية" }
+            ],
+            "المفاضلات": [
+                { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
+                { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
+                { type: "image", id: "certificate", label: "صورة الشهادة الثانوية" },
+                { type: "text", id: "sub_num", label: "رقم الاشتراك بالمفاضلة (إن وجد)", placeholder: "أدخل رقم الاشتراك" },
+                { type: "text", id: "branch", label: "الفرع (علمي / أدبي / مهني)", placeholder: "مثال: علمي" }
+            ],
+            "دفع الرسوم": [
+                { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
+                { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
+                { type: "text", id: "uni_num", label: "الرقم الجامعي", placeholder: "أدخل رقمك الجامعي" },
+                { type: "text", id: "fees_type", label: "نوع الرسم المطلوب", placeholder: "مثال: رسوم فصل أول" }
+            ],
+            "تصديق الشهادات": [
+                { type: "image", id: "certificate", label: "صورة الشهادة الأصلية" },
+                { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
+                { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
+                { type: "text", id: "copies", label: "عدد النسخ المطلوبة", placeholder: "مثال: 2 نسخ" }
+            ],
+            "معادلة الشهادات": [
+                { type: "image", id: "certificate", label: "صورة الشهادة الأصلية" },
+                { type: "image", id: "transcript", label: "صورة كشف العلامات (Transcript)" },
+                { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
+                { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
+                { type: "text", id: "country", label: "بلد الدراسة", placeholder: "مثال: تركيا / أوكرانيا" }
+            ],
+            "نقل الطلاب": [
+                { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
+                { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
+                { type: "text", id: "from_uni", label: "الجامعة الحالية", placeholder: "الجامعة التي تدرس بها حالياً" },
+                { type: "text", id: "to_uni", label: "الجامعة المطلوب النقل إليها", placeholder: "الجامعة التي تريد النقل إليها" },
+                { type: "text", id: "reason", label: "سبب النقل", placeholder: "مثال: نقل سكن / ظروف عائلية" }
+            ],
+            "تأجيل الخدمة": [
+                { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
+                { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
+                { type: "text", id: "uni_num", label: "الرقم الجامعي", placeholder: "أدخل رقمك الجامعي" },
+                { type: "text", id: "year", label: "السنة الدراسية المطلوب تأجيلها", placeholder: "مثال: السنة الثانية" },
+                { type: "text", id: "delay_reason", label: "سبب التأجيل", placeholder: "مثال: ظروف صحية" }
+            ],
+            "خدمة أخرى": [
+                { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
+                { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
+                { type: "text", id: "details", label: "وصف الخدمة المطلوبة", placeholder: "اكتب تفاصيل الخدمة هنا" }
+            ]
+        };
 
-function updateRequirements() {
-    const selectedService = document.getElementById('serviceSelect').value;
-    const box = document.getElementById('requirementsBox');
-    if(!selectedService){
-        box.style.display = 'none';
-        return;
-    }
-    box.style.display = 'block';
-    const data = requirementsData[selectedService];
-    const container = document.getElementById('dynamicFields');
-    const reqText = document.getElementById('reqText');
-    container.innerHTML = "";
-    if(!data){ reqText.innerHTML = "يرجى التواصل عبر واتساب لتفاصيل أكثر."; return; }
-    reqText.innerHTML = data.text;
-    data.fields.forEach((f, i) => {
-        const div = document.createElement('div');
-        div.className = 'field-box';
-        let inputHtml = '';
-        if(f.type === 'file'){
-            inputHtml = `<input type="file" id="field_${i}" accept="image/*,.pdf">`;
-        } else {
-            inputHtml = `<input type="${f.type}" id="field_${i}" placeholder="${f.placeholder || ''}">`;
+        function checkServiceSelection() {
+            const service = document.getElementById("serviceSelect").value;
+            const detailsBtn = document.getElementById("detailsBtn");
+            if (service) { detailsBtn.classList.add("show"); } else { detailsBtn.classList.remove("show"); }
         }
-        div.innerHTML = `<label>${f.label}:</label>${inputHtml}`;
-        container.appendChild(div);
-    });
-    document.getElementById('afterNote').style.display = 'none';
-}
 
-function saveUserData() {
-    localStorage.setItem('student_name', document.getElementById('studentName').value);
-    localStorage.setItem('student_phone', document.getElementById('studentPhone').value);
-}
+        function openUploadModal() {
+            const service = document.getElementById("serviceSelect").value;
+            const container = document.getElementById("uploadFieldsContainer");
+            modalData = {};
 
-window.onload = function() {
-    if(localStorage.getItem('student_name')) {
-        document.getElementById('studentName').value = localStorage.getItem('student_name');
-    }
-    if(localStorage.getItem('student_phone')) {
-        document.getElementById('studentPhone').value = localStorage.getItem('student_phone');
-    }
-};
+            if (service && SERVICE_REQUIREMENTS[service]) {
+                container.innerHTML = SERVICE_REQUIREMENTS[service].map(field => {
+                    if (field.type === "image") {
+                        return `
+                            <div class="upload-group">
+                                <label>${field.label}</label>
+                                <input type="file" id="file_${field.id}" accept="image/*" onchange="updateFileName(this)">
+                                <label for="file_${field.id}" class="upload-btn">
+                                    <i class="fa-solid fa-camera"></i> رفع الصورة
+                                </label>
+                                <span class="file-name" id="name_${field.id}"></span>
+                            </div>
+                        `;
+                    } else {
+                        return `
+                            <div class="upload-group" style="text-align:right;">
+                                <label>${field.label}</label>
+                                <input type="text" class="info-input" id="input_${field.id}" placeholder="${field.placeholder || ''}" onchange="saveModalData('${field.id}', this.value)">
+                            </div>
+                        `;
+                    }
+                }).join("");
+                
+                document.getElementById("uploadModal").classList.add("show");
+            }
+        }
 
-function generateOrderText() {
-    const service = document.getElementById('serviceSelect').value;
-    const name = document.getElementById('studentName').value.trim();
-    let phone = document.getElementById('studentPhone').value.trim();
-    let extra = "";
-    const data = requirementsData[service];
-    if(data){
-        data.fields.forEach((f, i) => {
-            const el = document.getElementById('field_' + i);
-            if(!el) return;
-            if(f.type === 'file'){
-                if(el.files && el.files.length > 0) extra += `\n- ${f.label}: [تم اختيار الملف]`;
-            } else {
-                if(el.value.trim()) extra += `\n- ${f.label}: ${el.value.trim()}`;
+        function closeUploadModal() {
+            document.getElementById("uploadModal").classList.remove("show");
+        }
+
+        function saveModalData(id, value) {
+            if (value.trim() !== "") { modalData[id] = value.trim(); } else { delete modalData[id]; }
+        }
+
+        function updateFileName(input) {
+            const nameSpan = document.getElementById("name_" + input.id.replace("file_", ""));
+            if (input.files && input.files[0]) {
+                nameSpan.textContent = "✅ تم اختيار الصورة (لا تنسَ إرفاقها في الواتساب)";
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedUser = localStorage.getItem(LS_USER);
+            if (savedUser) {
+                const user = JSON.parse(savedUser);
+                if (user.name) document.getElementById("nameInput").value = user.name;
+                if (user.phone) document.getElementById("phoneInput").value = user.phone;
             }
         });
-    }
-    return `مرحباً، أرغب بطلب هذه الخدمة:\n` +
-           `📌 الخدمة: ${service}\n` +
-           `👤 اسم الطالب: ${name}\n` +
-           `📱 رقم الهاتف: ${phone}` + extra + `\n\nجاهز لإرسال الأوراق وصور الهوية (وجهين).`;
-}
 
-function validateInputs() {
-    const service = document.getElementById('serviceSelect').value;
-    if(!service){
-        alert('الرجاء اختر الخدمة أولاً.');
-        return false;
-    }
-    const name = document.getElementById('studentName').value.trim();
-    let phone = document.getElementById('studentPhone').value.trim();
-    phone = phone.replace(/\s+/g, '');
-    if(!name || !phone) {
-        alert('الرجاء كتابة الاسم ورقم الهاتف لنتمكن من التواصل معك.');
-        return false;
-    }
-    if(!/^09\d{8}$/.test(phone)) {
-        alert('رقم الموبايل غير صحيح.\nلازم يكون 10 أرقام ويبلش بـ 09\nمثال: 0930123456');
-        return false;
-    }
-    if(name.length < 3) {
-        alert('الرجاء كتابة الاسم الثلاثي كاملاً.');
-        return false;
-    }
-    return true;
-}
+        function sendToWhatsApp() {
+            const service = document.getElementById("serviceSelect").value;
+            const name = document.getElementById("nameInput").value.trim();
+            const phone = document.getElementById("phoneInput").value.trim();
 
-function sendToWhatsApp() {
-    if(!validateInputs()) return;
-    const text = encodeURIComponent(generateOrderText());
-    const phoneNo = "963930688067";
-    document.getElementById('afterNote').style.display = 'block';
-    window.open(`https://wa.me/${phoneNo}?text=${text}`, '_blank');
-}
+            if (!service || !name || !phone) {
+                alert("الرجاء اختيار الخدمة، وإدخال الاسم ورقم الموبايل.");
+                return;
+            }
 
-function copyOrderText() {
-    if(!validateInputs()) return;
-    const text = generateOrderText();
-    navigator.clipboard.writeText(text).then(() => {
-        alert('✅ تم نسخ تفاصيل الطلب بنجاح!\nالآن سيتم فتح الواتساب، قم بلصق النص مع صور الهوية (الوجهين).');
-        document.getElementById('afterNote').style.display = 'block';
-        const phoneNo = "963930688067";
-        window.open(`https://wa.me/${phoneNo}`, '_blank');
-    }).catch(err => {
-        alert('حدث خطأ أثناء النسخ، يرجى استخدام زر الواتساب مباشرة.');
-    });
-}
-</script>
+            localStorage.setItem(LS_USER, JSON.stringify({ name: name, phone: phone }));
 
+            let message = `مرحباً، أريد طلب خدمة جامعية:\n\n` +
+                          `👤 الاسم: ${name}\n` +
+                          `📱 رقم الموبايل: ${phone}\n` +
+                          `📋 الخدمة المطلوبة: ${service}\n\n`;
+
+            if (Object.keys(modalData).length > 0) {
+                message += `📝 تفاصيل إضافية:\n`;
+                for (const [key, value] of Object.entries(modalData)) {
+                    const reqField = SERVICE_REQUIREMENTS[service].find(f => f.id === key);
+                    const label = reqField ? reqField.label : key;
+                    message += `- ${label}: ${value}\n`;
+                }
+                message += `\n`;
+            }
+
+            message += `أرجو إخباري بالسعر.\nسأقوم بإرسال الصور المطلوبة في المحادثة.`;
+
+            const whatsappUrl = `https://wa.me/${OWNER_PHONE}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, "_blank");
+        }
+    </script>
 </body>
 </html>

@@ -6,6 +6,8 @@
 <title>خدمات جامعة حمص (البعث) | وسيطك الأكاديمي الموثوق</title>
 <meta name="theme-color" content="#0F2340">
 <link rel="icon" type="image/jpeg" href="https://i.ibb.co/hFgCw9rg/IMG.jpg">
+<!-- ربط ملف الـ Web App Manifest لتحويل الموقع لتطبيق -->
+<link rel="manifest" href="data:application/manifest+json;charset=utf-8,%7B%22name%22%3A%22%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%AC%D8%A7%D9%85%D8%B9%D8%A9%20%D8%AD%D9%85%D8%B5%22%2C%22short_name%22%3A%22%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%AD%D9%85%D8%B5%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%230b1a30%22%2C%22theme_color%22%3A%22%230F2340%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22https%3A%2F%2Fi.ibb.co%2FhFgCw9rg%2FIMG.jpg%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image%2Fjpeg%22%7D%5D%7D">
 <meta property="og:title" content="خدمات طلاب جامعة حمص (البعث) | متابعة فورية لمعاملاتك">
 <meta property="og:description" content="منصة وسيطة لتسريع كافة الإجراءات والوثائق الجامعية في جامعة حمص. أرسل طلبك ودع الباقي لنا.">
 <meta property="og:image" content="https://i.ibb.co/hFgCw9rg/IMG.jpg">
@@ -68,6 +70,35 @@
         box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
     }
     .trust-badge i { color: #d4af37; font-size: 1rem; }
+    
+    /* زر تثبيت التطبيق العائم للطلاب */
+    .install-banner {
+        display: none;
+        background: linear-gradient(135deg, #d4af37, #b89728);
+        color: #0b1a30;
+        padding: 12px 15px;
+        border-radius: 12px;
+        margin-bottom: 15px;
+        text-align: center;
+        font-weight: 800;
+        box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        animation: fadeIn 0.4s ease;
+    }
+    .install-btn-app {
+        background: #0b1a30;
+        color: #d4af37;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-weight: 800;
+        margin-top: 8px;
+        cursor: pointer;
+        font-family: 'Cairo', sans-serif;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+
     .form-box {
         background: linear-gradient(145deg, #12243d, #0e1d32);
         border: 2.5px solid #d4af37; border-radius: 18px; padding: 22px; margin-bottom: 20px;
@@ -81,12 +112,12 @@
     .form-box h2 { text-align: center; color: #d4af37; font-size: 1.15rem; margin-bottom: 15px; font-weight: 700; text-shadow: 0 0 10px rgba(212,175,55,0.3); }
     .input-group { margin-bottom: 14px; text-align: right; }
     .input-group label { display: block; margin-bottom: 5px; font-size: 0.88rem; font-weight: 600; color: #e2e8f0; }
-    .input-group input, .input-group select {
+    .input-group input, .input-group select, .input-group textarea {
         width: 100%; padding: 11px 14px; background-color: #0b1a30;
         border: 1px solid #2a4365; border-radius: 10px; color: #fff; font-size: 0.88rem;
-        outline: none; transition: all 0.3s ease;
+        outline: none; transition: all 0.3s ease; font-family: 'Cairo', sans-serif;
     }
-    .input-group input:focus, .input-group select:focus { border-color: #d4af37; box-shadow: 0 0 12px rgba(212, 175, 55, 0.4); }
+    .input-group input:focus, .input-group select:focus, .input-group textarea:focus { border-color: #d4af37; box-shadow: 0 0 12px rgba(212, 175, 55, 0.4); }
     .input-group input::placeholder { color: #64748b; }
     #dynamicRequirementsContainer {
         display: none; background-color: rgba(11, 26, 48, 0.95);
@@ -126,13 +157,13 @@
     .review-stars { color: #fbbf24; font-size: 0.78rem; margin-bottom: 3px; }
     .review-comment { font-size: 0.78rem; color: #e2e8f0; font-style: italic; }
     .review-author { font-size: 0.72rem; color: #d4af37; font-weight: 700; text-align: left; margin-top: 3px; }
-    footer { text-align: center; padding: 12px; font-size: 0.78rem; color: #94a3b8; border-top: 1px solid #1e293b; background: rgba(11,26,48,0.9); }
+    footer { text-align: center; padding: 12px; font-size: 0.78rem; color: #94a3b8; border-top: 1px solid #1e293b; background: rgba(11,26,48,0.9); cursor: pointer; user-select: none; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 </head>
 <body>
     <div class="announcement-bar">
-        <div class="marquee-content">⚡ إعلان هام لطلاب جامعة حمص: بدء استقبال طلبات ومتابعة معاملات المفاضلات وكشوف العلامات للفصل الحالي بدقة وسرعة فائقة عبر الواتساب!</div>
+        <div class="marquee-content" id="announcementTextDisplay">⚡ إعلان هام لطلاب جامعة حمص: بدء استقبال طلبات ومتابعة معاملات المفاضلات وكشوف العلامات للفصل الحالي بدقة وسرعة فائقة عبر الواتساب!</div>
     </div>
     <header>
         <img src="https://i.ibb.co/hFgCw9rg/IMG.jpg" alt="شعار جامعة حمص" class="header-logo" onerror="this.src='https://via.placeholder.com/90?text=Logo'">
@@ -142,12 +173,19 @@
         </div>
     </header>
     <div class="container">
+        <!-- زر تثبيت المنصة كتطبيق على الهاتف -->
+        <div class="install-banner" id="installBanner">
+            <i class="fa-solid fa-mobile-screen-button" style="font-size: 1.2rem; margin-bottom: 4px;"></i>
+            <div>ثبت منصة خدمات جامعة حمص كتطبيق على هاتفك للوصول السريع!</div>
+            <button class="install-btn-app" id="installAppBtn"><i class="fa-solid fa-download"></i> تثبيت التطبيق الآن</button>
+        </div>
+
         <div class="trust-badge">
             <i class="fa-solid fa-graduation-cap"></i>
             متابعة فورية وشاملة لكافة معاملات كليات جامعة حمص
         </div>
         <div class="form-box">
-            <h2>اختر الخدمة المطلوبة في الجامعة</h2>
+            <h2 id="formTitleDisplay">اختر الخدمة المطلوبة في الجامعة</h2>
             <div class="input-group">
                 <label>اختر نوع الخدمة الأكاديمية:</label>
                 <select id="serviceSelect" onchange="renderServiceRequirements()">
@@ -244,13 +282,183 @@
         </div>
     </div>
 
-    <footer>
-        <p>نرد عليكم خلال دقائق • وسيطكم الأكاديمي الموثوق في جامعة حمص</p>
+    <!-- نافذة تسجيل دخول لوحة التحكم السرية -->
+    <div class="modal-overlay" id="adminLoginModal">
+        <div class="modal-content" style="max-width: 380px;">
+            <h3><i class="fa-solid fa-lock" style="color: #d4af37;"></i> دخول لوحة التحكم الإدارية</h3>
+            <div class="input-group" style="margin-top: 15px;">
+                <label>أدخل كلمة المرور السرية:</label>
+                <input type="password" id="adminPasswordInput" placeholder="كلمة المرور...">
+            </div>
+            <button class="btn-whatsapp" style="background: linear-gradient(135deg, #d4af37, #b89728); color: #0b1a30;" onclick="verifyAdminLogin()">تسجيل الدخول</button>
+            <button class="modal-close-btn" onclick="closeAdminLogin()">إلغاء</button>
+        </div>
+    </div>
+
+    <!-- نافذة لوحة التحكم السرية الرئيسية -->
+    <div class="modal-overlay" id="adminPanelModal">
+        <div class="modal-content">
+            <h3><i class="fa-solid fa-sliders" style="color: #d4af37;"></i> لوحة التحكم في محتوى المنصة</h3>
+            
+            <div class="input-group" style="margin-top: 10px;">
+                <label>نص شريط الإعلانات المتحرك:</label>
+                <textarea id="adminAnnouncementInput" rows="3" class="info-input" style="height: 70px;"></textarea>
+            </div>
+
+            <div class="input-group">
+                <label>رقم الواتساب الرسمي لاستقبال الطلبات (بدون + وبدون مسافات):</label>
+                <input type="text" id="adminPhoneInput" class="info-input">
+            </div>
+
+            <div class="input-group">
+                <label>حالة المنصة:</label>
+                <select id="adminStatusSelect" class="info-input">
+                    <option value="active">مفتوحة وتستقبل الطلبات بشكل طبيعي</option>
+                    <option value="maintenance">متوقفة مؤقتاً (وضع الصيانة / توقف الطلبات)</option>
+                </select>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #2a4365; margin: 15px 0;">
+            <div class="modal-section-title"><i class="fa-solid fa-key"></i> تغيير كلمة المرور السرية:</div>
+            
+            <div class="input-group">
+                <label>كلمة المرور الجديدة:</label>
+                <input type="password" id="adminNewPassword" class="info-input" placeholder="أدخل كلمة مرور جديدة...">
+            </div>
+
+            <button class="btn-whatsapp" style="background: linear-gradient(135deg, #22c55e, #16a34a); margin-top: 10px;" onclick="saveAdminSettings()"><i class="fa-solid fa-floppy-disk"></i> حفظ كافة التعديلات والتحديثات</button>
+            <button class="modal-close-btn" onclick="closeAdminPanel()">إغلاق لوحة التحكم</button>
+        </div>
+    </div>
+
+    <footer onclick="triggerAdminSecret(event)">
+        <p>نرد عليكم خلال دقائق • وسيطكم الأكاديمي الموثوق في جامعة حمص 🔒</p>
     </footer>
 
     <script>
-        const OWNER_PHONE = "963930688067";
-        const LS_USER = "uni_service_user";
+        // إعدادات تثبيت التطبيق PWA
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            document.getElementById('installBanner').style.display = 'block';
+        });
+
+        document.getElementById('installAppBtn').addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') {
+                    document.getElementById('installBanner').style.display = 'none';
+                }
+                deferredPrompt = null;
+            }
+        });
+
+        // إعدادات التخزين المحلي لوحة التحكم
+        const LS_ADMIN_PASS = "uni_admin_pass_secure";
+        const LS_ANNOUNCEMENT = "uni_custom_announcement";
+        const LS_PHONE = "uni_custom_phone";
+        const LS_STATUS = "uni_custom_status";
+
+        let defaultPhone = "963930688067";
+        let defaultAnnouncement = "⚡ إعلان هام لطلاب جامعة حمص: بدء استقبال طلبات ومتابعة معاملات المفاضلات وكشوف العلامات للفصل الحالي بدقة وسرعة فائقة عبر الواتساب!";
+        let defaultPass = "admin123";
+
+        window.addEventListener("DOMContentLoaded", () => {
+            const savedAnn = localStorage.getItem(LS_ANNOUNCEMENT);
+            const savedPhone = localStorage.getItem(LS_PHONE);
+            const savedStatus = localStorage.getItem(LS_STATUS);
+
+            if (savedAnn) {
+                document.querySelector(".marquee-content").textContent = savedAnn;
+            }
+            if (savedPhone) {
+                defaultPhone = savedPhone;
+            }
+            if (savedStatus === "maintenance") {
+                document.querySelector(".form-box").innerHTML = `
+                    <div style="text-align: center; padding: 30px 10px;">
+                        <i class="fa-solid fa-triangle-exclamation" style="font-size: 3rem; color: #d4af37; margin-bottom: 15px;"></i>
+                        <h2 style="color: #d4af37; margin-bottom: 10px;">المنصة متوقفة مؤقتاً</h2>
+                        <p style="color: #cbd5e1; font-size: 0.9rem;">نعتذر منكم، يتم حالياً تحديث البيانات أو توقف استقبال الطلبات مؤقتاً. نعود قريباً لخدمتكم.</p>
+                    </div>
+                `;
+            }
+        });
+
+        let clickCounter = 0;
+        function triggerAdminSecret(e) {
+            clickCounter++;
+            if (clickCounter >= 3) {
+                clickCounter = 0;
+                document.getElementById("adminLoginModal").classList.add("show");
+            }
+        }
+
+        document.addEventListener("keydown", (e) => {
+            if (e.ctrlKey && e.shiftKey && e.code === "KeyA") {
+                e.preventDefault();
+                document.getElementById("adminLoginModal").classList.add("show");
+            }
+        });
+
+        function closeAdminLogin() {
+            document.getElementById("adminLoginModal").classList.remove("show");
+            document.getElementById("adminPasswordInput").value = "";
+        }
+
+        function verifyAdminLogin() {
+            const enteredPass = document.getElementById("adminPasswordInput").value;
+            const currentPass = localStorage.getItem(LS_ADMIN_PASS) || defaultPass;
+
+            if (enteredPass === currentPass) {
+                closeAdminLogin();
+                openAdminPanel();
+            } else {
+                alert("كلمة المرور غير صحيحة!");
+            }
+        }
+
+        function openAdminPanel() {
+            document.getElementById("adminAnnouncementInput").value = localStorage.getItem(LS_ANNOUNCEMENT) || defaultAnnouncement;
+            document.getElementById("adminPhoneInput").value = localStorage.getItem(LS_PHONE) || defaultPhone;
+            document.getElementById("adminStatusSelect").value = localStorage.getItem(LS_STATUS) || "active";
+            document.getElementById("adminNewPassword").value = "";
+            document.getElementById("adminPanelModal").classList.add("show");
+        }
+
+        function closeAdminPanel() {
+            document.getElementById("adminPanelModal").classList.remove("show");
+        }
+
+        function saveAdminSettings() {
+            const newAnn = document.getElementById("adminAnnouncementInput").value.trim();
+            const newPhone = document.getElementById("adminPhoneInput").value.trim();
+            const newStatus = document.getElementById("adminStatusSelect").value;
+            const newPass = document.getElementById("adminNewPassword").value.trim();
+
+            if (newAnn) {
+                localStorage.setItem(LS_ANNOUNCEMENT, newAnn);
+                document.querySelector(".marquee-content").textContent = newAnn;
+            }
+            if (newPhone) {
+                localStorage.setItem(LS_PHONE, newPhone);
+                defaultPhone = newPhone;
+            }
+            if (newStatus) {
+                localStorage.setItem(LS_STATUS, newStatus);
+            }
+            if (newPass) {
+                localStorage.setItem(LS_ADMIN_PASS, newPass);
+                alert("تم تحديث كلمة المرور بنجاح!");
+            }
+
+            alert("تم حفظ وتحديث إعدادات المنصة بنجاح!");
+            closeAdminPanel();
+            location.reload();
+        }
+
         const LS_REVIEWS = "uni_platform_reviews_list";
         let pendingWhatsAppUrl = "";
 
@@ -401,7 +609,6 @@
                 return;
             }
 
-            // جمع بيانات الحقول الإضافية إن وجدت
             let extraDataText = "";
             const customInputs = document.querySelectorAll('[id^="custom_field_"]');
             customInputs.forEach((inp, idx) => {
@@ -411,6 +618,7 @@
             });
 
             const trackingNo = generateTrackingNumber();
+            const activePhone = localStorage.getItem(LS_PHONE) || defaultPhone;
             
             let message = `مرحباً، أرغب بطلب خدمة أكاديمية:\n\n`;
             message += `📌 الخدمة: ${service}\n`;
@@ -422,9 +630,8 @@
             message += `\n🔢 رقم التتبع: ${trackingNo}`;
 
             const encodedMsg = encodeURIComponent(message);
-            pendingWhatsAppUrl = `https://wa.me/${OWNER_PHONE}?text=${encodedMsg}`;
+            pendingWhatsAppUrl = `https://wa.me/${activePhone}?text=${encodedMsg}`;
 
-            // عرض نافذة التتبع
             document.getElementById("trackingNumberDisplay").textContent = trackingNo;
             document.getElementById("trackingModal").classList.add("show");
         }
@@ -453,6 +660,12 @@
 
         function loadLocalReviews() {
             const container = document.getElementById("reviewsListContainer");
+            const staticHTML = `
+                <div class="review-item"><div class="review-stars">★★★★★</div><div class="review-comment">"خدمة ممتازة وففرت عليّ عناء الروتين والذهاب المتكرر، تابعوا معاملة كشف العلامات حتى استلمتها."</div><div class="review-author">— أحمد، طالب هندسة</div></div>
+                <div class="review-item"><div class="review-stars">★★★★★</div><div class="review-comment">"سرعة في الرد واحترافية عالية بالمتابعة داخل الكلية، أنصح بالتعامل معهم بشدة."</div><div class="review-author">— ريم، طالبة آداب</div></div>
+            `;
+            container.innerHTML = staticHTML;
+
             const saved = localStorage.getItem(LS_REVIEWS);
             if (saved) {
                 try {
@@ -461,7 +674,7 @@
                         const div = document.createElement("div");
                         div.className = "review-item";
                         div.innerHTML = `<div class="review-stars">★★★★★</div><div class="review-comment">"${r.text}"</div><div class="review-author">— ${r.author}</div>`;
-                        container.appendChild(div);
+                        container.prepend(div);
                     });
                 } catch(e) {}
             }
@@ -476,13 +689,6 @@
                 return;
             }
 
-            const container = document.getElementById("reviewsListContainer");
-            const div = document.createElement("div");
-            div.className = "review-item";
-            div.innerHTML = `<div class="review-stars">★★★★★</div><div class="review-comment">"${text}"</div><div class="review-author">— ${author}</div>`;
-            container.prepend(div);
-
-            // حفظ في LocalStorage
             let reviews = [];
             const saved = localStorage.getItem(LS_REVIEWS);
             if (saved) {
@@ -493,6 +699,7 @@
 
             document.getElementById("reviewerName").value = "";
             document.getElementById("reviewerText").value = "";
+            loadLocalReviews();
             alert("تم نشر رأيك بنجاح على المنصة محلياً!");
         }
 

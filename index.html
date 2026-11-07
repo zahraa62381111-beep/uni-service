@@ -3,280 +3,385 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>خدمات جامعية | وسيطك الموثوق</title>
-<link rel="manifest" href="/manifest.json">
+<title>خدمات جامعة حمص (البعث) | وسيطك الأكاديمي الموثوق</title>
 <meta name="theme-color" content="#0F2340">
 <link rel="icon" type="image/jpeg" href="https://i.ibb.co/hFgCw9rg/IMG.jpg">
-<meta property="og:title" content="خدمات الطلاب الجامعية | متابعة خاصة لجامعة حمص">
-<meta property="og:description" content="منصة وسيطة موثوقة لتسريع إجراءاتك الجامعية. أرسل أوراقك وسنتولى نحن الباقي.">
+<meta property="og:title" content="خدمات طلاب جامعة حمص (البعث) | متابعة فورية لمعاملاتك">
+<meta property="og:description" content="منصة وسيطة لتسريع كافة الإجراءات والوثائق الجامعية في جامعة حمص. أرسل طلبك ودع الباقي لنا.">
 <meta property="og:image" content="https://i.ibb.co/hFgCw9rg/IMG.jpg">
-<meta property="og:image:width" content="1024">
-<meta property="og:image:height" content="1024">
 <meta property="og:url" content="https://uni-service-mu.vercel.app/">
 <meta property="og:type" content="website">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
-    body { background-color: #0b1a30; color: #ffffff; min-height: 100vh; display: flex; flex-direction: column; }
-    header { text-align: center; padding: 30px 20px; border-bottom: 2px solid #d4af37; background-color: #0b1a30; display: flex; flex-direction: column; align-items: center; }
-    .header-logo { width: 90px; height: 90px; border-radius: 18px; object-fit: cover; margin-bottom: 15px; border: 2px solid #d4af37; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
-    header h1 { font-size: 1.6rem; font-weight: 800; margin-bottom: 8px; }
-    header p { color: #d4af37; font-size: 0.9rem; font-weight: 600; }
+    body {
+        min-height: 100vh;
+        background-color: #0b1a30;
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        box-shadow: inset 0 0 60px rgba(212, 175, 55, 0.3), inset 0 0 25px rgba(37, 99, 235, 0.2);
+        border: 4px solid #d4af37;
+        overflow-x: hidden;
+    }
+    .announcement-bar {
+        background: linear-gradient(90deg, #b89728, #d4af37, #f3e5ab, #d4af37, #b89728);
+        background-size: 300% 100%;
+        animation: goldShimmer 6s ease infinite;
+        color: #0b1a30;
+        padding: 7px 10px;
+        font-size: 0.8rem;
+        font-weight: 800;
+        text-align: center;
+        overflow: hidden;
+        white-space: nowrap;
+        position: relative;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        z-index: 10;
+    }
+    .marquee-content {
+        display: inline-block;
+        white-space: nowrap;
+        padding-left: 100%;
+        animation: marqueeScroll 25s linear infinite;
+        font-weight: 800;
+    }
+    @keyframes marqueeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+    @keyframes goldShimmer { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    header {
+        text-align: center; padding: 18px;
+        border-bottom: 2px solid rgba(212, 175, 55, 0.4);
+        background: linear-gradient(to bottom, #0e1d32, #0b1a30);
+        display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 15px;
+    }
+    .header-logo { width: 60px; height: 60px; border-radius: 14px; object-fit: cover; border: 2px solid #d4af37; box-shadow: 0 0 15px rgba(212, 175, 55, 0.5); }
+    header h1 { font-size: 1.25rem; font-weight: 800; margin-bottom: 3px; text-shadow: 0 2px 10px rgba(0,0,0,0.6); }
+    header p { color: #d4af37; font-size: 0.8rem; font-weight: 600; text-shadow: 0 0 8px rgba(212,175,55,0.3); }
     .container { max-width: 600px; margin: 0 auto; padding: 20px; width: 100%; flex: 1; }
-    .trust-badge { background-color: rgba(212, 175, 55, 0.1); border: 1px solid #d4af37; color: #d4af37; text-align: center; padding: 10px; border-radius: 8px; font-size: 0.9rem; font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 8px; }
-    .form-box { background-color: #12243d; border: 2px solid #d4af37; border-radius: 15px; padding: 25px 20px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); }
-    .form-box h2 { text-align: center; color: #d4af37; font-size: 1.2rem; margin-bottom: 20px; font-weight: 700; }
-    .input-group { margin-bottom: 15px; text-align: right; }
-    .input-group label { display: block; margin-bottom: 8px; font-size: 0.95rem; font-weight: 600; }
-    .input-group input, .input-group select { width: 100%; padding: 12px 15px; background-color: #0b1a30; border: 1px solid #2a4365; border-radius: 8px; color: #fff; font-size: 0.95rem; outline: none; transition: border-color 0.3s; }
-    .input-group input:focus, .input-group select:focus { border-color: #d4af37; }
+    .trust-badge {
+        background: linear-gradient(135deg, rgba(212, 175, 55, 0.18), rgba(212, 175, 55, 0.06));
+        border: 1px solid rgba(212, 175, 55, 0.6); color: #f3e5ab; text-align: center;
+        padding: 10px; border-radius: 12px; font-size: 0.85rem; font-weight: 700; margin-bottom: 18px;
+        display: flex; align-items: center; justify-content: center; gap: 8px;
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
+    }
+    .trust-badge i { color: #d4af37; font-size: 1rem; }
+    .form-box {
+        background: linear-gradient(145deg, #12243d, #0e1d32);
+        border: 2.5px solid #d4af37; border-radius: 18px; padding: 22px; margin-bottom: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 22px rgba(212, 175, 55, 0.35), inset 0 0 12px rgba(212, 175, 55, 0.15);
+        animation: borderGlow 3s infinite alternate;
+    }
+    @keyframes borderGlow {
+        0% { border-color: #d4af37; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 175, 55, 0.25), inset 0 0 8px rgba(212, 175, 55, 0.1); }
+        100% { border-color: #f3e5ab; box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6), 0 0 30px rgba(212, 175, 55, 0.6), inset 0 0 18px rgba(212, 175, 55, 0.3); }
+    }
+    .form-box h2 { text-align: center; color: #d4af37; font-size: 1.15rem; margin-bottom: 15px; font-weight: 700; text-shadow: 0 0 10px rgba(212,175,55,0.3); }
+    .input-group { margin-bottom: 14px; text-align: right; }
+    .input-group label { display: block; margin-bottom: 5px; font-size: 0.88rem; font-weight: 600; color: #e2e8f0; }
+    .input-group input, .input-group select {
+        width: 100%; padding: 11px 14px; background-color: #0b1a30;
+        border: 1px solid #2a4365; border-radius: 10px; color: #fff; font-size: 0.88rem;
+        outline: none; transition: all 0.3s ease;
+    }
+    .input-group input:focus, .input-group select:focus { border-color: #d4af37; box-shadow: 0 0 12px rgba(212, 175, 55, 0.4); }
     .input-group input::placeholder { color: #64748b; }
-    .service-row { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
-    .service-row select { flex: 1; }
-    .btn-details { background-color: #d4af37; color: #0b1a30; border: none; border-radius: 8px; padding: 12px 18px; font-weight: 800; font-size: 0.9rem; cursor: pointer; display: none; align-items: center; justify-content: center; gap: 6px; white-space: nowrap; transition: background-color 0.3s, transform 0.1s; }
-    .btn-details:hover { background-color: #e5c158; }
-    .btn-details.show { display: flex; }
-    .btn-whatsapp { width: 100%; padding: 14px; background-color: #25D366; color: #fff; border: none; border-radius: 8px; font-size: 1.05rem; font-weight: 800; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 20px; font-family: 'Cairo', sans-serif; transition: background-color 0.3s; }
-    .btn-whatsapp:hover { background-color: #20b858; }
-    .info-section { background-color: #12243d; border: 1px solid #2a4365; border-right: 4px solid #d4af37; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
-    .info-section h3 { color: #d4af37; margin-bottom: 15px; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
-    .info-section ul { list-style: none; }
-    .info-section li { margin-bottom: 12px; font-size: 0.9rem; line-height: 1.6; color: #cbd5e1; display: flex; align-items: flex-start; gap: 8px; }
-    .info-section li i { color: #22c55e; margin-top: 4px; }
-    .reviews-grid { display: grid; gap: 15px; }
-    .review-card { background-color: #0b1a30; padding: 15px; border-radius: 8px; border: 1px solid #2a4365; }
-    .review-stars { color: #fbbf24; font-size: 0.9rem; margin-bottom: 8px; }
-    .review-text { font-size: 0.85rem; color: #cbd5e1; line-height: 1.6; font-style: italic; margin-bottom: 8px; }
-    .review-author { font-size: 0.8rem; color: #d4af37; font-weight: 700; text-align: left; }
-    .modal-overlay { display: none; position: fixed; inset: 0; background-color: rgba(0, 0, 0, 0.85); z-index: 1000; align-items: center; justify-content: center; padding: 15px; animation: fadeIn 0.3s ease; }
-    .modal-overlay.show { display: flex; }
-    .modal-content { background-color: #12243d; border: 2px solid #d4af37; border-radius: 15px; padding: 25px 20px; max-width: 500px; width: 100%; max-height: 90vh; overflow-y: auto; }
-    .modal-content h3 { color: #d4af37; margin-bottom: 20px; font-size: 1.1rem; text-align: center; border-bottom: 1px solid #2a4365; padding-bottom: 10px; }
-    .upload-group { background-color: #0b1a30; border: 1px dashed #4a5568; border-radius: 8px; padding: 15px; margin-bottom: 12px; text-align: center; transition: border-color 0.3s; }
-    .upload-group:hover { border-color: #d4af37; }
-    .upload-group label { display: block; font-size: 0.9rem; color: #cbd5e1; margin-bottom: 10px; font-weight: 600; }
+    #dynamicRequirementsContainer {
+        display: none; background-color: rgba(11, 26, 48, 0.95);
+        border: 1px solid rgba(212, 175, 55, 0.7); border-radius: 12px;
+        padding: 15px; margin-top: 14px; margin-bottom: 14px;
+        animation: fadeIn 0.3s ease; box-shadow: inset 0 0 10px rgba(212,175,55,0.1);
+    }
+    #dynamicRequirementsContainer h4 { color: #d4af37; font-size: 0.92rem; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; border-bottom: 1px solid #2a4365; padding-bottom: 5px; }
+    .upload-group { background-color: #0b1a30; border: 1px dashed #4a5568; border-radius: 8px; padding: 10px; margin-bottom: 10px; text-align: center; }
+    .upload-group label { display: block; font-size: 0.82rem; color: #cbd5e1; margin-bottom: 6px; font-weight: 600; }
     .upload-group input[type="file"] { display: none; }
-    .upload-btn { background-color: #1e3a8a; color: #fff; padding: 8px 15px; border-radius: 6px; font-size: 0.85rem; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: background-color 0.3s; }
-    .upload-btn:hover { background-color: #2a4eb0; }
-    .info-input { width: 100%; padding: 10px; background-color: #12243d; border: 1px solid #2a4365; border-radius: 6px; color: #fff; outline: none; text-align: right; font-family: 'Cairo', sans-serif; }
-    .info-input:focus { border-color: #d4af37; }
-    .file-name { font-size: 0.8rem; color: #22c55e; margin-top: 8px; display: block; font-weight: 600; }
-    .modal-close { width: 100%; padding: 12px; background-color: #334155; color: #fff; border: none; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 15px; font-family: 'Cairo', sans-serif; transition: background-color 0.3s; }
-    .modal-close:hover { background-color: #475569; }
-    footer { text-align: center; padding: 20px; font-size: 0.85rem; color: #94a3b8; border-top: 1px solid #1e293b; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    .upload-btn { background: linear-gradient(135deg, #2563eb, #1e3a8a); color: #fff; padding: 7px 14px; border-radius: 6px; font-size: 0.78rem; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+    .info-input { width: 100%; padding: 9px; background-color: #0b1a30; border: 1px solid #2a4365; border-radius: 8px; color: #fff; outline: none; text-align: right; font-family: 'Cairo', sans-serif; font-size: 0.85rem; }
+    .file-name { font-size: 0.75rem; color: #22c55e; margin-top: 5px; display: block; font-weight: 600; }
+    .btn-whatsapp {
+        width: 100%; padding: 14px; background: linear-gradient(135deg, #2ecc71, #25D366);
+        color: #fff; border: none; border-radius: 12px; font-size: 1rem; font-weight: 800;
+        cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px;
+        margin-top: 16px; font-family: 'Cairo', sans-serif;
+        box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4); transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6); }
+    .action-buttons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+    .btn-action-sub { width: 100%; padding: 10px; background: transparent; border: 1.5px dashed #d4af37; color: #d4af37; border-radius: 10px; font-size: 0.82rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: background 0.3s; }
+    .btn-action-sub:hover { background: rgba(212, 175, 55, 0.12); }
+    .btn-share-full { grid-column: span 2; border-color: #25d366; color: #2ecc71; }
+    .btn-share-full:hover { background: rgba(37, 211, 102, 0.1); }
+    .modal-overlay { display: none; position: fixed; inset: 0; background-color: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px); z-index: 1000; align-items: center; justify-content: center; padding: 15px; }
+    .modal-overlay.show { display: flex; }
+    .modal-content { background: linear-gradient(145deg, #12243d, #0e1d32); border: 2px solid #d4af37; border-radius: 18px; padding: 22px; max-width: 520px; width: 100%; max-height: 85vh; overflow-y: auto; box-shadow: 0 15px 40px rgba(0,0,0,0.7), 0 0 20px rgba(212,175,55,0.2); }
+    .modal-content h3 { color: #d4af37; margin-bottom: 12px; font-size: 1.05rem; text-align: center; border-bottom: 1px solid #2a4365; padding-bottom: 8px; }
+    .modal-section-title { color: #d4af37; font-size: 0.92rem; margin-top: 12px; margin-bottom: 5px; display: flex; align-items: center; gap: 6px; font-weight: 700; }
+    .modal-text { font-size: 0.82rem; color: #cbd5e1; line-height: 1.5; margin-bottom: 8px; }
+    .modal-close-btn { width: 100%; padding: 11px; background-color: #334155; color: #fff; border: none; border-radius: 10px; font-size: 0.9rem; font-weight: 700; cursor: pointer; margin-top: 12px; transition: background 0.2s; }
+    .modal-close-btn:hover { background-color: #475569; }
+    .review-item { background: rgba(11, 26, 48, 0.7); border: 1px solid #2a4365; border-radius: 8px; padding: 9px; margin-bottom: 8px; }
+    .review-stars { color: #fbbf24; font-size: 0.78rem; margin-bottom: 3px; }
+    .review-comment { font-size: 0.78rem; color: #e2e8f0; font-style: italic; }
+    .review-author { font-size: 0.72rem; color: #d4af37; font-weight: 700; text-align: left; margin-top: 3px; }
+    footer { text-align: center; padding: 12px; font-size: 0.78rem; color: #94a3b8; border-top: 1px solid #1e293b; background: rgba(11,26,48,0.9); }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 </head>
 <body>
+    <div class="announcement-bar">
+        <div class="marquee-content">⚡ إعلان هام لطلاب جامعة حمص: بدء استقبال طلبات ومتابعة معاملات المفاضلات وكشوف العلامات للفصل الحالي بدقة وسرعة فائقة عبر الواتساب!</div>
+    </div>
     <header>
-        <img src="https://i.ibb.co/hFgCw9rg/IMG.jpg" alt="شعار خدمات جامعية" class="header-logo" onerror="this.src='https://via.placeholder.com/90?text=Logo'">
-        <h1>خدمات الطلاب الجامعية</h1>
-        <p>وسيطك الموثوق لتسريع الإجراءات الجامعية</p>
+        <img src="https://i.ibb.co/hFgCw9rg/IMG.jpg" alt="شعار جامعة حمص" class="header-logo" onerror="this.src='https://via.placeholder.com/90?text=Logo'">
+        <div>
+            <h1>خدمات طلاب جامعة حمص</h1>
+            <p>الوسيط الأكاديمي الموثوق (البعث سابقاً)</p>
+        </div>
     </header>
     <div class="container">
         <div class="trust-badge">
-            <i class="fa-solid fa-shield-halved"></i>
-            متابعة خاصة وسريعة لطلبات طلاب جامعة حمص
+            <i class="fa-solid fa-graduation-cap"></i>
+            متابعة فورية وشاملة لكافة معاملات كليات جامعة حمص
         </div>
         <div class="form-box">
-            <h2>اطلب خدمتك بكل سهولة</h2>
+            <h2>اختر الخدمة المطلوبة في الجامعة</h2>
             <div class="input-group">
-                <label>اختر الخدمة المطلوبة:</label>
-                <div class="service-row">
-                    <select id="serviceSelect" onchange="checkServiceSelection()">
-                        <option value="" disabled selected>-- اختر الخدمة --</option>
-                        <option value="التسجيل الجامعي">التسجيل الجامعي</option>
-                        <option value="المفاضلات">المفاضلات</option>
-                        <option value="دفع الرسوم">دفع الرسوم</option>
-                        <option value="تصديق الشهادات">تصديق الشهادات</option>
-                        <option value="معادلة الشهادات">معادلة الشهادات</option>
-                        <option value="نقل الطلاب">نقل الطلاب (من جامعة لأخرى)</option>
-                        <option value="تأجيل الخدمة">تأجيل الخدمة / سنة دراسية</option>
-                        <option value="خدمة أخرى">خدمة أخرى</option>
-                    </select>
-                    <button class="btn-details" id="detailsBtn" onclick="openUploadModal()">
-                        <i class="fa-solid fa-upload"></i> إدخال
-                    </button>
-                </div>
+                <label>اختر نوع الخدمة الأكاديمية:</label>
+                <select id="serviceSelect" onchange="renderServiceRequirements()">
+                    <option value="" disabled selected>-- اختر الخدمة المطلوبة --</option>
+                    <optgroup label="خدمات القبول والتسجيل والمفاضلات">
+                        <option value="التسجيل الجامعي المستجدين">التسجيل الجامعي (للسنة الأولى / المستجدين)</option>
+                        <option value="المفاضلات والاعتراضات">المفاضلات الجامعية والاعتراضات</option>
+                        <option value="التحويل المماثل والنقل">التحويل المماثل والنقل بين الجامعات</option>
+                        <option value="تغيير القيد الجامعي">تغيير القيد أو التخصص الدراسي</option>
+                    </optgroup>
+                    <optgroup label="الوثائق والمصدقات الرسمية">
+                        <option value="استخراج مصدقة تخرج">استخراج مصدقة تخرج (تخريج)</option>
+                        <option value="كشف علامات رسمي">كشف علامات رسمي (عربي / إنجليزي)</option>
+                        <option value="مصادقة وتوثيق الشهادات">مصادقة وتوثيق الشهادات والوثائق</option>
+                        <option value="وثيقة وضع جامعي">وثيقة قيد / وضع جامعي (مصدقة)</option>
+                    </optgroup>
+                    <optgroup label="الوضع الدراسي والشؤون الإدارية">
+                        <option value="تأجيل خدمة الإحتياط والاعفاء">تأجيل خدمة العَلم / التأجيل الدراسي</option>
+                        <option value="إيقاف تسجيل فصل دراسي">إيقاف / وقف تسجيل فصل دراسي</option>
+                        <option value="إعادة قيد للطالب المنقطع">إعادة قيد (للطلاب المنقطعين أو الرسوب المتكرر)</option>
+                        <option value="دفع الرسوم الجامعية">دفع الرسوم الجامعية (سنوية / موازية / إضافية)</option>
+                    </optgroup>
+                    <optgroup label="خدمات السكن والاعتراضات الامتحانية">
+                        <option value="مفاضلة السكن الجامعي">مفاضلة وتسجيل السكن الجامعي</option>
+                        <option value="الاعتراض على العلامات والاعتراضات">الاعتراض على العلامات والتدقيق الامتحاني</option>
+                        <option value="طلب لجنة استثنائية أو تظلم">تقديم طلبات للعمادة أو رئاسة الجامعة</option>
+                        <option value="خدمة طلابية أخرى">خدمة طلابية أخرى (حددها بالتفصيل)</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div id="dynamicRequirementsContainer">
+                <h4><i class="fa-solid fa-file-lines"></i> الأوراق والبيانات المطلوبة للخدمة:</h4>
+                <div id="dynamicFieldsContainer"></div>
             </div>
             <div class="input-group">
                 <label>اسمك الثلاثي:</label>
-                <input type="text" id="nameInput" placeholder="أدخل اسمك هنا...">
+                <input type="text" id="nameInput" placeholder="أدخل اسمك الثلاثي هنا...">
             </div>
             <div class="input-group">
-                <label>رقم الموبايل (واتساب):</label>
+                <label>رقم الموبايل (واتساب للمتابعة):</label>
                 <input type="tel" id="phoneInput" placeholder="مثال: 0930123456">
             </div>
             <button class="btn-whatsapp" onclick="sendToWhatsApp()">
-                <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> إرسال الطلب مباشرة عبر واتساب
+                <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> إرسال الطلب مباشرة عبر واتساب
             </button>
-        </div>
-        <div class="info-section">
-            <h3><i class="fa-solid fa-gears"></i> كيف نسرّع إجراءاتك؟</h3>
-            <ul>
-                <li><i class="fa-solid fa-circle-check"></i> <span>1. تختار الخدمة وتجهز أوراقك (هوية، شهادة، إلخ).</span></li>
-                <li><i class="fa-solid fa-circle-check"></i> <span>2. ترسل معلوماتك وأوراقك لنا عبر واتساب بضغطة زر.</span></li>
-                <li><i class="fa-solid fa-circle-check"></i> <span>3. نحن نتولى تقديم أوراقك للجامعة (خاصة جامعة حمص) ومتابعتها لحين الإنجاز.</span></li>
-            </ul>
-        </div>
-        <div class="info-section">
-            <h3><i class="fa-solid fa-lock"></i> خصوصيتك وضمان الخدمة</h3>
-            <ul>
-                <li><i class="fa-solid fa-circle-check"></i> <span>بياناتك وأوراقك محمية تماماً ولن تُستخدم إلا لإنجاز خدمتك.</span></li>
-                <li><i class="fa-solid fa-circle-check"></i> <span>في حال تعذر إنجاز الخدمة، نضمن لك استرجاع كامل حقوقك.</span></li>
-            </ul>
-        </div>
-        <div class="info-section">
-            <h3><i class="fa-solid fa-star"></i> ماذا قال الطلاب عنا؟</h3>
-            <div class="reviews-grid">
-                <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"كنت أعاني من تعقيدات المفاضلة، أرسلت أوراقي عبر المنصة وتكفلوا هم بكل شي. خدمة سريعة ومريحة."</p>
-                    <div class="review-author">— محمد، طالب هندسة</div>
-                </div>
-                <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"سرعة في الرد، ووضوح في الأوراق المطلوبة، والأهم أنهم تابعوا إجراءاتي في جامعة حمص حتى تم القبول."</p>
-                    <div class="review-author">— سارة، طالبة طب</div>
-                </div>
+            <div class="action-buttons-grid">
+                <button class="btn-action-sub" onclick="openDetailsModal()"><i class="fa-solid fa-circle-info"></i> من نحن؟ والضمان</button>
+                <button class="btn-action-sub" onclick="openReviewsModal()"><i class="fa-solid fa-comments"></i> آراء الطلاب</button>
+                <button class="btn-action-sub btn-share-full" onclick="sharePlatform()"><i class="fa-solid fa-share-nodes"></i> شارك المنصة مع زملائك في الكلية</button>
             </div>
         </div>
     </div>
-    <footer>
-        <p>نرد عليكم خلال دقائق • وسيطكم الموثوق لتسريع الإجراءات الجامعية</p>
-    </footer>
-    <div class="modal-overlay" id="uploadModal">
+
+    <!-- نافذة من نحن -->
+    <div class="modal-overlay" id="detailsModal">
         <div class="modal-content">
-            <h3><i class="fa-solid fa-file-image"></i> متطلبات الخدمة</h3>
-            <div id="uploadFieldsContainer"></div>
-            <button class="modal-close" onclick="closeUploadModal()">تم / إغلاق</button>
+            <h3><i class="fa-solid fa-circle-info" style="color: #d4af37;"></i> معلومات المنصة والضمان الأكاديمي</h3>
+            <div class="modal-section-title"><i class="fa-solid fa-building-shield"></i> من نحن؟</div>
+            <div class="modal-text">نحن لسنا جهة رسمية تابعة لجامعة حمص، ولكنا مكتب وساطة وخدمات طلابية موثوق، نهدف إلى توفير الوقت والجهد على طلابنا في جامعة حمص (البعث سابقاً) ومتابعة معاملاتهم وإنجازها ضمن دوائر الجامعة بكل أمان واحترافية.</div>
+            <div class="modal-section-title"><i class="fa-solid fa-gears"></i> كيف نسرّع إجراءاتك؟</div>
+            <div class="modal-text">1. اختر نوع معاملتك من القائمة وتأكد من ملء الحقول المطلوبة.<br>2. أرسل البيانات والأوراق مباشرة عبر زر الواتساب.<br>3. نتولى نحن متابعة الإجراءات داخل أروقة الكليات والجامعة حتى إنجازها وتسليمها لك.</div>
+            <div class="modal-section-title"><i class="fa-solid fa-lock"></i> الخصوصية والضمان</div>
+            <div class="modal-text">سرية بياناتك وأوراقك مصانة بالكامل وتُستعمل فقط لإنجاز معاملتك. نلتزم بالمتابعة الدقيقة، وفي حال تعذر إتمام الخدمة لأسباب خارجة عن إرادتنا، يتم الاتفاق على آلية مناسبة مع الطالب.</div>
+            <button class="modal-close-btn" onclick="closeDetailsModal()">إغلاق</button>
         </div>
     </div>
+
+    <!-- نافذة الآراء -->
+    <div class="modal-overlay" id="reviewsModal">
+        <div class="modal-content">
+            <h3><i class="fa-solid fa-comments" style="color: #d4af37;"></i> آراء وتجارب طلاب جامعة حمص</h3>
+            <p style="font-size:0.7rem; color:#94a3b8; text-align:center; margin-bottom:8px;">آراء توضيحية — الآراء الجديدة تُحفظ محلياً على جهازك فقط</p>
+            <div id="reviewsListContainer" style="max-height: 180px; overflow-y: auto; margin-bottom: 10px;">
+                <div class="review-item"><div class="review-stars">★★★★★</div><div class="review-comment">"خدمة ممتازة وففرت عليّ عناء الروتين والذهاب المتكرر، تابعوا معاملة كشف العلامات حتى استلمتها."</div><div class="review-author">— أحمد، طالب هندسة</div></div>
+                <div class="review-item"><div class="review-stars">★★★★★</div><div class="review-comment">"سرعة في الرد واحترافية عالية بالمتابعة داخل الكلية، أنصح بالتعامل معهم بشدة."</div><div class="review-author">— ريم، طالبة آداب</div></div>
+            </div>
+            <div class="modal-section-title" style="margin-top: 10px;"><i class="fa-solid fa-pen-to-square"></i> أضف رأيك أو تقييمك للمنصة:</div>
+            <div class="input-group" style="margin-bottom: 6px;"><input type="text" id="reviewerName" class="info-input" placeholder="اسمك والتخصص (مثال: محمد - طالب علوم)"></div>
+            <div class="input-group" style="margin-bottom: 6px;"><input type="text" id="reviewerText" class="info-input" placeholder="اكتب رأيك أو تجربتك معنا هنا..."></div>
+            <button class="upload-btn" style="width: 100%; justify-content: center; margin-top: 4px; padding: 9px; background: linear-gradient(135deg, #d4af37, #b89728); color: #0b1a30; font-weight: 800;" onclick="addNewReviewToPlatform()"><i class="fa-solid fa-paper-plane"></i> نشر الرأي على المنصة فوراً</button>
+            <button class="modal-close-btn" onclick="closeReviewsModal()">إغلاق</button>
+        </div>
+    </div>
+
+    <!-- نافذة التتبع والتأكيد -->
+    <div class="modal-overlay" id="trackingModal">
+        <div class="modal-content" style="text-align:center;">
+            <h3><i class="fa-solid fa-circle-check" style="color:#22c55e;"></i> تم إنشاء طلبك بنجاح</h3>
+            <p class="modal-text" style="font-size:0.9rem;">رقم التتبع الخاص بك هو:</p>
+            <div id="trackingNumberDisplay" style="font-size:1.6rem; font-weight:900; color:#d4af37; background:rgba(212,175,55,0.12); border:2px dashed #d4af37; border-radius:12px; padding:14px; margin:12px 0; letter-spacing:2px; direction:ltr;">HS-000000</div>
+            <p class="modal-text" style="font-size:0.85rem;">احتفظ بهذا الرقم لمتابعة طلبك.</p>
+            <p class="modal-text" style="font-size:0.8rem; color:#94a3b8;">سيتم تحويلك الآن إلى WhatsApp</p>
+            <button class="btn-whatsapp" id="confirmWhatsAppBtn" style="margin-top:12px;"><i class="fa-brands fa-whatsapp" style="font-size:1.2rem;"></i> إرسال</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>نرد عليكم خلال دقائق • وسيطكم الأكاديمي الموثوق في جامعة حمص</p>
+    </footer>
+
     <script>
         const OWNER_PHONE = "963930688067";
         const LS_USER = "uni_service_user";
-        let modalData = {};
+        const LS_REVIEWS = "uni_platform_reviews_list";
+        let pendingWhatsAppUrl = "";
 
         const SERVICE_REQUIREMENTS = {
-            "التسجيل الجامعي": [
-                { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
-                { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
+            "التسجيل الجامعي المستجدين": [
+                { type: "image", id: "id_front", label: "صورة الهوية الشخصية (الوجه الأمامي)" },
+                { type: "image", id: "id_back", label: "صورة الهوية الشخصية (الوجه الخلفي)" },
+                { type: "image", id: "certificate", label: "صورة الشهادة الثانوية الأصلية أو المصدقة" },
+                { type: "text", id: "faculty", label: "الكلية والتخصص المقبول فيه", placeholder: "مثال: كلية الهندسة المدنية" }
+            ],
+            "المفاضلات والاعتراضات": [
+                { type: "image", id: "id_front", label: "صورة الهوية الشخصية" },
                 { type: "image", id: "certificate", label: "صورة الشهادة الثانوية" },
-                { type: "text", id: "uni_name", label: "اسم الجامعة والتخصص المطلوب", placeholder: "مثال: جامعة حمص - هندسة معلوماتية" }
+                { type: "text", id: "sub_number", label: "رقم اشتراك المفاضلة", placeholder: "أدخل رقم الاشتراك" },
+                { type: "text", id: "high_branch", label: "الفرع (علمي / أدبي / مهني)", placeholder: "مثال: علمي - معدل 85%" }
             ],
-            "المفاضلات": [
-                { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
-                { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
-                { type: "image", id: "certificate", label: "صورة الشهادة الثانوية" },
-                { type: "text", id: "sub_num", label: "رقم الاشتراك بالمفاضلة (إن وجد)", placeholder: "أدخل رقم الاشتراك" },
-                { type: "text", id: "branch", label: "الفرع (علمي / أدبي / مهني)", placeholder: "مثال: علمي" }
+            "التحويل المماثل والنقل": [
+                { type: "image", id: "id_front", label: "صورة الهوية الشخصية" },
+                { type: "image", id: "transcript", label: "كشف علامات ومقررات من الجامعة المنقول منها" },
+                { type: "text", id: "uni_from", label: "اسم الجامعة والكلية المحول منها", placeholder: "مثال: جامعة تشرين - كلية العلوم" }
             ],
-            "دفع الرسوم": [
-                { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
-                { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
-                { type: "text", id: "uni_num", label: "الرقم الجامعي", placeholder: "أدخل رقمك الجامعي" },
-                { type: "text", id: "fees_type", label: "نوع الرسم المطلوب", placeholder: "مثال: رسوم فصل أول" }
+            "تغيير القيد الجامعي": [
+                { type: "image", id: "id_front", label: "صورة الهوية الشخصية" },
+                { type: "text", id: "current_major", label: "التخصص الحالي والكلية", placeholder: "مثال: كلية الآداب - لغة عربية" },
+                { type: "text", id: "desired_major", label: "التخصص المراد الانتقال إليه", placeholder: "مثال: كلية الآداب - إنجليزي" }
             ],
-            "تصديق الشهادات": [
-                { type: "image", id: "certificate", label: "صورة الشهادة الأصلية" },
-                { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
-                { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
-                { type: "text", id: "copies", label: "عدد النسخ المطلوبة", placeholder: "مثال: 2 نسخ" }
+            "استخراج مصدقة تخرج": [
+                { type: "image", id: "id_front", label: "صورة الهوية الشخصية" },
+                { type: "text", id: "grad_year", label: "سنة التخرج ورقم الدسكت / القيد", placeholder: "مثال: 2025 - رقم 45" },
+                { type: "text", id: "grad_faculty", label: "الكلية والقسم", placeholder: "مثال: كلية الاقتصاد - إدارة أعمال" }
             ],
-            "معادلة الشهادات": [
-                { type: "image", id: "certificate", label: "صورة الشهادة الأصلية" },
-                { type: "image", id: "transcript", label: "صورة كشف العلامات (Transcript)" },
-                { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
-                { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
-                { type: "text", id: "country", label: "بلد الدراسة", placeholder: "مثال: تركيا / أوكرانيا" }
+            "كشف علامات رسمي": [
+                { type: "image", id: "id_front", label: "صورة الهوية الشخصية" },
+                { type: "text", id: "student_id", label: "الرقم الجامعي للطالب", placeholder: "مثال: 20221054" },
+                { type: "text", id: "lang_type", label: "اللغة المطلوبة (عربي / إنجليزي)", placeholder: "مثال: إنجليزي لغرض السفر" }
             ],
-            "نقل الطلاب": [
-                { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
-                { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
-                { type: "text", id: "from_uni", label: "الجامعة الحالية", placeholder: "الجامعة التي تدرس بها حالياً" },
-                { type: "text", id: "to_uni", label: "الجامعة المطلوب النقل إليها", placeholder: "الجامعة التي تريد النقل إليها" },
-                { type: "text", id: "reason", label: "سبب النقل", placeholder: "مثال: نقل سكن / ظروف عائلية" }
+            "مصادقة وتوثيق الشهادات": [
+                { type: "image", id: "id_front", label: "صورة الهوية الشخصية" },
+                { type: "image", id: "doc_to_certify", label: "صورة الوثيقة المراد مصادقتها" }
             ],
-            "تأجيل الخدمة": [
-                { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
-                { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
-                { type: "text", id: "uni_num", label: "الرقم الجامعي", placeholder: "أدخل رقمك الجامعي" },
-                { type: "text", id: "year", label: "السنة الدراسية المطلوب تأجيلها", placeholder: "مثال: السنة الثانية" },
-                { type: "text", id: "delay_reason", label: "سبب التأجيل", placeholder: "مثال: ظروف صحية" }
+            "وثيقة وضع جامعي": [
+                { type: "image", id: "id_front", label: "صورة الهوية الشخصية" },
+                { type: "text", id: "student_id", label: "الرقم الجامعي والكلية", placeholder: "مثال: كلية الحقوق - سنة ثالثة" }
             ],
-            "خدمة أخرى": [
-                { type: "image", id: "id_front", label: "صورة الهوية (الوجه الأمامي)" },
-                { type: "image", id: "id_back", label: "صورة الهوية (الوجه الخلفي)" },
-                { type: "text", id: "details", label: "وصف الخدمة المطلوبة", placeholder: "اكتب تفاصيل الخدمة هنا" }
+            "تأجيل خدمة الإحتياط والاعفاء": [
+                { type: "image", id: "id_front", label: "صورة الهوية الشخصية" },
+                { type: "image", id: "military_paper", label: "صورة دفتر خدمة العَلم (صفحة التأجيل/الوضع)" },
+                { type: "text", id: "student_status", label: "الوضع الدراسي الحالي", placeholder: "مثال: مستمر بالدراسة - سنة رابعة" }
+            ],
+            "إيقاف تسجيل فصل دراسي": [
+                { type: "image", id: "id_front", label: "صورة الهوية الشخصية" },
+                { type: "text", id: "stop_term", label: "الفصل المراد إيقافه واسم الكلية", placeholder: "مثال: الفصل الثاني 2025-2026" }
+            ],
+            "إعادة قيد للطالب المنقطع": [
+                { type: "image", id: "id_front", label: "صورة الهوية الشخصية" },
+                { type: "text", id: "break_years", label: "سنوات الانقطاع وأسباب التوقف", placeholder: "مثال: انقطاع سنتين لظروف خاصة" }
+            ],
+            "دفع الرسوم الجامعية": [
+                { type: "image", id: "id_front", label: "صورة الهوية الشخصية" },
+                { type: "text", id: "fee_type", label: "نوع الرسوم المطلوبة والمبلغ", placeholder: "مثال: رسوم تسجيل سنوية - موازي" }
+            ],
+            "مفاضلة السكن الجامعي": [
+                { type: "image", id: "id_front", label: "صورة الهوية الشخصية" },
+                { type: "text", id: "housing_details", label: "الكلية والسكن المطلوب (مدينة جامعية)", placeholder: "مثال: كلية العلوم - الوحدة السكنية رقم..." }
+            ],
+            "الاعتراض على العلامات والاعتراضات": [
+                { type: "image", id: "id_front", label: "صورة الهوية الشخصية" },
+                { type: "text", id: "exam_details", label: "المادة الدراسية ورقم المقرر والفصل", placeholder: "مثال: مادة الفيزياء الطبية - الفصل الأول" }
+            ],
+            "طلب لجنة استثنائية أو تظلم": [
+                { type: "image", id: "id_front", label: "صورة الهوية الشخصية" },
+                { type: "text", id: "appeal_reason", label: "موضوع الطلب أو التظلم باختصار", placeholder: "مثال: طلب إعادة تصحيح أو استرحام" }
+            ],
+            "خدمة طلابية أخرى": [
+                { type: "image", id: "id_front", label: "صورة الهوية الشخصية (إن وجدت)" },
+                { type: "text", id: "other_details", label: "اكتب تفاصيل الخدمة التي تحتاجها بدقة", placeholder: "اشرح طلبك هنا..." }
             ]
         };
 
-        function checkServiceSelection() {
-            const service = document.getElementById("serviceSelect").value;
-            const detailsBtn = document.getElementById("detailsBtn");
-            if (service) { detailsBtn.classList.add("show"); } else { detailsBtn.classList.remove("show"); }
-        }
+        function renderServiceRequirements() {
+            const select = document.getElementById("serviceSelect");
+            const container = document.getElementById("dynamicRequirementsContainer");
+            const fieldsContainer = document.getElementById("dynamicFieldsContainer");
+            const selectedVal = select.value;
 
-        function openUploadModal() {
-            const service = document.getElementById("serviceSelect").value;
-            const container = document.getElementById("uploadFieldsContainer");
-            modalData = {};
-
-            if (service && SERVICE_REQUIREMENTS[service]) {
-                container.innerHTML = SERVICE_REQUIREMENTS[service].map(field => {
-                    if (field.type === "image") {
-                        return `
-                            <div class="upload-group">
-                                <label>${field.label}</label>
-                                <input type="file" id="file_${field.id}" accept="image/*" onchange="updateFileName(this)">
-                                <label for="file_${field.id}" class="upload-btn">
-                                    <i class="fa-solid fa-camera"></i> رفع الصورة
-                                </label>
-                                <span class="file-name" id="name_${field.id}"></span>
-                            </div>
-                        `;
-                    } else {
-                        return `
-                            <div class="upload-group" style="text-align:right;">
-                                <label>${field.label}</label>
-                                <input type="text" class="info-input" id="input_${field.id}" placeholder="${field.placeholder || ''}" onchange="saveModalData('${field.id}', this.value)">
-                            </div>
-                        `;
-                    }
-                }).join("");
-                
-                document.getElementById("uploadModal").classList.add("show");
+            fieldsContainer.innerHTML = "";
+            if (!selectedVal || !SERVICE_REQUIREMENTS[selectedVal]) {
+                container.style.display = "none";
+                return;
             }
-        }
 
-        function closeUploadModal() { document.getElementById("uploadModal").classList.remove("show"); }
+            container.style.display = "block";
+            const reqs = SERVICE_REQUIREMENTS[selectedVal];
 
-        function saveModalData(id, value) {
-            if (value && value.trim() !== "") { modalData[id] = value.trim(); } else { delete modalData[id]; }
-        }
-
-        function updateFileName(input) {
-            const cleanId = input.id.replace("file_", "");
-            const nameSpan = document.getElementById("name_" + cleanId);
-            if (input.files && input.files[0] && nameSpan) {
-                nameSpan.textContent = "✅ تم اختيار الصورة بنجاح";
-                modalData[cleanId] = "تم إرفاق الملف: " + input.files[0].name;
-            }
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            try {
-                const savedUser = localStorage.getItem(LS_USER);
-                if (savedUser) {
-                    const user = JSON.parse(savedUser);
-                    if (user && user.name) document.getElementById("nameInput").value = user.name;
-                    if (user && user.phone) document.getElementById("phoneInput").value = user.phone;
+            reqs.forEach((req, idx) => {
+                if (req.type === "image") {
+                    const div = document.createElement("div");
+                    div.className = "upload-group";
+                    div.innerHTML = `
+                        <label>${req.label}</label>
+                        <label class="upload-btn" for="file_${idx}"><i class="fa-solid fa-cloud-arrow-up"></i> اختر صورة الملف</label>
+                        <input type="file" id="file_${idx}" accept="image/*" onchange="handleFileSelect(this, 'filename_${idx}')">
+                        <span class="file-name" id="filename_${idx}">لم يتم اختيار ملف</span>
+                    `;
+                    fieldsContainer.appendChild(div);
+                } else if (req.type === "text") {
+                    const div = document.createElement("div");
+                    div.className = "input-group";
+                    div.style.marginBottom = "10px";
+                    div.innerHTML = `
+                        <label style="font-size:0.82rem; color:#cbd5e1;">${req.label}</label>
+                        <input type="text" class="info-input" id="custom_field_${idx}" placeholder="${req.placeholder || ''}">
+                    `;
+                    fieldsContainer.appendChild(div);
                 }
-            } catch (e) {
-                console.error("LocalStorage error:", e);
+            });
+        }
+
+        function handleFileSelect(input, spanId) {
+            const span = document.getElementById(spanId);
+            if (input.files && input.files[0]) {
+                span.textContent = "✔ تم إرفاق الملف: " + input.files[0].name;
+            } else {
+                span.textContent = "لم يتم اختيار ملف";
             }
-        });
+        }
+
+        function generateTrackingNumber() {
+            const randomNum = Math.floor(100000 + Math.random() * 900000);
+            return "HS-" + randomNum;
+        }
 
         function sendToWhatsApp() {
             const service = document.getElementById("serviceSelect").value;
@@ -284,11 +389,11 @@
             const phone = document.getElementById("phoneInput").value.trim();
 
             if (!service) {
-                alert("الرجاء اختيار الخدمة المطلوبة أولاً.");
+                alert("الرجاء اختيار نوع الخدمة الأكاديمية أولاً.");
                 return;
             }
             if (!name) {
-                alert("الرجاء إدخال الاسم الثلاثي.");
+                alert("الرجاء إدخال اسمك الثلاثي.");
                 return;
             }
             if (!phone) {
@@ -296,34 +401,112 @@
                 return;
             }
 
-            try {
-                localStorage.setItem(LS_USER, JSON.stringify({ name: name, phone: phone }));
-            } catch (e) {}
-
-            let message = `مرحباً، أريد طلب خدمة جامعية (لتسريع الإجراءات):\n\n` +
-                          `👤 الاسم: ${name}\n` +
-                          `📱 رقم الموبايل: ${phone}\n` +
-                          `📋 الخدمة المطلوبة: ${service}\n\n`;
-
-            if (Object.keys(modalData).length > 0) {
-                message += `📎 التفاصيل والمرفقات المجهزة:\n`;
-                for (const [key, value] of Object.entries(modalData)) {
-                    message += `- ${key}: ${value}\n`;
+            // جمع بيانات الحقول الإضافية إن وجدت
+            let extraDataText = "";
+            const customInputs = document.querySelectorAll('[id^="custom_field_"]');
+            customInputs.forEach((inp, idx) => {
+                if (inp.value.trim()) {
+                    extraDataText += `- تفاصيل ${idx + 1}: ${inp.value.trim()}\n`;
                 }
-            }
+            });
 
-            message += `\n(سأرفق الصور هنا في الواتساب)`;
+            const trackingNo = generateTrackingNumber();
             
-            const whatsappUrl = `https://wa.me/${OWNER_PHONE}?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
+            let message = `مرحباً، أرغب بطلب خدمة أكاديمية:\n\n`;
+            message += `📌 الخدمة: ${service}\n`;
+            message += `👤 الاسم: ${name}\n`;
+            message += `📱 الموبايل: ${phone}\n`;
+            if (extraDataText) {
+                message += `\nالتفاصيل المدخلة:\n${extraDataText}`;
+            }
+            message += `\n🔢 رقم التتبع: ${trackingNo}`;
+
+            const encodedMsg = encodeURIComponent(message);
+            pendingWhatsAppUrl = `https://wa.me/${OWNER_PHONE}?text=${encodedMsg}`;
+
+            // عرض نافذة التتبع
+            document.getElementById("trackingNumberDisplay").textContent = trackingNo;
+            document.getElementById("trackingModal").classList.add("show");
         }
 
-        if ("serviceWorker" in navigator) {
-            window.addEventListener("load", () => {
-                navigator.serviceWorker.register("/sw.js")
-                    .then(() => console.log("✅ التطبيق جاهز"))
-                    .catch((err) => console.log("خطأ:", err));
-            });
+        document.getElementById("confirmWhatsAppBtn").addEventListener("click", function() {
+            if (pendingWhatsAppUrl) {
+                window.open(pendingWhatsAppUrl, "_blank");
+                document.getElementById("trackingModal").classList.remove("show");
+            }
+        });
+
+        function openDetailsModal() {
+            document.getElementById("detailsModal").classList.add("show");
+        }
+        function closeDetailsModal() {
+            document.getElementById("detailsModal").classList.remove("show");
+        }
+
+        function openReviewsModal() {
+            loadLocalReviews();
+            document.getElementById("reviewsModal").classList.add("show");
+        }
+        function closeReviewsModal() {
+            document.getElementById("reviewsModal").classList.remove("show");
+        }
+
+        function loadLocalReviews() {
+            const container = document.getElementById("reviewsListContainer");
+            const saved = localStorage.getItem(LS_REVIEWS);
+            if (saved) {
+                try {
+                    const reviews = JSON.parse(saved);
+                    reviews.forEach(r => {
+                        const div = document.createElement("div");
+                        div.className = "review-item";
+                        div.innerHTML = `<div class="review-stars">★★★★★</div><div class="review-comment">"${r.text}"</div><div class="review-author">— ${r.author}</div>`;
+                        container.appendChild(div);
+                    });
+                } catch(e) {}
+            }
+        }
+
+        function addNewReviewToPlatform() {
+            const author = document.getElementById("reviewerName").value.trim();
+            const text = document.getElementById("reviewerText").value.trim();
+
+            if (!author || !text) {
+                alert("الرجاء إدخال الاسم والرأي قبل النشر.");
+                return;
+            }
+
+            const container = document.getElementById("reviewsListContainer");
+            const div = document.createElement("div");
+            div.className = "review-item";
+            div.innerHTML = `<div class="review-stars">★★★★★</div><div class="review-comment">"${text}"</div><div class="review-author">— ${author}</div>`;
+            container.prepend(div);
+
+            // حفظ في LocalStorage
+            let reviews = [];
+            const saved = localStorage.getItem(LS_REVIEWS);
+            if (saved) {
+                try { reviews = JSON.parse(saved); } catch(e) {}
+            }
+            reviews.unshift({ author, text });
+            localStorage.setItem(LS_REVIEWS, JSON.stringify(reviews));
+
+            document.getElementById("reviewerName").value = "";
+            document.getElementById("reviewerText").value = "";
+            alert("تم نشر رأيك بنجاح على المنصة محلياً!");
+        }
+
+        function sharePlatform() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'خدمات طلاب جامعة حمص',
+                    text: 'منصة وسيطة لتسريع كافة الإجراءات والوثائق الجامعية في جامعة حمص بكل أمان وسرعة.',
+                    url: window.location.href
+                }).catch(() => {});
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert("تم نسخ رابط المنصة إلى الحافظة! يمكنك مشاركته مع زملائك.");
+            }
         }
     </script>
 </body>
